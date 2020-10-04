@@ -37,8 +37,8 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
         config.currencyCode = "NGN" // This is the specified currency to charge in.
         config.email = "user@flw.com" // This is the email address of the customer
         config.isStaging = false // Toggle this for staging and live environment
-        config.phoneNumber = "07066773334" //Phone number
-        config.transcationRef = "IOS TEXT" // This is a unique reference, unique to the particular transaction being carried out. It is generated when it is not provided by the merchant for every transaction.
+        config.phoneNumber = "07067783334" //Phone number
+        config.transcationRef = "IOS TEST" // This is a unique reference, unique to the particular transaction being carried out. It is generated when it is not provided by the merchant for every transaction.
         config.firstName = "Yemi" // This is the customers first name.
         config.lastName = "Desola" //This is the customers last name.
         config.meta = [["metaname":"sdk", "metavalue":"ios"]] //This is used to include additional payment information
@@ -48,7 +48,7 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
         config.isPreAuth = false  // This should be set to true for preauthoize card transactions
         let controller = FlutterwavePayViewController()
         let nav = UINavigationController(rootViewController: controller)
-        controller.amount = "100" // This is the amount to be charged.
+        controller.amount = "[Amount]" // This is the amount to be charged.
         controller.delegate = self
         self.present(nav, animated: true)
         

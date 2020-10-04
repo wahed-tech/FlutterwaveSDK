@@ -6,19 +6,63 @@
 //  Copyright (c) 2020 texyz. All rights reserved.
 //
 
-import UIKit
+import FlutterwaveSDK
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, FlutterwavePayProtocol {
+    
+    func tranasctionSuccessful(flwRef: String?, responseData: FlutterwaveDataResponse?) {
+        print("DATA Returned \(responseData?.flwRef ?? "Failed to return data")")
+        
+    }
+    
+    func tranasctionFailed(flwRef: String?, responseData: FlutterwaveDataResponse?) {
+        print( "Failed to return data with FlwRef \(flwRef.orEmpty())")
+    }
+    
+    let flutterLabel = UILabel()
+    let exampleLabel = UILabel()
+    let underLineView = UIView()
+    let launchButton = UIButton(type: .system)
+    
+    
+    
+    @objc func showExample(){
+        
+        let config = FlutterwaveConfig.sharedConfig()
+        
+        
+        
+        
+        config.paymentOptionsToExclude = []
+        config.currencyCode = "NGN" // This is the specified currency to charge in.
+        config.email = "user@flw.com" // This is the email address of the customer
+        config.isStaging = false // Toggle this for staging and live environment
+        config.phoneNumber = "07066773334" //Phone number
+        config.transcationRef = "IOS TEXT" // This is a unique reference, unique to the particular transaction being carried out. It is generated when it is not provided by the merchant for every transaction.
+        config.firstName = "Yemi" // This is the customers first name.
+        config.lastName = "Desola" //This is the customers last name.
+        config.meta = [["metaname":"sdk", "metavalue":"ios"]] //This is used to include additional payment information
+        config.narration = "simplifying payments for endless possibilities"
+        config.publicKey = "[PUB_KEY]" //Public key
+        config.encryptionKey = "[ENCRYPTION_KEY]" //Encryption key
+        config.isPreAuth = false  // This should be set to true for preauthoize card transactions
+        let controller = FlutterwavePayViewController()
+        let nav = UINavigationController(rootViewController: controller)
+        controller.amount = "100" // This is the amount to be charged.
+        controller.delegate = self
+        self.present(nav, animated: true)
+        
 
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        setUpConstraintsAndProperties()
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
 }
+
 

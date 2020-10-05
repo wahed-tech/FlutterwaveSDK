@@ -73,7 +73,7 @@ let launchButton = UIButton(type: .system)
 
 ## Author
 
-rotimi, rotimi.joshua@flutterwavego.com
+Flutterwave Developers
 
 ## License
 

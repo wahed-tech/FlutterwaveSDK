@@ -48,6 +48,6 @@ Pod::Spec.new do |s|
     s.dependency 'SwinjectAutoregistration'
     s.dependency 'Swinject'
     s.dependency 'MaterialComponents'
-#    s.frameworks = 'MDFInternationalization'
+    s.frameworks = 'MDFInternationalization'
     
 end

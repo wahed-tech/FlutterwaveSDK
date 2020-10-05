@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
     s.ios.deployment_target = '11.0'
     s.swift_versions = '5.0'
     
-    s.source_files = 'FlutterwaveSDK/*/**.{h,m}'
+    s.source_files = 'FlutterwaveSDK/**/*.{h,m,swift}'
 #    s.ios.resource_bundle = { 'FlutterwaveSDK' => 'RaveSDK/Assets/{*.png,*.json}' }
     #s.resource = 'Resources/RaveSDK.bundle'
     
@@ -47,7 +47,7 @@ Pod::Spec.new do |s|
     s.dependency 'RxCocoa', '~> 5'
     s.dependency 'SwinjectAutoregistration'
     s.dependency 'Swinject'
-#    s.frameworks = 'MaterialComponents'
+    s.dependency 'MaterialComponents'
 #    s.frameworks = 'MDFInternationalization'
     
 end

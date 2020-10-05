@@ -28,8 +28,8 @@ Pod::Spec.new do |s|
     s.source           = { :git => 'https://github.com/Flutterwave/FlutterwaveSDK.git', :tag => '1.0.0'
     s.social_media_url = 'https://twitter.com/FlutterwaveEng'
     
-    s.ios.deployment_target = '11.0'
-    s.swift_versions = '5.0'
+#    s.ios.deployment_target = '11.0'
+#    s.swift_versions = '5.0'
     
     s.source_files = 'FlutterwaveSDK/*/**.{h,m}'
 #    s.ios.resource_bundle = { 'FlutterwaveSDK' => 'RaveSDK/Assets/{*.png,*.json}' }

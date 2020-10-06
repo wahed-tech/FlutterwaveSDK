@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
     # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
     s.author           = { 'Flutterwave Developers' => 'developers@flutterwavego.com' }
-    s.source           = { :git => 'https://github.com/Flutterwave/FlutterwaveSDK.git', :tag => '1.1.2'}
+    s.source           = { :git => 'https://github.com/Flutterwave/FlutterwaveSDK.git', :tag => '1.1.3'}
     s.social_media_url = 'https://twitter.com/FlutterwaveEng'
     
     s.ios.deployment_target = '11.0'
@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
     
     
     
-    # s.public_header_files = 'Pod/Classes/**/*.h'
+    s.public_header_files = 'Pod/Classes/**/*.h'
     s.frameworks = 'UIKit'
     s.dependency 'lottie-ios','~>3.0.2'
     s.dependency 'Alamofire','5.2.1'

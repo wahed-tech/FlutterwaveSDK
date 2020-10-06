@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
     s.homepage         = 'https://github.com/Flutterwave/FlutterwaveSDK'
     # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
-    s.author           = { 'rj' => 'rotimi.josua@flutterwavego.com' }
+    s.author           = { 'Flutterwave Developers' => 'developers@flutterwavego.com' }
     s.source           = { :git => 'https://github.com/Flutterwave/FlutterwaveSDK.git', :tag => '1.0.0'}
     s.social_media_url = 'https://twitter.com/FlutterwaveEng'
     

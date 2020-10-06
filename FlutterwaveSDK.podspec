@@ -47,7 +47,7 @@ Pod::Spec.new do |s|
     s.dependency 'RxCocoa', '~> 5'
     s.dependency 'SwinjectAutoregistration'
     s.dependency 'Swinject'
-    s.dependency 'MaterialComponents'
+    s.frameworks = 'MaterialComponents'
     s.frameworks = 'MDFInternationalization'
     
 end

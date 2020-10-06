@@ -8,7 +8,7 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-[Imgur](https://i.imgur.com/NTj6IpL.png)
+[IScreenshot](https://i.imgur.com/NTj6IpL.png)
 
 ## Requirements
 Flutterwave SDK is compatible with iOS apps running on iOS 11.0 and above. It requires Xcode 10.0+ to build the source.

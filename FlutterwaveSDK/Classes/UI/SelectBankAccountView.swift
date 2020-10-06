@@ -21,7 +21,7 @@ class SelectBankAccountView: UIView {
         return label
     }()
     
-
+    
     let arrowButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "rave_down_arrow",in: Bundle.getResourcesBundle(), compatibleWith: nil), for: .normal)
@@ -46,7 +46,9 @@ class SelectBankAccountView: UIView {
         text.setTextColor(.black, for: .normal)
         text.setOutlineColor(UIColor.lightGray.withAlphaComponent(0.87), for: .normal)
         text.setOutlineColor(UIColor(hex: "#F5A623").withAlphaComponent(0.87), for: .editing)
-        text.rightView = arrowButton
+        let redView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        redView.addSubview(arrowButton)
+        text.rightView = redView
         text.rightViewMode = .always
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
@@ -55,7 +57,7 @@ class SelectBankAccountView: UIView {
         super.init(frame: frame)
         addSubview(titleLabel)
         addSubview(otherBanksTextField)
-      
+        
         setupConstraints()
     }
     
@@ -70,14 +72,14 @@ class SelectBankAccountView: UIView {
             otherBanksTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             otherBanksTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 35),
             otherBanksTextField.heightAnchor.constraint(equalToConstant: 57),
-
-            ])
+            
+        ])
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
 }
 
 

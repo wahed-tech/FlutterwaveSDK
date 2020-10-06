@@ -62,19 +62,19 @@ extension MDCBaseTextField {
             if let outLinedField = self as? MDCOutlinedTextField {
                 outLinedField.setError(error: "")
             }
-            if let filledField = self as? MDCFilledTextField {
-                filledField.setError(error: "")
-            }
+//            if let filledField = self as? MDCFilledTextField {
+//                filledField.setError(error: "")
+//            }
             return true
         }catch(let error){
             if let outLinedField = self as? MDCOutlinedTextField {
                 outLinedField.setError(error: (error as! ValidationError).message)
                 outLinedField.shakeView()
             }
-            if let filledField = self as? MDCFilledTextField {
-                filledField.setError(error: (error as! ValidationError).message)
-                filledField.shakeView()
-            }
+//            if let filledField = self as? MDCFilledTextField {
+//                filledField.setError(error: (error as! ValidationError).message)
+//                filledField.shakeView()
+//            }
             return false
         }
     }
@@ -100,18 +100,18 @@ extension MDCBaseTextField {
                  
                     outLinedField.setError(error: "", sucessImage:type)
                  }
-                 if let filledField = self as? MDCFilledTextField {
-//                  print(type)
-                     filledField.setError(error: "")
-                 }
+//                 if let filledField = self as? MDCFilledTextField {
+////                  print(type)
+//                     filledField.setError(error: "")
+//                 }
                  return true
              }catch(let error){
                  if let outLinedField = self as? MDCOutlinedTextField {
                      outLinedField.setError(error: (error as! ValidationError).message)
                  }
-                 if let filledField = self as? MDCFilledTextField {
-                     filledField.setError(error: (error as! ValidationError).message)
-                 }
+//                 if let filledField = self as? MDCFilledTextField {
+//                     filledField.setError(error: (error as! ValidationError).message)
+//                 }
                  return false
              }
          }
@@ -187,54 +187,54 @@ extension MDCOutlinedTextField{
     }
 }
 
-extension MDCFilledTextField{
-    
-    func setError(error:String,sucessImage:String = "",errorImage:String=""){
-        if(error.isEmpty){
-            self.leadingAssistiveLabel.text = ""
-            //            self.setOutlineColor(UIColor.colorMetisGreen.withAlphaComponent(0.87), for: .normal)
-            //            self.setOutlineColor(UIColor.colorMetisGreen, for: .editing)
-            self.trailingView = nil
-            self.setFloatingLabelColor(.black, for: .normal)
-            self.setFloatingLabelColor(.black, for: .editing)
-            self.setUnderlineColor(.black, for: .normal)
-            self.setUnderlineColor(.black, for: .editing)
-            
-           if sucessImage != ""{
-                        let email_image = imageWithImage(image:UIImage(named: sucessImage)!,scaledToSize: CGSize(width: 20.0, height: 15.0) )
-                        let email_icon = UIImageView(image: email_image)
-                       self.leadingViewMode = .always
-                        self.leadingView = email_icon
-                    }
-            
-            
-        }else{
-            self.leadingAssistiveLabel.text = error
-            self.setLeadingAssistiveLabelColor(.red, for: .normal)
-            self.setLeadingAssistiveLabelColor(.red, for: .editing)
-            self.setFloatingLabelColor(.red, for: .normal)
-            self.setFloatingLabelColor(.red, for: .editing)
-            self.setUnderlineColor(.red, for: .normal)
-            self.setUnderlineColor(.red, for: .editing)
-            
-            let image =  UIImage(named: "rave_error_icon", in: Bundle.getResourcesBundle()!, compatibleWith: nil)
-            let error_image = imageWithImage(image:image!,scaledToSize: CGSize(width: 20.0, height: 20.0) )
-            let error_icon = UIImageView(image: error_image)
-            self.trailingView = error_icon
-            self.trailingViewMode = .always
-            
-            if errorImage != ""{
-                let error_email_image = imageWithImage(image:UIImage(named: errorImage)!,scaledToSize: CGSize(width: 20.0, height: 15.0) )
-                let error_icon2 = UIImageView(image: error_email_image)
-                self.leadingView = error_icon2
-            }
-            
-            
-        }
-        
-    }
-    
-}
+//extension MDCFilledTextField{
+//    
+//    func setError(error:String,sucessImage:String = "",errorImage:String=""){
+//        if(error.isEmpty){
+//            self.leadingAssistiveLabel.text = ""
+//            //            self.setOutlineColor(UIColor.colorMetisGreen.withAlphaComponent(0.87), for: .normal)
+//            //            self.setOutlineColor(UIColor.colorMetisGreen, for: .editing)
+//            self.trailingView = nil
+//            self.setFloatingLabelColor(.black, for: .normal)
+//            self.setFloatingLabelColor(.black, for: .editing)
+//            self.setUnderlineColor(.black, for: .normal)
+//            self.setUnderlineColor(.black, for: .editing)
+//            
+//           if sucessImage != ""{
+//                        let email_image = imageWithImage(image:UIImage(named: sucessImage)!,scaledToSize: CGSize(width: 20.0, height: 15.0) )
+//                        let email_icon = UIImageView(image: email_image)
+//                       self.leadingViewMode = .always
+//                        self.leadingView = email_icon
+//                    }
+//            
+//            
+//        }else{
+//            self.leadingAssistiveLabel.text = error
+//            self.setLeadingAssistiveLabelColor(.red, for: .normal)
+//            self.setLeadingAssistiveLabelColor(.red, for: .editing)
+//            self.setFloatingLabelColor(.red, for: .normal)
+//            self.setFloatingLabelColor(.red, for: .editing)
+//            self.setUnderlineColor(.red, for: .normal)
+//            self.setUnderlineColor(.red, for: .editing)
+//            
+//            let image =  UIImage(named: "rave_error_icon", in: Bundle.getResourcesBundle()!, compatibleWith: nil)
+//            let error_image = imageWithImage(image:image!,scaledToSize: CGSize(width: 20.0, height: 20.0) )
+//            let error_icon = UIImageView(image: error_image)
+//            self.trailingView = error_icon
+//            self.trailingViewMode = .always
+//            
+//            if errorImage != ""{
+//                let error_email_image = imageWithImage(image:UIImage(named: errorImage)!,scaledToSize: CGSize(width: 20.0, height: 15.0) )
+//                let error_icon2 = UIImageView(image: error_email_image)
+//                self.leadingView = error_icon2
+//            }
+//            
+//            
+//        }
+//        
+//    }
+//    
+//}
 
 
 extension MDCOutlinedTextField {
@@ -248,15 +248,15 @@ extension MDCOutlinedTextField {
 }
 
 
-extension MDCFilledTextField{
-    func imageWithImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
-        image.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: newSize.width, height: newSize.height)))
-        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return newImage
-    }
-}
+//extension MDCFilledTextField{
+//    func imageWithImage(image:UIImage, scaledToSize newSize:CGSize) -> UIImage{
+//        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
+//        image.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: newSize.width, height: newSize.height)))
+//        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
+//        return newImage
+//    }
+//}
 
 extension MDCBaseTextField {
     func formatTextToSlash(textPattern:String){

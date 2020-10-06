@@ -3,11 +3,51 @@ PODS:
   - FlutterwaveSDK (1.0.0):
     - Alamofire (= 5.2.1)
     - lottie-ios (~> 3.0.2)
+    - "MaterialComponents/TextControls+OutlinedTextAreas"
+    - "MaterialComponents/TextControls+OutlinedTextFields"
     - RxCocoa (~> 5)
     - RxSwift (~> 5)
     - Swinject
     - SwinjectAutoregistration
   - lottie-ios (3.0.7)
+  - MaterialComponents/AnimationTiming (117.0.0)
+  - MaterialComponents/Availability (117.0.0)
+  - MaterialComponents/private/Math (117.0.0)
+  - "MaterialComponents/private/TextControlsPrivate+BaseStyle (117.0.0)":
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/private/Math
+    - "MaterialComponents/private/TextControlsPrivate+Shared"
+  - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle (117.0.0)":
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Math
+    - "MaterialComponents/private/TextControlsPrivate+Shared"
+  - "MaterialComponents/private/TextControlsPrivate+Shared (117.0.0)":
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/private/Math
+    - "MaterialComponents/TextControls+Enums"
+  - "MaterialComponents/private/TextControlsPrivate+TextFields (117.0.0)":
+    - MaterialComponents/private/Math
+    - "MaterialComponents/private/TextControlsPrivate+Shared"
+  - "MaterialComponents/TextControls+BaseTextAreas (117.0.0)":
+    - "MaterialComponents/private/TextControlsPrivate+BaseStyle"
+    - "MaterialComponents/private/TextControlsPrivate+Shared"
+    - MDFInternationalization
+  - "MaterialComponents/TextControls+BaseTextFields (117.0.0)":
+    - "MaterialComponents/private/TextControlsPrivate+BaseStyle"
+    - "MaterialComponents/private/TextControlsPrivate+Shared"
+    - "MaterialComponents/private/TextControlsPrivate+TextFields"
+    - MDFInternationalization
+  - "MaterialComponents/TextControls+Enums (117.0.0)"
+  - "MaterialComponents/TextControls+OutlinedTextAreas (117.0.0)":
+    - MaterialComponents/Availability
+    - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle"
+    - "MaterialComponents/TextControls+BaseTextAreas"
+  - "MaterialComponents/TextControls+OutlinedTextFields (117.0.0)":
+    - MaterialComponents/Availability
+    - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle"
+    - "MaterialComponents/TextControls+BaseTextFields"
+  - MDFInternationalization (2.0.0)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -25,6 +65,8 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - lottie-ios
+    - MaterialComponents
+    - MDFInternationalization
     - RxCocoa
     - RxRelay
     - RxSwift
@@ -37,14 +79,16 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
-  FlutterwaveSDK: c03975b3f75db66fd45abde9f1395ffa82433856
+  FlutterwaveSDK: 6548e1a871d1da751318e2479b249775a7d2eab6
   lottie-ios: c38c3178ae8c4a8f200661aa5f80b9f1ca7f56b3
+  MaterialComponents: 29320b6a89c4c90e41c7a41fc70e91127ac34161
+  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
   SwinjectAutoregistration: 330f5012642a8b5c89a8a4adb0c5e52df07382c0
 
-PODFILE CHECKSUM: c60e3cd82aa779ee23b75e71391a2936d32f2f0e
+PODFILE CHECKSUM: 9d47bff137dbd58cf8b1d0bb96ac73ef118a0862
 
 COCOAPODS: 1.9.3

@@ -42,12 +42,12 @@ Pod::Spec.new do |s|
     # s.public_header_files = 'Pod/Classes/**/*.h'
     s.frameworks = 'UIKit'
     s.dependency 'lottie-ios','~>3.0.2'
-    s.dependency 'Alamofire','4.9.0'
+    s.dependency 'Alamofire','5.2.1'
     s.dependency 'RxSwift', '~> 5'
     s.dependency 'RxCocoa', '~> 5'
     s.dependency 'SwinjectAutoregistration'
     s.dependency 'Swinject'
     s.dependency 'MaterialComponents/TextControls+OutlinedTextAreas'
     s.dependency 'MaterialComponents/TextControls+OutlinedTextFields'
-    
 end
+

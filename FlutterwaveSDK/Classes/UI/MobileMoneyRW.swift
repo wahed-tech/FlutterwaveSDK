@@ -82,6 +82,6 @@ class MobileMoneyRW: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let first_name_field = MDCFilledTextField()
+
    
 }

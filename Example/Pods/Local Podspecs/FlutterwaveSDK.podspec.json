@@ -1,9 +1,9 @@
 {
   "name": "FlutterwaveSDK",
   "version": "1.0.0",
-  "summary": "FlutterwaveSDK.",
+  "summary": "FlutterwaveSDK",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/Flutterwave/flutterwaveSDK",
+  "homepage": "https://github.com/Flutterwave/FlutterwaveSDK",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,19 +12,15 @@
     "rj": "rotimi.josua@flutterwavego.com"
   },
   "source": {
-    "git": "https://github.com/Flutterwave/flutterwaveSDK.git",
+    "git": "https://github.com/Flutterwave/FlutterwaveSDK.git",
     "tag": "1.0.0"
   },
+  "social_media_url": "https://twitter.com/FlutterwaveEng",
   "platforms": {
     "ios": "11.0"
   },
   "swift_versions": "5.0",
-  "source_files": "FlutterwaveSDK/Classes/**/*",
-  "ios": {
-    "resource_bundles": {
-      "FlutterwaveSDK": "RaveSDK/Assets/{*.png,*.json}"
-    }
-  },
+  "source_files": "FlutterwaveSDK/**/*.{h,m,swift}",
   "frameworks": "UIKit",
   "dependencies": {
     "lottie-ios": [
@@ -45,7 +41,10 @@
     "Swinject": [
 
     ],
-    "try MaterialComponents": [
+    "MaterialComponents/TextControls+OutlinedTextAreas": [
+
+    ],
+    "MaterialComponents/TextControls+OutlinedTextFields": [
 
     ]
   },

@@ -29,24 +29,26 @@ class USSDSelectBankView: UIView {
         return button
     }()
     
-     lazy var otherBanksTextField: MDCOutlinedTextField = {
-            let text = MDCOutlinedTextField()
-            text.backgroundColor = UIColor.white.withAlphaComponent(0.5)
-            text.label.text = "Select a Bank"
-            text.setFloatingLabelColor(.black, for: .normal)
-            text.setFloatingLabelColor(.black, for: .editing)
-            text.tintColor = .blue
-            text.setNormalLabelColor(.lightGray, for: .normal)
-            text.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-            text.setTextColor(.black, for: .editing)
-            text.setTextColor(.black, for: .normal)
-            text.setOutlineColor(UIColor.lightGray.withAlphaComponent(0.87), for: .normal)
-            text.setOutlineColor(UIColor(hex: "#F5A623").withAlphaComponent(0.87), for: .editing)
-            text.rightView = arrowButtons
-            text.rightViewMode = .always
-            text.translatesAutoresizingMaskIntoConstraints = false
-            return text
-        }()
+    lazy var otherBanksTextField: MDCOutlinedTextField = {
+        let text = MDCOutlinedTextField()
+        text.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        text.label.text = "Select a Bank"
+        text.setFloatingLabelColor(.black, for: .normal)
+        text.setFloatingLabelColor(.black, for: .editing)
+        text.tintColor = .blue
+        text.setNormalLabelColor(.lightGray, for: .normal)
+        text.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        text.setTextColor(.black, for: .editing)
+        text.setTextColor(.black, for: .normal)
+        text.setOutlineColor(UIColor.lightGray.withAlphaComponent(0.87), for: .normal)
+        text.setOutlineColor(UIColor(hex: "#F5A623").withAlphaComponent(0.87), for: .editing)
+        let redView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        redView.addSubview(arrowButtons)
+        text.rightView = redView
+        text.rightViewMode = .always
+        text.translatesAutoresizingMaskIntoConstraints = false
+        return text
+    }()
     
     
     lazy var PayButton: UIButton = {
@@ -97,7 +99,7 @@ class USSDSelectBankView: UIView {
             PayButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             PayButton.topAnchor.constraint(equalTo: otherBanksTextField.bottomAnchor, constant: 35),
             PayButton.heightAnchor.constraint(equalToConstant: 57),
-
+            
             
         ])
     }

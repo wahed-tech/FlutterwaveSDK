@@ -58,7 +58,10 @@ class DebitCardViewNew: UIView {
         text.setTextColor(.black, for: .normal)
         text.setOutlineColor(UIColor.lightGray.withAlphaComponent(0.87), for: .normal)
         text.setOutlineColor(UIColor(hex: "#F5A623").withAlphaComponent(0.87), for: .editing)
-        text.leftView = cardImageView
+        
+        let redView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 24))
+        redView.addSubview(cardImageView)
+        text.leftView = redView
         text.leftViewMode = .always
         text.keyboardType = .numberPad
         text.translatesAutoresizingMaskIntoConstraints = false
@@ -100,7 +103,10 @@ class DebitCardViewNew: UIView {
         text.setTextColor(.black, for: .normal)
         text.setOutlineColor(UIColor.lightGray.withAlphaComponent(0.17), for: .normal)
         text.setOutlineColor(UIColor(hex: "#F5A623").withAlphaComponent(0.87), for: .editing)
-        text.rightView = questionButton
+        let redView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        redView.addSubview(questionButton)
+        
+        text.rightView =  redView
         text.rightViewMode = .always
         text.keyboardType = .numberPad
         text.isSecureTextEntry = true
@@ -201,7 +207,6 @@ class DebitCardViewNew: UIView {
             cardPayButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             cardPayButton.topAnchor.constraint(equalTo: rememberCardCheck.bottomAnchor, constant: 20),
             cardPayButton.heightAnchor.constraint(equalToConstant: 50),
-            
             
             rememberCardText.bottomAnchor.constraint(equalTo: cardPayButton.topAnchor, constant: -6)
         ])

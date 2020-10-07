@@ -2,7 +2,6 @@ use_frameworks!
 
 target 'FlutterwaveSDK_Example' do
   pod 'FlutterwaveSDK', :path => '../'
-
  
 
   target 'FlutterwaveSDK_Tests' do

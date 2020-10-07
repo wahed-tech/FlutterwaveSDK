@@ -5174,7 +5174,7 @@
 			baseConfigurationReference = CAD095048A207217101DE3D4E6589312 /* FlutterwaveSDK.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -5190,6 +5190,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 1.1.4;
 				MODULEMAP_FILE = "Target Support Files/FlutterwaveSDK/FlutterwaveSDK.modulemap";
 				PRODUCT_MODULE_NAME = FlutterwaveSDK;
 				PRODUCT_NAME = FlutterwaveSDK;
@@ -5306,7 +5307,7 @@
 			baseConfigurationReference = 6C31AFA78C1CA92F0799E78BCB506583 /* FlutterwaveSDK.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -5322,6 +5323,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 1.1.4;
 				MODULEMAP_FILE = "Target Support Files/FlutterwaveSDK/FlutterwaveSDK.modulemap";
 				PRODUCT_MODULE_NAME = FlutterwaveSDK;
 				PRODUCT_NAME = FlutterwaveSDK;

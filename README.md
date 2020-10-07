@@ -12,11 +12,10 @@
  
 ## Example
  
-To run the example project, clone the repo, and run `pod install` from the Example directory.
+To run the example project, clone the repo, and open `FlutterwaveSDK.xcworkspace` in the **Example** directory with Xcode
  
 1. If you don’t have an account, sign up for a [Flutterwave account](https://dashboard.flutterwave.com/signup).
-2. Open `FlutterwaveSDK.xcworkspace` in the **Example** directory with Xcode
-3. Fill in the following `config details` in the `Viewcontroller.swift` to configure your payment type
+2. Fill in the following `config details` in the `Viewcontroller.swift` to configure your payment type
  
 ```
 config.paymentOptionsToExclude = []

@@ -6,9 +6,9 @@
  
 **Flutterwave IOS SDK** allows you to build a quick, simple and excellent payment experience in your iOS app. We provide powerful and customizable UI screens and elements that can be used out-of-the-box to collect your users' payment details.
  
-<p align="center">
-   <img title="Flutterwave" height="200" src="https://flutterwave.com/images/logo-colored.svg" width="50%"/>
-</p>
+ <p align="center">
+    <img title="Flutterwave" height="50%" src="https://github.com/Flutterwave/FlutterwaveSDK/blob/master/FlutterwaveSDK/Classes/RaveSDK.bundle/FlutterwaveScreenshot.png" width="50%"/>
+ </p>
  
 ## Example
  

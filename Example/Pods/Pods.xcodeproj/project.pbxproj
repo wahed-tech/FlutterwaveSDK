@@ -386,7 +386,6 @@
 		823C596B2D2BAA8F4F16AD876E774F15 /* ControlEvent+Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE5E30C5567DA81D6F6C710B87247EF /* ControlEvent+Signal.swift */; };
 		82478CDB1E8587C1C1A54649CDD10B25 /* AnimationTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22394C62C5101BD32D00C2620EAE932F /* AnimationTime.swift */; };
 		824A8EEFCBEF5899E54AFAB4C371BFEA /* PreCompLayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1606AB6C156F7ABF8F5874889FD27E87 /* PreCompLayerModel.swift */; };
-		8280E80B6071BCA7C91C2B21FCC2C3AF /* MDFInternationalization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBA3C29DCD014B03623645F79B44B5FF /* MDFInternationalization.framework */; };
 		829A7D29C501002B74F2ED38811BBF3A /* CAMediaTimingFunction+MDCAnimationTiming.m in Sources */ = {isa = PBXBuildFile; fileRef = BD253F2B156CC306F0798E139CAEB10D /* CAMediaTimingFunction+MDCAnimationTiming.m */; };
 		8307564366EDBABB04154E2C837E2925 /* AnimationPublic.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102D0F3BAC3CDD88F945862C4332BB2 /* AnimationPublic.swift */; };
 		8328B7896D9A8370D81D3466D3A819CE /* Concat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37663C0E36B27699802F288D6AC8D4B3 /* Concat.swift */; };
@@ -572,7 +571,7 @@
 		C280A53FBF2280620DCFD68D2472A8DC /* DefaultTextInputFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B421D16CF4EA2A96307333B1147FA71 /* DefaultTextInputFormatter.swift */; };
 		C2AC007680F8AB12B0401876BB9DDD77 /* RenderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAFFA8C1D32307DFEB1889C291CF1D1 /* RenderNode.swift */; };
 		C33FABAA3020FCC757675270A1607219 /* MobileMoneyUganda.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73F20B38C162C5793A992004F1D8663 /* MobileMoneyUganda.swift */; };
-		C34E35CB333D9C6AFB791E241B04D545 /* MDCBaseTextAreaLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D16E2BFFCE90C56570E0448904CFCCD /* MDCBaseTextAreaLayout.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C34E35CB333D9C6AFB791E241B04D545 /* MDCBaseTextAreaLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D16E2BFFCE90C56570E0448904CFCCD /* MDCBaseTextAreaLayout.h */; settings = {ATTRIBUTES = (Project, Public, ); }; };
 		C424396F9A104E7532315E7562C71CDF /* NigeriaBankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C3A29EF234301F8C7EBE93F84D5453 /* NigeriaBankModel.swift */; };
 		C5BB45EB2C6D0B7D8D64064BBEF85779 /* ServiceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64068339B85907542B510605E86B7CF7 /* ServiceKey.swift */; };
 		C699C2075750607149EC2C465A9F97B4 /* Interpolatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E59728EE82420036F5AD1BAC7B5D2A /* Interpolatable.swift */; };
@@ -596,7 +595,7 @@
 		CCC0C5D03A4A8BC4D54E4EBCF6BBEBE7 /* Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956ED720EAD00B7723C4D360F7E3E1DF /* Rx.swift */; };
 		CD1D16273659D411989BB71099DF49B4 /* SizeValueProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B18A189AAC10C7F68045406AB18F6F /* SizeValueProvider.swift */; };
 		CD3011A36F4484454CC1DA0165A8B779 /* keybaord+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858B9AF5AF066573374FCDFBA1BB7E3B /* keybaord+Defaults.swift */; };
-		CDA51E6D8DBA9AEAF4982A7728A3D5E5 /* MDCBaseTextAreaTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EB0EE084281F77252D70FDC3BFADE41 /* MDCBaseTextAreaTextView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		CDA51E6D8DBA9AEAF4982A7728A3D5E5 /* MDCBaseTextAreaTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EB0EE084281F77252D70FDC3BFADE41 /* MDCBaseTextAreaTextView.h */; settings = {ATTRIBUTES = (Project, Public, ); }; };
 		CE6A8D3AB1BFB120BDF9316D1B6076CB /* VirtualTimeConverterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD160D200B11B605CE999FEFAC3374E /* VirtualTimeConverterType.swift */; };
 		CEE0B8E01EA6F9D14A6A6455DE17A1B8 /* BarterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA48153E05E246A26AD1BBD95CDDEBC /* BarterView.swift */; };
 		CFE23831659850667294A6853279C1F0 /* NSControl+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED323B3FA3056EBFA735740034830B9 /* NSControl+Rx.swift */; };
@@ -627,6 +626,7 @@
 		D6C93CD6E57660FEA904F6DA58354FFD /* Bag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EBF1B8F329C121DD35F63386DAEED3 /* Bag.swift */; };
 		D710376D1F5AD0CCE62EC7E8D7EB72B6 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBAA9A706032C5EBD207FB6A6035E47 /* RxSwift.framework */; };
 		D7569C41FF06196D1AEA836EC4CF0DD0 /* _RXDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = F6614C4B14C37910D1EF718690E990F4 /* _RXDelegateProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D83CFD2A252E16FD00E12783 /* MDFInternationalization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBA3C29DCD014B03623645F79B44B5FF /* MDFInternationalization.framework */; };
 		D84E4585252C7E3200F7899D /* RaveSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D84E4584252C7E3200F7899D /* RaveSDK.bundle */; };
 		D86816A6259637E8AD3A61504A9167C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8B9C296B7ECCDFFA72B53591DB80B7 /* UIKit.framework */; };
 		D896778F97DDCA3719C64BD5855064C6 /* ObjectScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0416273CD102C60EBAB0712F3C988953 /* ObjectScope.swift */; };
@@ -1739,7 +1739,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D4D1A7CC2E44EC55BB596186CFF02BF /* Foundation.framework in Frameworks */,
-				8280E80B6071BCA7C91C2B21FCC2C3AF /* MDFInternationalization.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1784,6 +1783,7 @@
 				6D773217714227CB50B1F7E01EA589DC /* Foundation.framework in Frameworks */,
 				8A9BF3F128075547E990020F3993BA09 /* Lottie.framework in Frameworks */,
 				4839C4D3CF7477CAB84BDC7AD8EEED27 /* MaterialComponents.framework in Frameworks */,
+				D83CFD2A252E16FD00E12783 /* MDFInternationalization.framework in Frameworks */,
 				18F7FC7310CE37795286BC0A43D61F10 /* RxCocoa.framework in Frameworks */,
 				D710376D1F5AD0CCE62EC7E8D7EB72B6 /* RxSwift.framework in Frameworks */,
 				5D2C7924702B7AB3C57577D6ED832D4E /* Swinject.framework in Frameworks */,
@@ -3243,8 +3243,6 @@
 				0296CCC631954524D92EE7FDF2567C50 /* MDCAvailability.h in Headers */,
 				023FA0C4645AC7937A8B5EB7261A4144 /* MDCBaseTextArea.h in Headers */,
 				101F78D113FAC2C0A81C2F6F48075E53 /* MDCBaseTextAreaDelegate.h in Headers */,
-				C34E35CB333D9C6AFB791E241B04D545 /* MDCBaseTextAreaLayout.h in Headers */,
-				CDA51E6D8DBA9AEAF4982A7728A3D5E5 /* MDCBaseTextAreaTextView.h in Headers */,
 				D48BA9B90522BA8296C2FC0CD300058A /* MDCBaseTextField.h in Headers */,
 				FDCCC6D8140D82BE923AFCE388846B15 /* MDCBaseTextFieldDelegate.h in Headers */,
 				3E7B740C60B2C5A4EF52AE0F6605AF9E /* MDCBaseTextFieldLayout.h in Headers */,
@@ -3270,6 +3268,8 @@
 				C09E60B8D912F5C14BA66AAF0AD40445 /* MDCTextControlVerticalPositioningReference.h in Headers */,
 				306EB86319C1BE4A5BCD5BF75753E3D9 /* MDCTextControlVerticalPositioningReferenceBase.h in Headers */,
 				BDA98BB2574E10482424D69C54771CAE /* MDCTextControlVerticalPositioningReferenceOutlined.h in Headers */,
+				C34E35CB333D9C6AFB791E241B04D545 /* MDCBaseTextAreaLayout.h in Headers */,
+				CDA51E6D8DBA9AEAF4982A7728A3D5E5 /* MDCBaseTextAreaTextView.h in Headers */,
 				7BA27A9DB6FE6656B242AD2BF3C64EAC /* UIBezierPath+MDCTextControlStyle.h in Headers */,
 				11AC4F3D544D5DFB1B0EB1B6D30352A8 /* UIView+MDCTimingFunction.h in Headers */,
 			);

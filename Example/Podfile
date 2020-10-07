@@ -2,15 +2,6 @@ use_frameworks!
 
 target 'FlutterwaveSDK_Example' do
   pod 'FlutterwaveSDK', :path => '../'
-  pod 'lottie-ios','~>3.0.2'
-  pod 'Alamofire','5.2.1'
-  pod 'RxSwift', '~> 5'
-  pod 'RxCocoa', '~> 5'
-  pod 'SwinjectAutoregistration'
-  pod 'Swinject'
-  pod 'MaterialComponents/TextControls+OutlinedTextAreas'
-  pod 'MaterialComponents/TextControls+OutlinedTextFields'
- 
 
   target 'FlutterwaveSDK_Tests' do
     inherit! :search_paths

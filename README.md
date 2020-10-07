@@ -16,7 +16,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
  
 1. If you don’t have an account, sign up for a [Flutterwave account](https://dashboard.flutterwave.com/signup).
 2. Open `FlutterwaveSDK.xcworkspace` in the **Example** directory with Xcode
-3. Fill in the following `config details` to configure your payment type
+3. Fill in the following `config details` in the `Viewcontroller.swift` to configure your payment type
  
 ```
 config.paymentOptionsToExclude = []
@@ -39,7 +39,9 @@ controller.delegate = self
 self.present(nav, animated: true)
 ```
  
-After this is done, you can make test payments, please ensure `config.isStaging = true`.
+After this is done, you can make test payments, please ensure `config.isStaging = true`,   toggle to test mode and use the keys gotten when you toggle to test mode on your dashboard. 
+
+*Please note that the test cards will not work with Live API keys, they will only work on the staging environment.*
  
 Please go to https://developer.flutterwave.com/docs/test-cards for a list of test card numbers.
  
@@ -116,4 +118,5 @@ Flutterwave Developers
  
 ## License
  
-FlutterwaveSDK is available under the MIT license. See the LICENSE file for more info.
+FlutterwaveSDK is available under the MIT license. See the [LICENSE](https://github.com/Flutterwave/FlutterwaveSDK/blob/master/LICENSE) file for more info.
+

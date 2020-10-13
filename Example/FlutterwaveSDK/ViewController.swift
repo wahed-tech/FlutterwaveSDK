@@ -31,7 +31,7 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
         let config = FlutterwaveConfig.sharedConfig()
 
         config.paymentOptionsToExclude = []
-        config.currencyCode = "NGN" // This is the specified currency to charge in.
+        config.currencyCode = "USD" // This is the specified currency to charge in.
         config.email = "user@flw.com" // This is the email address of the customer
         config.isStaging = false // Toggle this for staging and live environment
         config.phoneNumber = "07067783334" //Phone number

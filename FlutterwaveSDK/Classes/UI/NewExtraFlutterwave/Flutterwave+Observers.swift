@@ -26,9 +26,9 @@ extension FlutterwavePayViewController {
         
         
         setUpMoveToOTP(baseViewModel: BankViewModel.sharedViewModel, action: { processorResponse,flwRef,source in
-            self.onResponseViewChange(message: processorResponse, flwRef: flwRef, source: source)
-            self.flutterwaveCardClient.transactionReference = flwRef
-            self.showOTP(message: processorResponse, flwRef: flwRef, otpType: .card)})
+                        self.onResponseViewChange(message: processorResponse, flwRef: flwRef, source: source)
+                        self.flutterwaveCardClient.transactionReference = flwRef
+                        self.showOTP(message: processorResponse, flwRef: flwRef, otpType: .card)})
         
         PaymentServicesViewModel.sharedViewModel.moveToAddressVerification.subscribe(onNext: {response in
             self.showBillingAddress()
@@ -86,7 +86,7 @@ extension FlutterwavePayViewController {
         
         
         
-       
+        
         
         BankViewModel.sharedViewModel.ussdResponse.subscribe(onNext: { response in
             self.showUssd()
@@ -105,11 +105,12 @@ extension FlutterwavePayViewController {
         
         
         BankViewModel.sharedViewModel.ukAccountResponse.subscribe(onNext: { response in
-            //            self.ukDetailsViewContainer.accountNumberValue.text = response.meta?.authorization?.transferAccount
-            //                  let currency = "£"
-            //                  self.ukDetailsViewContainer.accountNumberValue.text = (currency + self.amount.orEmpty())
-            //                  self.ukDetailsViewContainer.accountNumberValue.text = response.meta?.authorization?.transferBank
-            //                  self.ukDetailsViewContainer.accountNumberValue.text = response.meta?.authorization?.transferAccount
+            self.ukDetailsViewContainer.accountNumberValue.text = "4327122"
+            let currency = "£"
+            self.ukDetailsViewContainer.amountValue.text = (currency + self.amount.orEmpty())
+            self.ukDetailsViewContainer.sortCodeValue.text = "04-00-53"
+            self.ukDetailsViewContainer.beneficiaryNameLabelVlaue.text = "Barter Funding"
+            self.ukDetailsViewContainer.referenceNumberValue.text = response.data?.flwRef
             self.showUkDetailsView()
         }).disposed(by: disposableBag)
     }

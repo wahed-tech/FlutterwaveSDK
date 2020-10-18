@@ -7,6 +7,7 @@
 //
 
 import FlutterwaveSDK
+import UIKit
 
 class ViewController: UIViewController, FlutterwavePayProtocol {
     
@@ -31,7 +32,7 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
         let config = FlutterwaveConfig.sharedConfig()
 
         config.paymentOptionsToExclude = []
-        config.currencyCode = "USD" // This is the specified currency to charge in.
+        config.currencyCode = "NGN" // This is the specified currency to charge in.
         config.email = "user@flw.com" // This is the email address of the customer
         config.isStaging = false // Toggle this for staging and live environment
         config.phoneNumber = "07067783334" //Phone number
@@ -44,10 +45,10 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
         config.encryptionKey = "[ENCRYPTION_KEY]" //Encryption key
         config.isPreAuth = false  // This should be set to true for preauthoize card transactions
         let controller = FlutterwavePayViewController()
-        let nav = UINavigationController(rootViewController: controller)
+//        let nav = UINavigationController(rootViewController: controller)
         controller.amount = "[Amount]" // This is the amount to be charged.
         controller.delegate = self
-        self.present(nav, animated: true)
+        self.present(controller, animated: true)
         
 
     }
@@ -58,6 +59,8 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
         super.viewDidLoad()
         setUpConstraintsAndProperties()
         
+        
+        showExample()
     }
     
 }

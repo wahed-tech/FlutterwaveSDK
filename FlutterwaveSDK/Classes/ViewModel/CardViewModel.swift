@@ -1,6 +1,6 @@
 //
 //  CardViewModel.swift
-//  RaveSDK
+// FlutterwaveSDK
 //
 //  Created by Rotimi Joshua on 15/09/2020.
 //

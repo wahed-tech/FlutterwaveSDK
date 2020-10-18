@@ -51,7 +51,11 @@ public class FlutterwavePayViewController: BaseViewController {
     let toolbar = UIToolbar()
     let disposeBag = DisposeBag()
     var pin = ""
-    let navBarHeight:CGFloat = (UIApplication.shared.keyWindow?.safeAreaInsets.bottom)!
+    
+ 
+    let navBarHeight:CGFloat = UIApplication.bottomSafeAreaHeight
+    
+
     
     var expandables = [Expandables(isExpanded: true, section: 0),Expandables(isExpanded: false, section: 1),Expandables(isExpanded: false, section: 2),Expandables(isExpanded: false, section: 3),Expandables(isExpanded: false, section: 4),Expandables(isExpanded: false, section: 5),Expandables(isExpanded: false, section: 6),Expandables(isExpanded: false, section: 7),Expandables(isExpanded: false, section: 8),Expandables(isExpanded: false, section: 9),Expandables(isExpanded: false, section: 10),Expandables(isExpanded: false, section: 11),Expandables(isExpanded: false, section: 12), Expandables(isExpanded: false, section: 13)]
     
@@ -593,8 +597,7 @@ public class FlutterwavePayViewController: BaseViewController {
         ])
     }
     
-    
-    
+
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -1444,7 +1447,7 @@ public class FlutterwavePayViewController: BaseViewController {
     }
     
     func getHeader()-> FlutterwaveHeaderView{
-        let header = FlutterwaveHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 65))
+        let header = FlutterwaveHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100))
         header.backgroundColor = UIColor(hex: "#FBEED8")
         header.button.addTarget(self, action: #selector(handleButtonTap(_:)), for: .touchUpInside)
         return header
@@ -1983,6 +1986,22 @@ public class FlutterwavePayViewController: BaseViewController {
         flutterwaveCardClient.chargeCard(replaceData: true)
         
     }
+    
+    
+}
+
+extension UIApplication {
+  
+    static var bottomSafeAreaHeight: CGFloat {
+        var bottomSafeAreaHeight: CGFloat = 0
+         if #available(iOS 11.0, *) {
+               let window = UIApplication.shared.windows[0]
+               let safeFrame = window.safeAreaLayoutGuide.layoutFrame
+            bottomSafeAreaHeight = window.frame.maxY - safeFrame.maxY
+             }
+        return bottomSafeAreaHeight
+    }
+    
     
     
 }

@@ -629,7 +629,7 @@
 		D83CFD2A252E16FD00E12783 /* MDFInternationalization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBA3C29DCD014B03623645F79B44B5FF /* MDFInternationalization.framework */; };
 		D86816A6259637E8AD3A61504A9167C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C8B9C296B7ECCDFFA72B53591DB80B7 /* UIKit.framework */; };
 		D896778F97DDCA3719C64BD5855064C6 /* ObjectScope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0416273CD102C60EBAB0712F3C988953 /* ObjectScope.swift */; };
-		D8EEBDBC253CDF43007B6225 /* FlutterwaveSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D8EEBDBB253CDF43007B6225 /* FlutterwaveSDK.bundle */; };
+		D8EEBE2E253ED6D8007B6225 /* FlutterwaveSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D8EEBDBB253CDF43007B6225 /* FlutterwaveSDK.bundle */; };
 		D93D99964FACD7ED1EC2864A05F7DDEE /* ScheduledItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A526427A9651E052D177A9039DDAB /* ScheduledItemType.swift */; };
 		D9B32EA5E1E599EA25CE1E607EFC4972 /* PathOutputNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A54A178849642A60E133B12FFC43ACE /* PathOutputNode.swift */; };
 		DA44717840E78CF2B453AE4B9C8391A5 /* RxPickerViewDataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3D224C4B68DF4FD30227D0AC294CA1 /* RxPickerViewDataSourceType.swift */; };
@@ -3561,7 +3561,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8EEBDBC253CDF43007B6225 /* FlutterwaveSDK.bundle in Resources */,
+				D8EEBE2E253ED6D8007B6225 /* FlutterwaveSDK.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5190,7 +5190,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MARKETING_VERSION = 1.1.7;
+				MARKETING_VERSION = 1.1.9;
 				MODULEMAP_FILE = "Target Support Files/FlutterwaveSDK/FlutterwaveSDK.modulemap";
 				PRODUCT_MODULE_NAME = FlutterwaveSDK;
 				PRODUCT_NAME = FlutterwaveSDK;
@@ -5323,7 +5323,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MARKETING_VERSION = 1.1.7;
+				MARKETING_VERSION = 1.1.9;
 				MODULEMAP_FILE = "Target Support Files/FlutterwaveSDK/FlutterwaveSDK.modulemap";
 				PRODUCT_MODULE_NAME = FlutterwaveSDK;
 				PRODUCT_NAME = FlutterwaveSDK;

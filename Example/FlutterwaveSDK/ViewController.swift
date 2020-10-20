@@ -45,10 +45,10 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
         config.encryptionKey = "[ENCRYPTION_KEY]" //Encryption key
         config.isPreAuth = false  // This should be set to true for preauthoize card transactions
         let controller = FlutterwavePayViewController()
-//        let nav = UINavigationController(rootViewController: controller)
+        let nav = UINavigationController(rootViewController: controller)
         controller.amount = "[Amount]" // This is the amount to be charged.
         controller.delegate = self
-        self.present(controller, animated: true)
+        self.present(nav, animated: true)
         
 
     }

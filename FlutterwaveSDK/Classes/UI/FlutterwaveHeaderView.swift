@@ -36,6 +36,7 @@ class FlutterwaveHeaderView: UIView {
         addSubview(arrowButton)
         addSubview(button)
         setupConstraints()
+        
     }
     
     func setupConstraints(){

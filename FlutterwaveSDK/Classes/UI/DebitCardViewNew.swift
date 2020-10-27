@@ -17,6 +17,7 @@ class DebitCardViewNew: UIView {
         image.clipsToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         let images = UIImage(named:  "rave_credit_card",in: Bundle.getResourcesBundle()!, compatibleWith: nil) as UIImage?
+//        let images = UIImage(named: "rave_credit_card") as UIImage?
         image.image = images
         image.widthAnchor.constraint(equalToConstant: 25).isActive = true
         image.heightAnchor.constraint(equalToConstant: 25).isActive = true

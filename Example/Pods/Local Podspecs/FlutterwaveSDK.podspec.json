@@ -22,7 +22,7 @@
   "swift_versions": "5.0",
   "source_files": "FlutterwaveSDK/**/*.{h,m,swift}",
   "resources": [
-    "FlutterwaveSDK/Assets/Assets.xcassets"
+    "FlutterwaveSDK/Assets/*.xcassets"
   ],
   "public_header_files": "Classes/*.h",
   "frameworks": "UIKit",

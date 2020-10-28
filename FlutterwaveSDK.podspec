@@ -32,9 +32,9 @@ Pod::Spec.new do |s|
     s.swift_versions = '5.0'
     
     s.source_files = 'FlutterwaveSDK/**/*.{h,m,swift}'
-    s.resources = ['FlutterwaveSDK/Assets.xcassets']
+    s.resources = ['FlutterwaveSDK/Assets/Assets.xcassets']
    
-    s.public_header_files = 'Classes/*.{h,m}'
+    s.public_header_files = 'Classes/*.h'
     
     s.frameworks = 'UIKit'
     s.dependency 'lottie-ios','~>3.0.2'

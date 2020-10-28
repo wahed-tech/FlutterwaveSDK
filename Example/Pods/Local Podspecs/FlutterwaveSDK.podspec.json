@@ -1,6 +1,6 @@
 {
   "name": "FlutterwaveSDK",
-  "version": "1.0.0",
+  "version": "1.2.3",
   "summary": "FlutterwaveSDK",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/Flutterwave/FlutterwaveSDK",
@@ -9,11 +9,11 @@
     "file": "LICENSE"
   },
   "authors": {
-    "rj": "rotimi.josua@flutterwavego.com"
+    "Flutterwave Developers": "developers@flutterwavego.com"
   },
   "source": {
     "git": "https://github.com/Flutterwave/FlutterwaveSDK.git",
-    "tag": "1.0.0"
+    "tag": "1.2.3"
   },
   "social_media_url": "https://twitter.com/FlutterwaveEng",
   "platforms": {
@@ -21,6 +21,10 @@
   },
   "swift_versions": "5.0",
   "source_files": "FlutterwaveSDK/**/*.{h,m,swift}",
+  "resources": [
+    "FlutterwaveSDK/Assets/Assets.xcassets"
+  ],
+  "public_header_files": "Classes/*.h",
   "frameworks": "UIKit",
   "dependencies": {
     "lottie-ios": [

@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (5.2.1)
-  - FlutterwaveSDK (1.0.0):
+  - FlutterwaveSDK (1.2.3):
     - Alamofire (= 5.2.1)
     - lottie-ios (~> 3.0.2)
     - "MaterialComponents/TextControls+OutlinedTextAreas"
@@ -10,40 +10,40 @@ PODS:
     - Swinject
     - SwinjectAutoregistration
   - lottie-ios (3.0.7)
-  - MaterialComponents/AnimationTiming (117.0.0)
-  - MaterialComponents/Availability (117.0.0)
-  - MaterialComponents/private/Math (117.0.0)
-  - "MaterialComponents/private/TextControlsPrivate+BaseStyle (117.0.0)":
+  - MaterialComponents/AnimationTiming (118.1.0)
+  - MaterialComponents/Availability (118.1.0)
+  - MaterialComponents/private/Math (118.1.0)
+  - "MaterialComponents/private/TextControlsPrivate+BaseStyle (118.1.0)":
     - MaterialComponents/AnimationTiming
     - MaterialComponents/private/Math
     - "MaterialComponents/private/TextControlsPrivate+Shared"
-  - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle (117.0.0)":
+  - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle (118.1.0)":
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Availability
     - MaterialComponents/private/Math
     - "MaterialComponents/private/TextControlsPrivate+Shared"
-  - "MaterialComponents/private/TextControlsPrivate+Shared (117.0.0)":
+  - "MaterialComponents/private/TextControlsPrivate+Shared (118.1.0)":
     - MaterialComponents/AnimationTiming
     - MaterialComponents/private/Math
     - "MaterialComponents/TextControls+Enums"
-  - "MaterialComponents/private/TextControlsPrivate+TextFields (117.0.0)":
+  - "MaterialComponents/private/TextControlsPrivate+TextFields (118.1.0)":
     - MaterialComponents/private/Math
     - "MaterialComponents/private/TextControlsPrivate+Shared"
-  - "MaterialComponents/TextControls+BaseTextAreas (117.0.0)":
+  - "MaterialComponents/TextControls+BaseTextAreas (118.1.0)":
     - "MaterialComponents/private/TextControlsPrivate+BaseStyle"
     - "MaterialComponents/private/TextControlsPrivate+Shared"
     - MDFInternationalization
-  - "MaterialComponents/TextControls+BaseTextFields (117.0.0)":
+  - "MaterialComponents/TextControls+BaseTextFields (118.1.0)":
     - "MaterialComponents/private/TextControlsPrivate+BaseStyle"
     - "MaterialComponents/private/TextControlsPrivate+Shared"
     - "MaterialComponents/private/TextControlsPrivate+TextFields"
     - MDFInternationalization
-  - "MaterialComponents/TextControls+Enums (117.0.0)"
-  - "MaterialComponents/TextControls+OutlinedTextAreas (117.0.0)":
+  - "MaterialComponents/TextControls+Enums (118.1.0)"
+  - "MaterialComponents/TextControls+OutlinedTextAreas (118.1.0)":
     - MaterialComponents/Availability
     - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle"
     - "MaterialComponents/TextControls+BaseTextAreas"
-  - "MaterialComponents/TextControls+OutlinedTextFields (117.0.0)":
+  - "MaterialComponents/TextControls+OutlinedTextFields (118.1.0)":
     - MaterialComponents/Availability
     - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle"
     - "MaterialComponents/TextControls+BaseTextFields"
@@ -79,9 +79,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
-  FlutterwaveSDK: 6548e1a871d1da751318e2479b249775a7d2eab6
+  FlutterwaveSDK: c4dcc6911880dbf447b76bc850f849b7254dd688
   lottie-ios: c38c3178ae8c4a8f200661aa5f80b9f1ca7f56b3
-  MaterialComponents: 29320b6a89c4c90e41c7a41fc70e91127ac34161
+  MaterialComponents: e4a7c8b5eabe7856ef58f632fb5800a229bda5be
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
@@ -89,6 +89,6 @@ SPEC CHECKSUMS:
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
   SwinjectAutoregistration: 330f5012642a8b5c89a8a4adb0c5e52df07382c0
 
-PODFILE CHECKSUM: 9d47bff137dbd58cf8b1d0bb96ac73ef118a0862
+PODFILE CHECKSUM: 9a09648fb8bedcf4d02528ab0e81b4d27f10df62
 
 COCOAPODS: 1.9.3

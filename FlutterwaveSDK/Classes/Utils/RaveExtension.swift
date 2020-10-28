@@ -114,10 +114,10 @@ func styleTextField(_ textField:UITextField, leftView:UIView? = nil){
 extension Bundle {
    static func getResourcesBundle() -> Bundle? {
     let bundle = Bundle(for:FlutterwavePayViewController.self)
-      guard let resourcesBundleUrl = bundle.resourceURL?.appendingPathComponent("FlutterwaveSDK.bundle") else {
-         return nil
-      }
-      return Bundle(url: resourcesBundleUrl)
+//      guard let resourcesBundleUrl = bundle.resourceURL?.appendingPathComponent("FlutterwaveSDK.bundle") else {
+//         return nil
+//      }
+      return bundle
    }
 }
 

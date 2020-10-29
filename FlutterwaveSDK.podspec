@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'FlutterwaveSDK'
-    s.version          = '1.2.3'
+    s.version          = '1.2.4'
     s.summary          = 'FlutterwaveSDK'
     
     # This description is used to generate tags and improve search results.
@@ -25,15 +25,14 @@ Pod::Spec.new do |s|
     # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
     s.author           = { 'Flutterwave Developers' => 'developers@flutterwavego.com' }
-    s.source           = { :git => 'https://github.com/Flutterwave/FlutterwaveSDK.git', :tag => '1.2.3'}
+    s.source           = { :git => 'https://github.com/Flutterwave/FlutterwaveSDK.git', :tag => '1.2.4'}
     s.social_media_url = 'https://twitter.com/FlutterwaveEng'
     
     s.ios.deployment_target = '11.0'
     s.swift_versions = '5.0'
     
     s.source_files = 'FlutterwaveSDK/**/*.{h,m,swift}'
-#    s.resources = 'FlutterwaveSDK/Assets/*.{xcassets}'
-    
+    s.resources =  'FlutterwaveSDK/**/*.{xcassets,json,png}'
    
     s.public_header_files = 'Classes/*.h'
     

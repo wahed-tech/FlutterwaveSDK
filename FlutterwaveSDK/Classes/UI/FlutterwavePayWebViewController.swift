@@ -86,29 +86,38 @@ class RavePayWebViewController: UIViewController, WKNavigationDelegate,WKUIDeleg
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("doneLoading")
-        self.navigationItem.title = webView.title
-        print(webView.url!.absoluteString)
-        if (webView.url!.absoluteString.contains("/complete") ||
-            webView.url!.absoluteString.contains("submitting_mock_form")){
-            print("success page")
-            PaymentServicesViewModel.sharedViewModel.mpesaVerify(flwRef: flwRef!)
-            
-        }else if(webView.url!.absoluteString.contains("/finish")){
-            let newURL = webView.url!.absoluteString
-            if let range = newURL.range(of: "https://webhook.site/finish") {
-                let dataPayload = newURL[range.upperBound...]
-                print("Extra Data \(dataPayload)")
+            print("doneLoading")
+            self.navigationItem.title = webView.title
+            print(webView.url!.absoluteString)
+            if (webView.url!.absoluteString.contains("/complete") ||
+                webView.url!.absoluteString.contains("submitting_mock_form")){
+                print("success page")
+                PaymentServicesViewModel.sharedViewModel.mpesaVerify(flwRef: flwRef!)
+                
+            }else if(webView.url!.absoluteString.contains("/finish")){
+                let newURL = webView.url!.absoluteString
+                if let range = newURL.range(of: "https://webhook.site/finish") {
+                    let dataPayload = newURL[range.upperBound...]
+                    print("Extra Data \(dataPayload)")
+                }
+                let data = webView.url!.queryParameters
+                let response = data?["resp"] as? String
+                
+                do{
+                    let products = try JSONDecoder().decode(MobileMoneyUrlResponse.self, from: response?.data(using: .utf8) ?? Data())
+                    
+                    PaymentServicesViewModel.sharedViewModel.mpesaVerify(flwRef: products.data.flwRef ?? "")
+                    
+                 
+                
+                } catch(let error) {
+                    print("\(error.localizedDescription)")
+                           }
+    //            print("Extra PayData \(products)")
+                
             }
-            let data = webView.url!.queryParameters
-            let response = data?["resp"] as? String
             
-            let products = try! JSONDecoder().decode(MobileMoneyUrlResponse.self, from: response!.data(using: .utf8)!)
-//            print("Extra PayData \(products)")
-            PaymentServicesViewModel.sharedViewModel.mpesaVerify(flwRef: products.data.flwRef ?? "")
         }
-        
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

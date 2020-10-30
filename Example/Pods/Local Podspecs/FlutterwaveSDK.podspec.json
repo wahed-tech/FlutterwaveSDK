@@ -1,6 +1,6 @@
 {
   "name": "FlutterwaveSDK",
-  "version": "1.2.3",
+  "version": "1.2.5",
   "summary": "FlutterwaveSDK",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/Flutterwave/FlutterwaveSDK",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/Flutterwave/FlutterwaveSDK.git",
-    "tag": "1.2.3"
+    "tag": "1.2.5"
   },
   "social_media_url": "https://twitter.com/FlutterwaveEng",
   "platforms": {
@@ -21,9 +21,7 @@
   },
   "swift_versions": "5.0",
   "source_files": "FlutterwaveSDK/**/*.{h,m,swift}",
-  "resources": [
-    "FlutterwaveSDK/Assets/*.xcassets"
-  ],
+  "resources": "FlutterwaveSDK/**/*.{xcassets,json,png}",
   "public_header_files": "Classes/*.h",
   "frameworks": "UIKit",
   "dependencies": {

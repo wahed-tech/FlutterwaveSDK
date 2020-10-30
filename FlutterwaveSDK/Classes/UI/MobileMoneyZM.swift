@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MaterialComponents
 
 class MobileMoneyZM: UIView {
 
@@ -19,30 +20,62 @@ class MobileMoneyZM: UIView {
            label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
            return label
        }()
+    
+    let arrowButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(named: "rave_down_arrow",in: Bundle.getResourcesBundle(), compatibleWith: nil), for: .normal)
+        button.tintColor = UIColor(hex: "#647482")
+        button.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    lazy var mobileMoneyChooseNetwork: MDCOutlinedTextField = {
+        let text = MDCOutlinedTextField()
+        text.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        text.label.text = "Choose Network"
+        text.setFloatingLabelColor(.black, for: .normal)
+        text.setFloatingLabelColor(.black, for: .editing)
+        text.tintColor = .blue
+        text.setNormalLabelColor(.lightGray, for: .normal)
+        text.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        text.setTextColor(.black, for: .editing)
+        text.setTextColor(.black, for: .normal)
+        text.setOutlineColor(UIColor.lightGray.withAlphaComponent(0.87), for: .normal)
+        text.setOutlineColor(UIColor(hex: "#F5A623").withAlphaComponent(0.87), for: .editing)
+        let redView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        redView.addSubview(arrowButton)
+        text.rightView = redView
+        text.rightViewMode = .always
+        text.translatesAutoresizingMaskIntoConstraints = false
+        return text
+    }()
+    
+    
+    
        
-       lazy var mobileMoneyChooseNetwork: UITextField = {
-           let text = UITextField()
-           text.backgroundColor = .white
-           text.placeholder = "Choose Network"
-           text.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 1))
-           text.leftViewMode = .always
-		   text.text = "MTN"
-           text.heightAnchor.constraint(equalToConstant: 57).isActive = true
-           text.translatesAutoresizingMaskIntoConstraints = false
-           return text
-       }()
-       
-       lazy var mobileMoneyPhoneNumber: UITextField = {
-           let text = UITextField()
-           text.backgroundColor = .white
-           text.placeholder = "Phone Number"
-           text.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 1))
-           text.leftViewMode = .always
-           text.keyboardType = .phonePad
-           text.heightAnchor.constraint(equalToConstant: 57).isActive = true
-           text.translatesAutoresizingMaskIntoConstraints = false
-           return text
-       }()
+    
+    lazy var mobileMoneyPhoneNumber: MDCOutlinedTextField = {
+             let text = MDCOutlinedTextField()
+             text.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+             text.label.text = "Phone number"
+             text.setFloatingLabelColor(.black, for: .normal)
+             text.setFloatingLabelColor(.black, for: .editing)
+             text.tintColor = .lightGray
+             text.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+             text.setTextColor(.black, for: .editing)
+             text.autoresizingMask = [.flexibleBottomMargin, .flexibleTopMargin, .flexibleWidth]
+             text.setTextColor(.black, for: .normal)
+             text.setNormalLabelColor(.lightGray, for: .normal)
+             text.setOutlineColor(UIColor.lightGray.withAlphaComponent(0.87), for: .normal)
+             text.setOutlineColor(UIColor(hex: "#F5A623").withAlphaComponent(0.87), for: .editing)
+             text.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 1))
+             text.leftViewMode = .always
+             text.translatesAutoresizingMaskIntoConstraints = false
+             text.keyboardType = .numberPad
+             return text
+         }()
        
        lazy var mobileMoneyPay: UIButton = {
            let button = UIButton(type: .system)

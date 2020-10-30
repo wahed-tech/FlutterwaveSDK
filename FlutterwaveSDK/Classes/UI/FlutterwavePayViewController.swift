@@ -52,10 +52,10 @@ public class FlutterwavePayViewController: BaseViewController {
     let disposeBag = DisposeBag()
     var pin = ""
     
- 
+    
     let navBarHeight:CGFloat = UIApplication.bottomSafeAreaHeight
     
-
+    
     
     var expandables = [Expandables(isExpanded: true, section: 0),Expandables(isExpanded: false, section: 1),Expandables(isExpanded: false, section: 2),Expandables(isExpanded: false, section: 3),Expandables(isExpanded: false, section: 4),Expandables(isExpanded: false, section: 5),Expandables(isExpanded: false, section: 6),Expandables(isExpanded: false, section: 7),Expandables(isExpanded: false, section: 8),Expandables(isExpanded: false, section: 9),Expandables(isExpanded: false, section: 10),Expandables(isExpanded: false, section: 11),Expandables(isExpanded: false, section: 12), Expandables(isExpanded: false, section: 13)]
     
@@ -370,12 +370,12 @@ public class FlutterwavePayViewController: BaseViewController {
         ukContentContainer.addSubview(ukViewContainer)
         ukContentContainer.addSubview(ukDetailsViewContainer)
         
-        mobileMoneyRW.addSubview(mobileMoneyRWContainer)
-        mobileMoneyFR.addSubview(mobileMoneyFRContainer)
+        mobileMoneyRW.contentView.addSubview(mobileMoneyRWContainer)
+        mobileMoneyFR.contentView.addSubview(mobileMoneyFRContainer)
         mobileMoneyRWContainer.addSubview(mobileMoneyRWContentContainer)
         mobileMoneyFRContainer.addSubview(mobileMoneyFRContentContainer)
         
-        mobileMoneyZM.addSubview(mobileMoneyZMContainer)
+        mobileMoneyZM.contentView.addSubview(mobileMoneyZMContainer)
         mobileMoneyZMContainer.addSubview(mobileMoneyZMContentContainer)
         
         debitCardContentContainer.addSubview(debitCardView)
@@ -394,11 +394,11 @@ public class FlutterwavePayViewController: BaseViewController {
         mpesaContentContainer.addSubview(mpesaBusinessView)
         mpesaContentContainer.addSubview(mpesaPendingView)
         
-        mobileMoneyGH.addSubview(mobileMoneyContainer)
+        mobileMoneyGH.contentView.addSubview(mobileMoneyContainer)
         mobileMoneyContainer.addSubview(mobileMoneyContentView)
         mobileMoneyContainer.addSubview(mobileMoneyPendingView)
         
-        mobileMoneyUG.addSubview(mobileMoneyUgandaContainer)
+        mobileMoneyUG.contentView.addSubview(mobileMoneyUgandaContainer)
         mobileMoneyUgandaContainer.addSubview(mobileMoneyUgandaContentContainer)
         
         ussdContentContainer.addSubview(selectUssdBankView)
@@ -597,7 +597,7 @@ public class FlutterwavePayViewController: BaseViewController {
         ])
     }
     
-
+    
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -708,7 +708,7 @@ public class FlutterwavePayViewController: BaseViewController {
         
         //MARK CVV texfield button action
         self.debitCardView.questionButton.rx.tap.subscribe(onNext: {
-//                        self.showToast(message: "Your Toast Message")
+            //                        self.showToast(message: "Your Toast Message")
         }).disposed(by: disposableBag)
         
         
@@ -802,7 +802,7 @@ public class FlutterwavePayViewController: BaseViewController {
         
         accountFormContainer.accountBvn.rx.text.orEmpty
             .map { String($0.prefix(11)) }
-            .bind(to: accountFormContainer.accountNumberTextField.rx.text)
+            .bind(to: accountFormContainer.accountBvn.rx.text)
             .disposed(by: disposeBag)
         
         flutterwaveAccountClient.amount = self.amount
@@ -898,12 +898,17 @@ public class FlutterwavePayViewController: BaseViewController {
         self.mobileMoneyUgandaContentContainer.mobileMoneyUgandaPhone.watchText(validationType: ValidatorType.requiredField(field: "phone number"), disposeBag: disposeBag)
     }
     
+    
     func configureMobileMoneyZambia(){
         flutterwaveMoneyZM.transactionReference = FlutterwaveConfig.sharedConfig().transcationRef
         mobileMoneyZMContentContainer.mobileMoneyPay.layer.cornerRadius = 5
         mobileMoneyZMContentContainer.mobileMoneyPay.layer.cornerRadius = 5
         mobileMoneyZMContentContainer.mobileMoneyPay.setTitle("Pay \(self.amount?.toCountryCurrency(code: FlutterwaveConfig.sharedConfig().currencyCode) ?? "")", for: .normal)
         mobileMoneyZMContentContainer.mobileMoneyPay.addTarget(self, action: #selector(mobileMoneyZambiaPayAction), for: .touchUpInside)
+        
+        self.mobileMoneyZMContentContainer.mobileMoneyChooseNetwork.watchText(validationType: ValidatorType.requiredField(field: "select network"), disposeBag: disposeBag)
+        
+        self.mobileMoneyZMContentContainer.mobileMoneyPhoneNumber.watchText(validationType: ValidatorType.requiredField(field: "phone number"), disposeBag: disposeBag)
         
         zambiaMobileMoneyPicker = UIPickerView()
         zambiaMobileMoneyPicker.autoresizingMask  = [.flexibleWidth , .flexibleHeight]
@@ -917,7 +922,7 @@ public class FlutterwavePayViewController: BaseViewController {
         
         flutterwaveMoneyZM.amount = self.amount
         flutterwaveMoneyZM.email = FlutterwaveConfig.sharedConfig().email
-        //        raveMobileMoneyZM.getFee()
+        
     }
     
     func configureMobileMoneyFranco(){
@@ -1026,7 +1031,7 @@ public class FlutterwavePayViewController: BaseViewController {
     
     @objc func mobileMoneyRwandaPayAction(){
         self.view.endEditing(true)
-        LoadingHUD.shared().show()
+        
         flutterMobileMoneyRW.mobileMoneyType = .rwanda
         flutterMobileMoneyRW.phoneNumber = mobileMoneyRWContentContainer.mobileMoneyRWPhone.text.orEmpty().components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
         let phoneValid = self.mobileMoneyRWContentContainer.mobileMoneyRWPhone.validateAndShowError(validationType: ValidatorType.requiredField(field: "phone number"))
@@ -1060,25 +1065,26 @@ public class FlutterwavePayViewController: BaseViewController {
     }
     
     @objc func mobileMoneyZambiaPayAction(){
-        guard let number = mobileMoneyZMContentContainer.mobileMoneyPhoneNumber.text , number != "" else{
-            return
-        }
+        
         self.view.endEditing(true)
-        LoadingHUD.shared().show()
+        let phoneValid = self.mobileMoneyZMContentContainer.mobileMoneyPhoneNumber.validateAndShowError(validationType: ValidatorType.requiredField(field: "phone number"))
+        let networkValid = self.mobileMoneyZMContentContainer.mobileMoneyChooseNetwork.validateAndShowError(validationType: ValidatorType.requiredField(field: "network"))
+        
         flutterwaveMoneyZM.network = mobileMoneyZMContentContainer.mobileMoneyChooseNetwork.text
         flutterwaveMoneyZM.mobileMoneyType = .zambia
-        flutterwaveMoneyZM.phoneNumber = number.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-        //        raveMobileMoneyZM.chargeMobileMoney(.zambia)
+        flutterwaveMoneyZM.phoneNumber = mobileMoneyZMContentContainer.mobileMoneyPhoneNumber.text.orEmpty().components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
         
-        MobileMoneyViewModel.sharedViewModel.zambiaMoney(amount: self.amount ?? "", phoneNumber: flutterwaveMoneyZM.phoneNumber ?? "", network: flutterwaveMoneyZM.network ?? "")
+        if phoneValid && networkValid {
+            MobileMoneyViewModel.sharedViewModel.zambiaMoney(amount: self.amount ?? "", phoneNumber: flutterwaveMoneyZM.phoneNumber ?? "", network: flutterwaveMoneyZM.network ?? "")
+        }
     }
     
-    @objc func dobPickerValueChanged(_ sender: UIDatePicker){
-        let dateFormatter: DateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "ddMMyyyy"
-        let selectedDate: String = dateFormatter.string(from: sender.date)
-//        self.accountFormContainer.dobTextField.text = selectedDate
-    }
+    //    @objc func dobPickerValueChanged(_ sender: UIDatePicker){
+    //        let dateFormatter: DateFormatter = DateFormatter()
+    //        dateFormatter.dateFormat = "ddMMyyyy"
+    //        let selectedDate: String = dateFormatter.string(from: sender.date)
+    ////        self.accountFormContainer.dobTextField.text = selectedDate
+    //    }
     
     @objc func accountPayButtonTapped(){
         
@@ -1112,34 +1118,36 @@ public class FlutterwavePayViewController: BaseViewController {
     }
     func accountPayAction(){
         self.view.endEditing(true)
-        LoadingHUD.shared().show()
+        
         flutterwaveAccountClient.accountNumber = accountFormContainer.accountNumberTextField.text?.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
         flutterwaveAccountClient.phoneNumber = accountFormContainer.phoneNumberTextField.text
         flutterwaveAccountClient.amount = self.amount
         flutterwaveAccountClient.bankCode = selectedBankCode
         
-        let seperateDobTextField = accountFormContainer.dobTextField.text?.split(separator: "-")
-        
-        let dob = String((seperateDobTextField![0])) + String((seperateDobTextField![1])) + String((seperateDobTextField![2]))
-//        print(dob)
-        
-        
-        
-        let dobValid = self.accountFormContainer.dobTextField.validateAndShowError(validationType: ValidatorType.requiredField(field: "DOB"))
-        
-        if (dobValid){
-            flutterwaveAccountClient.passcode = dob
+        if selectedBankCode == "057"{
+            let seperateDobTextField = accountFormContainer.dobTextField.text?.split(separator: "-")
+            let dobValid = self.accountFormContainer.dobTextField.validateAndShowError(validationType: ValidatorType.requiredField(field: "DOB"))
+            
+            let dob = String((seperateDobTextField?[0] ?? "")) + String((seperateDobTextField?[1] ?? "")) + String((seperateDobTextField?[2] ?? ""))
+            
+            if (dobValid){
+                flutterwaveAccountClient.passcode = dob
+            }
         }
         
-        let bvnValid = self.accountFormContainer.accountBvn.validateAndShowError(validationType: ValidatorType.requiredField(field: "BVN"))
         
-        if (bvnValid){
-            flutterwaveAccountClient.bvn = dob
+        if selectedBankCode == "215"{
+            let bvnValid = self.accountFormContainer.accountBvn.validateAndShowError(validationType: ValidatorType.requiredField(field: "BVN"))
+            
+            if (bvnValid){
+                flutterwaveAccountClient.bvn = self.accountFormContainer.accountBvn.text
+            }
         }
+        
+        
         
         flutterwaveAccountClient.chargeAccount()
     }
-    
     func chargeUSAccountFlow(){
         self.view.endEditing(true)
         if FlutterwaveConfig.sharedConfig().country == .some("US"){
@@ -1240,8 +1248,8 @@ public class FlutterwavePayViewController: BaseViewController {
     }
     
     func checkIfPaymentOptionIsExcluded(paymentOption:PaymentOption) -> Bool{
-       return FlutterwaveConfig.sharedConfig().paymentOptionsToExclude.filter{ currentPaymentOption in
-        currentPaymentOption == paymentOption
+        return FlutterwaveConfig.sharedConfig().paymentOptionsToExclude.filter{ currentPaymentOption in
+            currentPaymentOption == paymentOption
         }.count > 0
     }
     
@@ -1273,7 +1281,7 @@ public class FlutterwavePayViewController: BaseViewController {
             return FlutterwaveConfig.sharedConfig().currencyCode == "NGN" && !checkIfPaymentOptionIsExcluded(paymentOption: .ussd)  ? 65 : 0
         case 11:
             return FlutterwaveConfig.sharedConfig().currencyCode == "NGN" && !checkIfPaymentOptionIsExcluded(paymentOption: .barter) ? 65 : 0
-//            return false
+        //            return false
         case 12:
             return FlutterwaveConfig.sharedConfig().currencyCode == "NGN"  && !checkIfPaymentOptionIsExcluded(paymentOption: .bankAccount) ? 65  : 0
         case 13:
@@ -1991,14 +1999,14 @@ public class FlutterwavePayViewController: BaseViewController {
 }
 
 extension UIApplication {
-  
+    
     static var bottomSafeAreaHeight: CGFloat {
         var bottomSafeAreaHeight: CGFloat = 0
-         if #available(iOS 11.0, *) {
-               let window = UIApplication.shared.windows[0]
-               let safeFrame = window.safeAreaLayoutGuide.layoutFrame
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.windows[0]
+            let safeFrame = window.safeAreaLayoutGuide.layoutFrame
             bottomSafeAreaHeight = window.frame.maxY - safeFrame.maxY
-             }
+        }
         return bottomSafeAreaHeight
     }
     

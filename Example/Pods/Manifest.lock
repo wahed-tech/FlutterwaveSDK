@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (5.2.1)
-  - FlutterwaveSDK (1.2.3):
+  - FlutterwaveSDK (1.2.5):
     - Alamofire (= 5.2.1)
     - lottie-ios (~> 3.0.2)
     - "MaterialComponents/TextControls+OutlinedTextAreas"
@@ -79,7 +79,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
-  FlutterwaveSDK: fdbbd87862d5b62c86a3cc3d59db39abffd7e604
+  FlutterwaveSDK: 592b8560122a5c4abb60ed9320206fbc946f3249
   lottie-ios: c38c3178ae8c4a8f200661aa5f80b9f1ca7f56b3
   MaterialComponents: e4a7c8b5eabe7856ef58f632fb5800a229bda5be
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314

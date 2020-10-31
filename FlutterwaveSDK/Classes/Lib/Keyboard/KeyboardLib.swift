@@ -14,29 +14,20 @@ import CoreGraphics
 import UIKit
 import QuartzCore
 
-// MARK: IQToolbar tags
 
-/**
-Codeless drop-in universal library allows to prevent issues of keyboard sliding up and cover UITextField/UITextView. Neither need to write any code nor any setup required and much more. A generic version of KeyboardManagement. https://developer.apple.com/library/ios/documentation/StringsTextFonts/Conceptual/TextAndWebiPhoneOS/KeyboardManagement/KeyboardManagement.html
-*/
-
-@objc public class IQKeyboardManager: NSObject {
+@objc public class FLKeyboardManager: NSObject {
 
     /**
     Returns the default singleton instance.
     */
-    @objc public static let shared = IQKeyboardManager()
+    @objc public static let shared = FLKeyboardManager()
 
     /**
      Invalid point value.
      */
     internal static let  kIQCGPointInvalid = CGPoint.init(x: CGFloat.greatestFiniteMagnitude, y: CGFloat.greatestFiniteMagnitude)
 
-    // MARK: UIKeyboard handling
 
-    /**
-    Enable/disable managing distance between keyboard and textField. Default is YES(Enabled when class loads in `+(void)load` method).
-    */
     @objc public var enable = false {
 
         didSet {
@@ -54,16 +45,9 @@ Codeless drop-in universal library allows to prevent issues of keyboard sliding 
         }
     }
 
-    /**
-    To set keyboard distance from textField. can't be less than zero. Default is 10.0.
-    */
+
     @objc public var keyboardDistanceFromTextField: CGFloat = 10.0
 
-    // MARK: IQToolbar handling
-
-    /**
-    Automatic add the IQToolbar functionality. Default is YES.
-    */
     @objc public var enableAutoToolbar = true {
         didSet {
             privateIsEnableAutoToolbar() ? addToolbarIfRequired() : removeToolbarIfRequired()
@@ -74,17 +58,8 @@ Codeless drop-in universal library allows to prevent issues of keyboard sliding 
         }
     }
 
-    /**
-     /**
-     IQAutoToolbarBySubviews:   Creates Toolbar according to subview's hirarchy of Textfield's in view.
-     IQAutoToolbarByTag:        Creates Toolbar according to tag property of TextField's.
-     IQAutoToolbarByPosition:   Creates Toolbar according to the y,x position of textField in it's superview coordinate.
 
-     Default is IQAutoToolbarBySubviews.
-     */
-    AutoToolbar managing behaviour. Default is IQAutoToolbarBySubviews.
-    */
-    @objc public var toolbarManageBehaviour = IQAutoToolbarManageBehaviour.bySubviews
+    @objc public var toolbarManageBehaviour = FLAutoToolbarManageBehaviour.bySubviews
 
     /**
     If YES, then uses textField's tintColor property for IQToolbar, otherwise tint color is default. Default is NO.
@@ -106,7 +81,7 @@ Codeless drop-in universal library allows to prevent issues of keyboard sliding 
      IQPreviousNextDisplayModeAlwaysHide:   Do not show NextPrevious buttons in any case.
      IQPreviousNextDisplayModeAlwaysShow:   Always show nextPrevious buttons, if there are more than 1 textField then both buttons will be visible but will be shown as disabled.
      */
-    @objc public var previousNextDisplayMode = IQPreviousNextDisplayMode.default
+    @objc public var previousNextDisplayMode = FLPreviousNextDisplayMode.default
 
     /**
      Toolbar previous/next/done button icon, If nothing is provided then check toolbarDoneBarButtonItemText to draw done button.
@@ -371,7 +346,7 @@ Codeless drop-in universal library allows to prevent issues of keyboard sliding 
 
         guard privateIsEnabled(),
             keyboardShowing,
-            topViewBeginOrigin.equalTo(IQKeyboardManager.kIQCGPointInvalid) == false, let textFieldView = textFieldView,
+            topViewBeginOrigin.equalTo(FLKeyboardManager.kIQCGPointInvalid) == false, let textFieldView = textFieldView,
             textFieldView.isAlertViewTextField() == false else {
                 return
         }
@@ -379,7 +354,7 @@ Codeless drop-in universal library allows to prevent issues of keyboard sliding 
     }
 }
 
-extension IQKeyboardManager: UIGestureRecognizerDelegate {
+extension FLKeyboardManager: UIGestureRecognizerDelegate {
 
     /** Resigning on tap gesture.   (Enhancement ID: #14)*/
     @objc internal func tapRecognized(_ gesture: UITapGestureRecognizer) {
@@ -414,7 +389,7 @@ extension IQKeyboardManager: UIGestureRecognizerDelegate {
 
 
 
-public extension IQKeyboardManager {
+public extension FLKeyboardManager {
 
     private struct AssociatedKeys {
         static var keyboardShowing = "keyboardShowing"
@@ -512,7 +487,7 @@ public extension IQKeyboardManager {
 
         guard privateIsEnabled() else {
             restorePosition()
-            topViewBeginOrigin = IQKeyboardManager.kIQCGPointInvalid
+            topViewBeginOrigin = FLKeyboardManager.kIQCGPointInvalid
             return
         }
 
@@ -520,7 +495,7 @@ public extension IQKeyboardManager {
         showLog("****** \(#function) started ******", indentation: 1)
 
         //  (Bug ID: #5)
-        if let textFieldView = textFieldView, topViewBeginOrigin.equalTo(IQKeyboardManager.kIQCGPointInvalid) {
+        if let textFieldView = textFieldView, topViewBeginOrigin.equalTo(FLKeyboardManager.kIQCGPointInvalid) {
 
             //  keyboard is not showing(At the beginning only). We should save rootViewRect.
             rootViewController = textFieldView.parentContainerViewController()
@@ -533,7 +508,7 @@ public extension IQKeyboardManager {
                 }
 
                 rootViewControllerWhilePopGestureRecognizerActive = nil
-                topViewBeginOriginWhilePopGestureRecognizerActive = IQKeyboardManager.kIQCGPointInvalid
+                topViewBeginOriginWhilePopGestureRecognizerActive = FLKeyboardManager.kIQCGPointInvalid
 
                 self.showLog("Saving \(controller) beginning origin: \(self.topViewBeginOrigin)")
             }
@@ -694,7 +669,7 @@ public extension IQKeyboardManager {
         let startTime = CACurrentMediaTime()
         showLog("****** \(#function) started ******", indentation: 1)
 
-        topViewBeginOrigin = IQKeyboardManager.kIQCGPointInvalid
+        topViewBeginOrigin = FLKeyboardManager.kIQCGPointInvalid
 
         keyboardFrame = CGRect.zero
 

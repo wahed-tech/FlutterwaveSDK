@@ -10,7 +10,7 @@
 import Foundation
 import UIKit
 
-internal extension IQKeyboardManager {
+internal extension FLKeyboardManager {
 
     /**    Get all UITextField/UITextView siblings of textFieldView. */
     func responderViews() -> [UIView]? {

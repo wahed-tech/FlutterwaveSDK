@@ -330,7 +330,7 @@ public class FlutterwavePayViewController: BaseViewController {
     override public func loadView() {
         super.loadView()
         
-        IQKeyboardManager.shared.enable = true
+        FLKeyboardManager.shared.enable = true
         
         howCell.backgroundColor = .clear
         cardCell.backgroundColor = .clear
@@ -602,7 +602,7 @@ public class FlutterwavePayViewController: BaseViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        IQKeyboardManager.shared.enable = true
+        FLKeyboardManager.shared.enable = true
         cardCallbacks()
         accountCallbacks()
         saveCardCallbacks()

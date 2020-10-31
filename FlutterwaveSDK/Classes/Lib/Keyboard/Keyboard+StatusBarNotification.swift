@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-internal extension IQKeyboardManager {
+internal extension FLKeyboardManager {
 
     /**  UIApplicationWillChangeStatusBarOrientationNotification. Need to set the textView to it's original position. If any frame changes made. (Bug ID: #92)*/
     @objc func willChangeStatusBarOrientation(_ notification: Notification) {

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public extension IQKeyboardManager {
+public extension FLKeyboardManager {
 
     private struct AssociatedKeys {
         static var movedDistance = "movedDistance"
@@ -63,7 +63,7 @@ public extension IQKeyboardManager {
     /** LastScrollView's initial contentOffset. */
     internal var startingContentOffset: CGPoint {
         get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.startingContentOffset) as? CGPoint ?? IQKeyboardManager.kIQCGPointInvalid
+            return objc_getAssociatedObject(self, &AssociatedKeys.startingContentOffset) as? CGPoint ?? FLKeyboardManager.kIQCGPointInvalid
         }
         set(newValue) {
             objc_setAssociatedObject(self, &AssociatedKeys.startingContentOffset, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
@@ -160,13 +160,13 @@ public extension IQKeyboardManager {
         var rootViewOrigin = rootController.view.frame.origin
 
         //Maintain keyboardDistanceFromTextField
-        var specialKeyboardDistanceFromTextField = textFieldView.keyboardDistanceFromTextField
+        var specialKeyboardDistanceFromTextField = textFieldView.fLkeyboardDistanceFromTextField
 
         if let searchBar = textFieldView.textFieldSearchBar() {
-            specialKeyboardDistanceFromTextField = searchBar.keyboardDistanceFromTextField
+            specialKeyboardDistanceFromTextField = searchBar.fLkeyboardDistanceFromTextField
         }
 
-        let newKeyboardDistanceFromTextField = (specialKeyboardDistanceFromTextField == kIQUseDefaultKeyboardDistance) ? keyboardDistanceFromTextField : specialKeyboardDistanceFromTextField
+        let newKeyboardDistanceFromTextField = (specialKeyboardDistanceFromTextField == fLUseDefaultKeyboardDistance) ? keyboardDistanceFromTextField : specialKeyboardDistanceFromTextField
 
         var kbSize = keyboardFrame.size
 
@@ -642,7 +642,7 @@ public extension IQKeyboardManager {
         hasPendingAdjustRequest = false
 
         //  Setting rootViewController frame to it's original position. //  (Bug ID: #18)
-        guard topViewBeginOrigin.equalTo(IQKeyboardManager.kIQCGPointInvalid) == false, let rootViewController = rootViewController else {
+        guard topViewBeginOrigin.equalTo(FLKeyboardManager.kIQCGPointInvalid) == false, let rootViewController = rootViewController else {
             return
         }
 

@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-open class IQTitleBarButtonItem: IQBarButtonItem {
+open class FLTitleBarButtonItem: FLBarButtonItem {
 
     @objc open var titleFont: UIFont? {
 
@@ -64,7 +64,7 @@ open class IQTitleBarButtonItem: IQBarButtonItem {
     /**
      Customized Invocation to be called on title button action. titleInvocation is internally created using setTitleTarget:action: method.
      */
-    @objc override open var invocation: IQInvocation? {
+    @objc override open var invocation: FLInvocation? {
 
         didSet {
 

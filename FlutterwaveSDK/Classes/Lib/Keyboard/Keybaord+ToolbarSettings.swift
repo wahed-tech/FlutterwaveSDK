@@ -8,17 +8,17 @@
 
 import Foundation
 import UIKit
-open class IQBarButtonItem: UIBarButtonItem {
+open class FLBarButtonItem: UIBarButtonItem {
 
     private static var _classInitialize: Void = classInitialize()
 
     @objc public override init() {
-        _ = IQBarButtonItem._classInitialize
+        _ = FLBarButtonItem._classInitialize
           super.init()
       }
 
     @objc public required init?(coder aDecoder: NSCoder) {
-        _ = IQBarButtonItem._classInitialize
+        _ = FLBarButtonItem._classInitialize
            super.init(coder: aDecoder)
        }
 
@@ -86,29 +86,18 @@ open class IQBarButtonItem: UIBarButtonItem {
         }
     }
 
-    /**
-     Boolean to know if it's a system item or custom item, we are having a limitation that we cannot override a designated initializer, so we are manually setting this property once in initialization
-     */
     @objc internal var isSystemItem = false
 
-    /**
-     Additional target & action to do get callback action. Note that setting custom target & selector doesn't affect native functionality, this is just an additional target to get a callback.
-     
-     @param target Target object.
-     @param action Target Selector.
-     */
+
     @objc open func setTarget(_ target: AnyObject?, action: Selector?) {
         if let target = target, let action = action {
-            invocation = IQInvocation(target, action)
+            invocation = FLInvocation(target, action)
         } else {
             invocation = nil
         }
     }
 
-    /**
-     Customized Invocation to be called when button is pressed. invocation is internally created using setTarget:action: method.
-     */
-    @objc open var invocation: IQInvocation?
+    @objc open var invocation: FLInvocation?
 
     deinit {
         target = nil
@@ -116,7 +105,7 @@ open class IQBarButtonItem: UIBarButtonItem {
     }
 }
 
-@objc public class IQInvocation: NSObject {
+@objc public class FLInvocation: NSObject {
     @objc public weak var target: AnyObject?
     @objc public var action: Selector
 

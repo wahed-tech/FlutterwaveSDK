@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-/** @abstract   IQToolbar for IQKeyboardManager.    */
-open class IQToolbar: UIToolbar, UIInputViewAudioFeedback {
+open class FLToolbar: UIToolbar, UIInputViewAudioFeedback {
 
     private static var _classInitialize: Void = classInitialize()
 
@@ -35,11 +34,11 @@ open class IQToolbar: UIToolbar, UIInputViewAudioFeedback {
     /**
      Previous bar button of toolbar.
      */
-    private var privatePreviousBarButton: IQBarButtonItem?
-    @objc open var previousBarButton: IQBarButtonItem {
+    private var privatePreviousBarButton: FLBarButtonItem?
+    @objc open var previousBarButton: FLBarButtonItem {
         get {
             if privatePreviousBarButton == nil {
-                privatePreviousBarButton = IQBarButtonItem(image: nil, style: .plain, target: nil, action: nil)
+                privatePreviousBarButton = FLBarButtonItem(image: nil, style: .plain, target: nil, action: nil)
             }
             return privatePreviousBarButton!
         }
@@ -52,11 +51,11 @@ open class IQToolbar: UIToolbar, UIInputViewAudioFeedback {
     /**
      Next bar button of toolbar.
      */
-    private var privateNextBarButton: IQBarButtonItem?
-    @objc open var nextBarButton: IQBarButtonItem {
+    private var privateNextBarButton: FLBarButtonItem?
+    @objc open var nextBarButton: FLBarButtonItem {
         get {
             if privateNextBarButton == nil {
-                privateNextBarButton = IQBarButtonItem(image: nil, style: .plain, target: nil, action: nil)
+                privateNextBarButton = FLBarButtonItem(image: nil, style: .plain, target: nil, action: nil)
             }
             return privateNextBarButton!
         }
@@ -66,14 +65,12 @@ open class IQToolbar: UIToolbar, UIInputViewAudioFeedback {
         }
     }
 
-    /**
-     Title bar button of toolbar.
-     */
-    private var privateTitleBarButton: IQTitleBarButtonItem?
-    @objc open var titleBarButton: IQTitleBarButtonItem {
+   
+    private var privateTitleBarButton: FLTitleBarButtonItem?
+    @objc open var titleBarButton: FLTitleBarButtonItem {
         get {
             if privateTitleBarButton == nil {
-                privateTitleBarButton = IQTitleBarButtonItem(title: nil)
+                privateTitleBarButton = FLTitleBarButtonItem(title: nil)
                 privateTitleBarButton?.accessibilityLabel = "Title"
             }
             return privateTitleBarButton!
@@ -84,14 +81,12 @@ open class IQToolbar: UIToolbar, UIInputViewAudioFeedback {
         }
     }
 
-    /**
-     Done bar button of toolbar.
-     */
-    private var privateDoneBarButton: IQBarButtonItem?
-    @objc open var doneBarButton: IQBarButtonItem {
+   
+    private var privateDoneBarButton: FLBarButtonItem?
+    @objc open var doneBarButton: FLBarButtonItem {
         get {
             if privateDoneBarButton == nil {
-                privateDoneBarButton = IQBarButtonItem(title: nil, style: .done, target: nil, action: nil)
+                privateDoneBarButton = FLBarButtonItem(title: nil, style: .done, target: nil, action: nil)
             }
             return privateDoneBarButton!
         }
@@ -104,11 +99,11 @@ open class IQToolbar: UIToolbar, UIInputViewAudioFeedback {
     /**
      Fixed space bar button of toolbar.
      */
-    private var privateFixedSpaceBarButton: IQBarButtonItem?
-    @objc open var fixedSpaceBarButton: IQBarButtonItem {
+    private var privateFixedSpaceBarButton: FLBarButtonItem?
+    @objc open var fixedSpaceBarButton: FLBarButtonItem {
         get {
             if privateFixedSpaceBarButton == nil {
-                privateFixedSpaceBarButton = IQBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+                privateFixedSpaceBarButton = FLBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
             }
             privateFixedSpaceBarButton!.isSystemItem = true
 
@@ -127,7 +122,7 @@ open class IQToolbar: UIToolbar, UIInputViewAudioFeedback {
     }
 
     override init(frame: CGRect) {
-        _ = IQToolbar._classInitialize
+        _ = FLToolbar._classInitialize
         super.init(frame: frame)
 
         sizeToFit()
@@ -137,7 +132,7 @@ open class IQToolbar: UIToolbar, UIInputViewAudioFeedback {
     }
 
     @objc required public init?(coder aDecoder: NSCoder) {
-        _ = IQToolbar._classInitialize
+        _ = FLToolbar._classInitialize
         super.init(coder: aDecoder)
 
         sizeToFit()

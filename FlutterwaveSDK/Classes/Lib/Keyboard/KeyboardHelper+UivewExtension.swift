@@ -9,16 +9,8 @@
 import Foundation
 import UIKit
 
-/**
-UIView hierarchy category.
-*/
 @objc public extension UIView {
 
-    // MARK: viewControllers
-
-    /**
-    Returns the UIViewController object that manages the receiver.
-    */
     func viewContainingController() -> UIViewController? {
 
         var nextResponder: UIResponder? = self
@@ -69,9 +61,6 @@ UIView hierarchy category.
         }
     }
 
-    /**
-     Returns the UIViewController object that is actually the parent of this object. Most of the time it's the viewController object which actually contains it, but result may be different if it's viewController is added as childViewController of another viewController.
-     */
     func parentContainerViewController() -> UIViewController? {
 
         var matchController = viewContainingController()
@@ -167,9 +156,7 @@ UIView hierarchy category.
         return nil
     }
 
-    /**
-    Returns all siblings of the receiver which canBecomeFirstResponder.
-    */
+
     internal func responderSiblings() -> [UIView] {
 
         //Array of (UITextField/UITextView's).
@@ -178,7 +165,7 @@ UIView hierarchy category.
         //    Getting all siblings
         if let siblings = superview?.subviews {
             for textField in siblings {
-                if (textField == self || textField.ignoreSwitchingByNextPrevious == false), textField.IQcanBecomeFirstResponder() {
+                if (textField == self || textField.fLignoreSwitchingByNextPrevious == false), textField.FLcanBecomeFirstResponder() {
                     tempTextFields.append(textField)
                 }
             }
@@ -187,9 +174,6 @@ UIView hierarchy category.
         return tempTextFields
     }
 
-    /**
-    Returns all deep subViews of the receiver which canBecomeFirstResponder.
-    */
     internal func deepResponderViews() -> [UIView] {
 
         //Array of (UITextField/UITextView's).
@@ -197,11 +181,10 @@ UIView hierarchy category.
 
         for textField in subviews {
 
-            if (textField == self || textField.ignoreSwitchingByNextPrevious == false), textField.IQcanBecomeFirstResponder() {
+            if (textField == self || textField.fLignoreSwitchingByNextPrevious == false), textField.FLcanBecomeFirstResponder() {
                 textfields.append(textField)
             }
-            //Sometimes there are hidden or disabled views and textField inside them still recorded, so we added some more validations here (Bug ID: #458)
-            //Uncommented else (Bug ID: #625)
+          
             else if textField.subviews.count != 0, isUserInteractionEnabled, !isHidden, alpha != 0.0 {
                 for deepView in textField.deepResponderViews() {
                     textfields.append(deepView)
@@ -223,31 +206,26 @@ UIView hierarchy category.
         })
     }
 
-    private func IQcanBecomeFirstResponder() -> Bool {
+    private func FLcanBecomeFirstResponder() -> Bool {
 
-        var IQcanBecomeFirstResponder = false
+        var FLcanBecomeFirstResponder = false
 
         if self.conforms(to: UITextInput.self) {
             //  Setting toolbar to keyboard.
             if let textView = self as? UITextView {
-                IQcanBecomeFirstResponder = textView.isEditable
+                FLcanBecomeFirstResponder = textView.isEditable
             } else if let textField = self as? UITextField {
-                IQcanBecomeFirstResponder = textField.isEnabled
+                FLcanBecomeFirstResponder = textField.isEnabled
             }
         }
 
-        if IQcanBecomeFirstResponder {
-            IQcanBecomeFirstResponder = isUserInteractionEnabled && !isHidden && alpha != 0.0 && !isAlertViewTextField() && textFieldSearchBar() == nil
+        if FLcanBecomeFirstResponder {
+            FLcanBecomeFirstResponder = isUserInteractionEnabled && !isHidden && alpha != 0.0 && !isAlertViewTextField() && textFieldSearchBar() == nil
         }
 
-        return IQcanBecomeFirstResponder
+        return FLcanBecomeFirstResponder
     }
 
-    // MARK: Special TextFields
-
-    /**
-     Returns searchBar if receiver object is UISearchBarTextField, otherwise return nil.
-    */
     internal func textFieldSearchBar() -> UISearchBar? {
 
         var responder: UIResponder? = self.next
@@ -266,9 +244,6 @@ UIView hierarchy category.
         return nil
     }
 
-    /**
-    Returns YES if the receiver object is UIAlertSheetTextField, otherwise return NO.
-    */
     internal func isAlertViewTextField() -> Bool {
 
         var alertViewController: UIResponder? = viewContainingController()
@@ -302,7 +277,7 @@ UIView hierarchy category.
 
 extension NSObject {
 
-    internal func _IQDescription() -> String {
+    internal func _FLDescription() -> String {
         return "<\(self) \(Unmanaged.passUnretained(self).toOpaque())>"
     }
 }

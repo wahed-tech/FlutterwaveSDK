@@ -9,10 +9,7 @@
 import Foundation
 import UIKit
 
-/**
- IQBarButtonItemConfiguration for creating toolbar with bar button items
- */
-@objc public class IQBarButtonItemConfiguration: NSObject {
+@objc public class FLBarButtonItemConfiguration: NSObject {
 
     #if swift(>=4.2)
     public typealias  UIBarButtonSystemItem = UIBarButtonItem.SystemItem
@@ -185,11 +182,11 @@ UIView category methods to add IQToolbar on UIKeyboard.
     /**
      IQToolbar references for better customization control.
      */
-    var keyboardToolbar: IQToolbar {
-        var toolbar = inputAccessoryView as? IQToolbar
+    var keyboardToolbar: FLToolbar {
+        var toolbar = inputAccessoryView as? FLToolbar
 
         if toolbar == nil {
-            toolbar = objc_getAssociatedObject(self, &AssociatedKeys.keyboardToolbar) as? IQToolbar
+            toolbar = objc_getAssociatedObject(self, &AssociatedKeys.keyboardToolbar) as? FLToolbar
         }
 
         if let unwrappedToolbar = toolbar {
@@ -197,7 +194,7 @@ UIView category methods to add IQToolbar on UIKeyboard.
         } else {
 
             let frame = CGRect(origin: .zero, size: .init(width: UIScreen.main.bounds.width, height: 44))
-            let newToolbar = IQToolbar(frame: frame)
+            let newToolbar = FLToolbar(frame: frame)
 
             objc_setAssociatedObject(self, &AssociatedKeys.keyboardToolbar, newToolbar, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
 
@@ -246,7 +243,7 @@ UIView category methods to add IQToolbar on UIKeyboard.
 
             if let textField = self as? UITextField {
                 return textField.placeholder
-            } else if let textView = self as? IQTextView {
+            } else if let textView = self as? FLTextView {
                 return textView.placeholder
             } else {
                 return nil
@@ -259,11 +256,11 @@ UIView category methods to add IQToolbar on UIKeyboard.
     // MARK: Private helper
 
     // swiftlint:disable nesting
-    private static func flexibleBarButtonItem () -> IQBarButtonItem {
+    private static func flexibleBarButtonItem () -> FLBarButtonItem {
 
         struct Static {
 
-            static let nilButton = IQBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            static let nilButton = FLBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         }
 
         Static.nilButton.isSystemItem = true
@@ -272,7 +269,7 @@ UIView category methods to add IQToolbar on UIKeyboard.
 
     // MARK: Common
 
-    func addKeyboardToolbarWithTarget(target: AnyObject?, titleText: String?, rightBarButtonConfiguration: IQBarButtonItemConfiguration?, previousBarButtonConfiguration: IQBarButtonItemConfiguration? = nil, nextBarButtonConfiguration: IQBarButtonItemConfiguration? = nil) {
+    func addKeyboardToolbarWithTarget(target: AnyObject?, titleText: String?, rightBarButtonConfiguration: FLBarButtonItemConfiguration?, previousBarButtonConfiguration: FLBarButtonItemConfiguration? = nil, nextBarButtonConfiguration: FLBarButtonItemConfiguration? = nil) {
 
         //If can't set InputAccessoryView. Then return
         if self.responds(to: #selector(setter: UITextField.inputAccessoryView)) {
@@ -280,7 +277,7 @@ UIView category methods to add IQToolbar on UIKeyboard.
             //  Creating a toolBar for phoneNumber keyboard
             let toolbar = self.keyboardToolbar
 
-            var items: [IQBarButtonItem] = []
+            var items: [FLBarButtonItem] = []
 
             if let prevConfig = previousBarButtonConfiguration {
 
@@ -294,12 +291,12 @@ UIView category methods to add IQToolbar on UIKeyboard.
                     prev.action = prevConfig.action
                 } else {
                     if let systemItem = prevConfig.barButtonSystemItem {
-                        prev = IQBarButtonItem(barButtonSystemItem: systemItem, target: target, action: prevConfig.action)
+                        prev = FLBarButtonItem(barButtonSystemItem: systemItem, target: target, action: prevConfig.action)
                         prev.isSystemItem = true
                     } else if let image = prevConfig.image {
-                        prev = IQBarButtonItem(image: image, style: .plain, target: target, action: prevConfig.action)
+                        prev = FLBarButtonItem(image: image, style: .plain, target: target, action: prevConfig.action)
                     } else {
-                        prev = IQBarButtonItem(title: prevConfig.title, style: .plain, target: target, action: prevConfig.action)
+                        prev = FLBarButtonItem(title: prevConfig.title, style: .plain, target: target, action: prevConfig.action)
                     }
 
                     prev.invocation = toolbar.previousBarButton.invocation
@@ -329,12 +326,12 @@ UIView category methods to add IQToolbar on UIKeyboard.
                     next.action = nextConfig.action
                 } else {
                     if let systemItem = nextConfig.barButtonSystemItem {
-                        next = IQBarButtonItem(barButtonSystemItem: systemItem, target: target, action: nextConfig.action)
+                        next = FLBarButtonItem(barButtonSystemItem: systemItem, target: target, action: nextConfig.action)
                         next.isSystemItem = true
                     } else if let image = nextConfig.image {
-                        next = IQBarButtonItem(image: image, style: .plain, target: target, action: nextConfig.action)
+                        next = FLBarButtonItem(image: image, style: .plain, target: target, action: nextConfig.action)
                     } else {
-                        next = IQBarButtonItem(title: nextConfig.title, style: .plain, target: target, action: nextConfig.action)
+                        next = FLBarButtonItem(title: nextConfig.title, style: .plain, target: target, action: nextConfig.action)
                     }
 
                     next.invocation = toolbar.nextBarButton.invocation
@@ -377,12 +374,12 @@ UIView category methods to add IQToolbar on UIKeyboard.
                     done.action = rightConfig.action
                 } else {
                     if let systemItem = rightConfig.barButtonSystemItem {
-                        done = IQBarButtonItem(barButtonSystemItem: systemItem, target: target, action: rightConfig.action)
+                        done = FLBarButtonItem(barButtonSystemItem: systemItem, target: target, action: rightConfig.action)
                         done.isSystemItem = true
                     } else if let image = rightConfig.image {
-                        done = IQBarButtonItem(image: image, style: .plain, target: target, action: rightConfig.action)
+                        done = FLBarButtonItem(image: image, style: .plain, target: target, action: rightConfig.action)
                     } else {
-                        done = IQBarButtonItem(title: rightConfig.title, style: .plain, target: target, action: rightConfig.action)
+                        done = FLBarButtonItem(title: rightConfig.title, style: .plain, target: target, action: rightConfig.action)
                     }
 
                     done.invocation = toolbar.doneBarButton.invocation
@@ -425,7 +422,7 @@ UIView category methods to add IQToolbar on UIKeyboard.
 
     func addDoneOnKeyboardWithTarget(_ target: AnyObject?, action: Selector, titleText: String?) {
 
-        let rightConfiguration = IQBarButtonItemConfiguration(barButtonSystemItem: .done, action: action)
+        let rightConfiguration = FLBarButtonItemConfiguration(barButtonSystemItem: .done, action: action)
 
         addKeyboardToolbarWithTarget(target: target, titleText: titleText, rightBarButtonConfiguration: rightConfiguration)
     }
@@ -437,7 +434,7 @@ UIView category methods to add IQToolbar on UIKeyboard.
 
     func addRightButtonOnKeyboardWithImage(_ image: UIImage, target: AnyObject?, action: Selector, titleText: String?) {
 
-        let rightConfiguration = IQBarButtonItemConfiguration(image: image, action: action)
+        let rightConfiguration = FLBarButtonItemConfiguration(image: image, action: action)
 
         addKeyboardToolbarWithTarget(target: target, titleText: titleText, rightBarButtonConfiguration: rightConfiguration)
     }
@@ -449,7 +446,7 @@ UIView category methods to add IQToolbar on UIKeyboard.
 
     func addRightButtonOnKeyboardWithText(_ text: String, target: AnyObject?, action: Selector, titleText: String?) {
 
-        let rightConfiguration = IQBarButtonItemConfiguration(title: text, action: action)
+        let rightConfiguration = FLBarButtonItemConfiguration(title: text, action: action)
 
         addKeyboardToolbarWithTarget(target: target, titleText: titleText, rightBarButtonConfiguration: rightConfiguration)
     }
@@ -473,24 +470,24 @@ UIView category methods to add IQToolbar on UIKeyboard.
 
     func addCancelDoneOnKeyboardWithTarget(_ target: AnyObject?, cancelAction: Selector, doneAction: Selector, titleText: String?) {
 
-        let leftConfiguration = IQBarButtonItemConfiguration(barButtonSystemItem: .cancel, action: cancelAction)
-        let rightConfiguration = IQBarButtonItemConfiguration(barButtonSystemItem: .done, action: doneAction)
+        let leftConfiguration = FLBarButtonItemConfiguration(barButtonSystemItem: .cancel, action: cancelAction)
+        let rightConfiguration = FLBarButtonItemConfiguration(barButtonSystemItem: .done, action: doneAction)
 
         addKeyboardToolbarWithTarget(target: target, titleText: titleText, rightBarButtonConfiguration: rightConfiguration, previousBarButtonConfiguration: leftConfiguration)
     }
 
     func addRightLeftOnKeyboardWithTarget(_ target: AnyObject?, leftButtonTitle: String, rightButtonTitle: String, leftButtonAction: Selector, rightButtonAction: Selector, titleText: String?) {
 
-        let leftConfiguration = IQBarButtonItemConfiguration(title: leftButtonTitle, action: leftButtonAction)
-        let rightConfiguration = IQBarButtonItemConfiguration(title: rightButtonTitle, action: rightButtonAction)
+        let leftConfiguration = FLBarButtonItemConfiguration(title: leftButtonTitle, action: leftButtonAction)
+        let rightConfiguration = FLBarButtonItemConfiguration(title: rightButtonTitle, action: rightButtonAction)
 
         addKeyboardToolbarWithTarget(target: target, titleText: titleText, rightBarButtonConfiguration: rightConfiguration, previousBarButtonConfiguration: leftConfiguration)
     }
 
     func addRightLeftOnKeyboardWithTarget(_ target: AnyObject?, leftButtonImage: UIImage, rightButtonImage: UIImage, leftButtonAction: Selector, rightButtonAction: Selector, titleText: String?) {
 
-        let leftConfiguration = IQBarButtonItemConfiguration(image: leftButtonImage, action: leftButtonAction)
-        let rightConfiguration = IQBarButtonItemConfiguration(image: rightButtonImage, action: rightButtonAction)
+        let leftConfiguration = FLBarButtonItemConfiguration(image: leftButtonImage, action: leftButtonAction)
+        let rightConfiguration = FLBarButtonItemConfiguration(image: rightButtonImage, action: rightButtonAction)
 
         addKeyboardToolbarWithTarget(target: target, titleText: titleText, rightBarButtonConfiguration: rightConfiguration, previousBarButtonConfiguration: leftConfiguration)
     }
@@ -514,27 +511,27 @@ UIView category methods to add IQToolbar on UIKeyboard.
 
     func addPreviousNextDoneOnKeyboardWithTarget (_ target: AnyObject?, previousAction: Selector, nextAction: Selector, doneAction: Selector, titleText: String?) {
 
-        let rightConfiguration = IQBarButtonItemConfiguration(barButtonSystemItem: .done, action: doneAction)
-        let nextConfiguration = IQBarButtonItemConfiguration(image: UIImage.keyboardNextImage() ?? UIImage(), action: nextAction)
-        let prevConfiguration = IQBarButtonItemConfiguration(image: UIImage.keyboardPreviousImage() ?? UIImage(), action: previousAction)
+        let rightConfiguration = FLBarButtonItemConfiguration(barButtonSystemItem: .done, action: doneAction)
+        let nextConfiguration = FLBarButtonItemConfiguration(image: UIImage.keyboardNextImage() ?? UIImage(), action: nextAction)
+        let prevConfiguration = FLBarButtonItemConfiguration(image: UIImage.keyboardPreviousImage() ?? UIImage(), action: previousAction)
 
         addKeyboardToolbarWithTarget(target: target, titleText: titleText, rightBarButtonConfiguration: rightConfiguration, previousBarButtonConfiguration: prevConfiguration, nextBarButtonConfiguration: nextConfiguration)
     }
 
     func addPreviousNextRightOnKeyboardWithTarget(_ target: AnyObject?, rightButtonImage: UIImage, previousAction: Selector, nextAction: Selector, rightButtonAction: Selector, titleText: String?) {
 
-        let rightConfiguration = IQBarButtonItemConfiguration(image: rightButtonImage, action: rightButtonAction)
-        let nextConfiguration = IQBarButtonItemConfiguration(image: UIImage.keyboardNextImage() ?? UIImage(), action: nextAction)
-        let prevConfiguration = IQBarButtonItemConfiguration(image: UIImage.keyboardPreviousImage() ?? UIImage(), action: previousAction)
+        let rightConfiguration = FLBarButtonItemConfiguration(image: rightButtonImage, action: rightButtonAction)
+        let nextConfiguration = FLBarButtonItemConfiguration(image: UIImage.keyboardNextImage() ?? UIImage(), action: nextAction)
+        let prevConfiguration = FLBarButtonItemConfiguration(image: UIImage.keyboardPreviousImage() ?? UIImage(), action: previousAction)
 
         addKeyboardToolbarWithTarget(target: target, titleText: titleText, rightBarButtonConfiguration: rightConfiguration, previousBarButtonConfiguration: prevConfiguration, nextBarButtonConfiguration: nextConfiguration)
     }
 
     func addPreviousNextRightOnKeyboardWithTarget(_ target: AnyObject?, rightButtonTitle: String, previousAction: Selector, nextAction: Selector, rightButtonAction: Selector, titleText: String?) {
 
-        let rightConfiguration = IQBarButtonItemConfiguration(title: rightButtonTitle, action: rightButtonAction)
-        let nextConfiguration = IQBarButtonItemConfiguration(image: UIImage.keyboardNextImage() ?? UIImage(), action: nextAction)
-        let prevConfiguration = IQBarButtonItemConfiguration(image: UIImage.keyboardPreviousImage() ?? UIImage(), action: previousAction)
+        let rightConfiguration = FLBarButtonItemConfiguration(title: rightButtonTitle, action: rightButtonAction)
+        let nextConfiguration = FLBarButtonItemConfiguration(image: UIImage.keyboardNextImage() ?? UIImage(), action: nextAction)
+        let prevConfiguration = FLBarButtonItemConfiguration(image: UIImage.keyboardPreviousImage() ?? UIImage(), action: previousAction)
 
         addKeyboardToolbarWithTarget(target: target, titleText: titleText, rightBarButtonConfiguration: rightConfiguration, previousBarButtonConfiguration: prevConfiguration, nextBarButtonConfiguration: nextConfiguration)
     }

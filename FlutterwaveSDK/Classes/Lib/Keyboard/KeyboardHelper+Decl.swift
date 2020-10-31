@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 // MARK: UITextField/UITextView Notifications
-internal extension IQKeyboardManager {
+internal extension FLKeyboardManager {
 
     private struct AssociatedKeys {
         static var textFieldView = "textFieldView"
@@ -32,7 +32,7 @@ internal extension IQKeyboardManager {
 
     var topViewBeginOrigin: CGPoint {
         get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.topViewBeginOrigin) as? CGPoint ?? IQKeyboardManager.kIQCGPointInvalid
+            return objc_getAssociatedObject(self, &AssociatedKeys.topViewBeginOrigin) as? CGPoint ?? FLKeyboardManager.kIQCGPointInvalid
         }
         set(newValue) {
             objc_setAssociatedObject(self, &AssociatedKeys.topViewBeginOrigin, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
@@ -61,7 +61,7 @@ internal extension IQKeyboardManager {
 
     var topViewBeginOriginWhilePopGestureRecognizerActive: CGPoint {
         get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.topViewBeginOriginWhilePopGestureRecognizerActive) as? CGPoint ?? IQKeyboardManager.kIQCGPointInvalid
+            return objc_getAssociatedObject(self, &AssociatedKeys.topViewBeginOriginWhilePopGestureRecognizerActive) as? CGPoint ?? FLKeyboardManager.kIQCGPointInvalid
         }
         set(newValue) {
             objc_setAssociatedObject(self, &AssociatedKeys.topViewBeginOriginWhilePopGestureRecognizerActive, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
@@ -116,9 +116,9 @@ internal extension IQKeyboardManager {
 
         if privateIsEnabled() == false {
             restorePosition()
-            topViewBeginOrigin = IQKeyboardManager.kIQCGPointInvalid
+            topViewBeginOrigin = FLKeyboardManager.kIQCGPointInvalid
         } else {
-            if topViewBeginOrigin.equalTo(IQKeyboardManager.kIQCGPointInvalid) {    //  (Bug ID: #5)
+            if topViewBeginOrigin.equalTo(FLKeyboardManager.kIQCGPointInvalid) {    //  (Bug ID: #5)
 
                 rootViewController = textFieldView?.parentContainerViewController()
 
@@ -131,7 +131,7 @@ internal extension IQKeyboardManager {
                     }
 
                     rootViewControllerWhilePopGestureRecognizerActive = nil
-                    topViewBeginOriginWhilePopGestureRecognizerActive = IQKeyboardManager.kIQCGPointInvalid
+                    topViewBeginOriginWhilePopGestureRecognizerActive = FLKeyboardManager.kIQCGPointInvalid
 
                     self.showLog("Saving \(controller) beginning origin: \(self.topViewBeginOrigin)")
                 }

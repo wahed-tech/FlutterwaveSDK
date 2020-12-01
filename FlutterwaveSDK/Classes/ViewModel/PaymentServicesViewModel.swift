@@ -51,7 +51,7 @@ class PaymentServicesViewModel: BaseViewModel{
                 break
             }
             
-        })
+        },apiName: .initCardCharge,apiErrorName: .initCardChargeError)
     }
     
     func validateCharge(otp: String, flwRef: String, type:String) {
@@ -59,7 +59,7 @@ class PaymentServicesViewModel: BaseViewModel{
         makeAPICallRx(request: request, apiRequest: paymentServicesRepository.validateCharge(request:), successHandler: validateCharge,onSuccessOperation: { response in
             self.flwRef = response.data?.flwRef ?? ""
             PaymentServicesViewModel.sharedViewModel.mpesaVerify(flwRef: PaymentServicesViewModel.sharedViewModel.flwRef)
-        }) 
+        }, apiName: .accountChargeValidate, apiErrorName: .accountChargeValidateError) 
     }
     
     
@@ -78,7 +78,11 @@ class PaymentServicesViewModel: BaseViewModel{
             case .FAILED:
                 self.isLoading.onNext(false)
             }
-        })
+            if(CardViewModel.sharedViewModel.saveCard && ( status == .SUCCESS || status == .SUCCESS2 )){
+                CardViewModel.sharedViewModel.saveCard(processorReference: flwRef)
+            }
+            CardViewModel.sharedViewModel.saveCard = false
+        }, apiName: .accountVerify, apiErrorName: .accountChargeValidateError)
     }
     
     
@@ -118,7 +122,7 @@ class PaymentServicesViewModel: BaseViewModel{
             case .FAILED:
                 self.isLoading.onNext(false)
             }
-        })
+        }, apiName: .bankTransfer, apiErrorName: .bankTransferError)
     }
     
     private func handleRetryPwbtVerify(currentRetryCount:Int,txRef:String){
@@ -128,12 +132,7 @@ class PaymentServicesViewModel: BaseViewModel{
             if(currentRetryCount != maxRetryCount){
                 PaymentServicesViewModel.sharedViewModel.pwbtVerify(txRef: txRef)
                 PaymentServicesViewModel.sharedViewModel.pwtRetryCount += 1
-//                if let window = UIApplication.shared.windows.filter ({$0.isKeyWindow}).first {
-//                     let overlayView = UIView()
-//                     overlayView.frame = window.frame
-//                     overlayView.backgroundColor = .red
-//                     window.addSubview(overlayView)
-//                 }
+
             }else{
                 PaymentServicesViewModel.sharedViewModel.pwtRetryCount = 0
                 self.isLoading.onNext(false)

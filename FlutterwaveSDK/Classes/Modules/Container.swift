@@ -22,6 +22,8 @@ extension Container {
         container.autoregister(MobileMoneyRepository.self, initializer: MobileMoneyRepositoryImpl.init)
         
         container.autoregister(BankRepository.self, initializer: BankRepositoryImpl.init)
+        
+        container.autoregister(CardRepository.self, initializer: CardRepositoryImpl.init)
 
 
        //VIEWMODELS
@@ -31,6 +33,7 @@ extension Container {
          container.autoregister(BankViewModel.self, initializer: BankViewModel.init)
         
          container.autoregister(MobileMoneyViewModel.self, initializer: MobileMoneyViewModel.init)
+         container.autoregister(CardViewModel.self, initializer: CardViewModel.init)
         
         return container
     }()

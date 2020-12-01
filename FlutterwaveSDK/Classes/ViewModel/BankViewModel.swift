@@ -19,6 +19,7 @@ class BankViewModel: BaseViewModel{
     let ukAccountResponse = PublishSubject<UKAccountPaymentsResponse>()
     let nigeriaBankAccountResponse = PublishSubject<NigeriaBankTransferResponse>()
     let ussdResponse = PublishSubject<USSDResponse>()
+    let bankList = PublishSubject<[Bank]>()
     
     var ussdBankText:String = ""
     var flwRef = ""
@@ -31,7 +32,7 @@ class BankViewModel: BaseViewModel{
     func bankTransfer(amount: String) {
         let request = BankTransferRequest(txRef: FlutterwaveConfig.sharedConfig().transcationRef, amount: amount, email: FlutterwaveConfig.sharedConfig().email, phoneNumber: FlutterwaveConfig.sharedConfig().phoneNumber, currency: FlutterwaveConfig.sharedConfig().currencyCode, duration: FlutterwaveConfig.sharedConfig().duration, frequency: FlutterwaveConfig.sharedConfig().frequency, narration: FlutterwaveConfig.sharedConfig().narration, isPermanent: FlutterwaveConfig.sharedConfig().isPermanent)
         makeAPICallRx(request: request, apiRequest: bankRepository.bankTransfer(request:), successHandler: bankTransferResponse, onSuccessOperation: { response in
-        })
+        }, apiName: .bankTransfer, apiErrorName: .bankTransferError)
     }
     
     
@@ -40,7 +41,7 @@ class BankViewModel: BaseViewModel{
         makeAPICallRx(request: request, apiRequest: bankRepository.ukAccountsPayments(request:), successHandler: ukAccountResponse, onSuccessOperation: {response in
             self.flwRef = response.data?.flwRef ?? ""
             
-        })
+        }, apiName: .ukAccountTransfer, apiErrorName: .ukAccountTransferError)
     }
     
     func nigeriaBankTransfer(amount: String, accountBank: String, accountNumber: String, phoneNumber: String, passCode:String, bvn:String) {
@@ -49,7 +50,7 @@ class BankViewModel: BaseViewModel{
                       successHandler: nigeriaBankAccountResponse,onSuccessOperation: { response in
                         self.checkAuth(response: response.data, flwRef: response.data?.flwRef ?? "", source: .nigerianBankTransfer)
                         
-        })
+                      }, apiName: .directDebit, apiErrorName: .directDebitError)
     }
     
     func ussd(amount: String,ussdBank:USSDBanks?) {
@@ -59,7 +60,12 @@ class BankViewModel: BaseViewModel{
             self.flwRef = response.data?.flwRef ?? ""
             self.processAuth(meta: response.meta)
             
-        })
+        }, apiName: .ussd, apiErrorName: .ussdError)
+    }
+    
+    func getBanks() {
+        makeGetAPICallRx(apiRequest: bankRepository.getbank, successHandler: bankList)
+        
     }
     
     

@@ -15,6 +15,7 @@ extension FlutterwavePayViewController {
         setUpNextActionObservers()
         setUpErrorObservers()
         setUpSuccessObservers()
+        fetchBanks()
     }
     
     func setUpNextActionObservers(){
@@ -54,11 +55,15 @@ extension FlutterwavePayViewController {
         setUpMoveToWebView(baseViewModel: BankViewModel.sharedViewModel, action: {url,ref in
             self.showWebView(url: url,ref:ref)
         })
+        CardViewModel.sharedViewModel.chargeSavedCardResponse.subscribe(onNext: {response in
+            self.showWebView(url: response.data?.authurl,ref:response.data?.flwRef)
+        } ).disposed(by: disposeBag)
     }
     func setUpLoading(){
         setUpLoadingObservers(baseViewModel: PaymentServicesViewModel.sharedViewModel)
         setUpLoadingObservers(baseViewModel: MobileMoneyViewModel.sharedViewModel)
         setUpLoadingObservers(baseViewModel: BankViewModel.sharedViewModel)
+        setUpLoadingObservers(baseViewModel: CardViewModel.sharedViewModel)
     }
     
     
@@ -121,10 +126,8 @@ extension FlutterwavePayViewController {
         BankViewModel.sharedViewModel.error.subscribe(onNext: { errorMessage in
             DispatchQueue.main.async {
                 self.flutterwaveCardClient.error!(errorMessage,nil)
+//                self.delegate?.tranasctionFailed(flwRef: nil,responseData: nil)
             }
-            
-            
-            
         }).disposed(by: disposableBag)
         
         BankViewModel.sharedViewModel.error.observeOn(MainScheduler.instance).subscribe(onNext: { errorMessage in
@@ -132,6 +135,13 @@ extension FlutterwavePayViewController {
         }).disposed(by: disposableBag)
         
         PaymentServicesViewModel.sharedViewModel.error.subscribe(onNext: { errorMessage in
+            DispatchQueue.main.async {
+                self.flutterwaveCardClient.error!(errorMessage,nil)
+            }
+            
+        }).disposed(by: disposableBag)
+        
+        CardViewModel.sharedViewModel.error.subscribe(onNext: { errorMessage in
             DispatchQueue.main.async {
                 self.flutterwaveCardClient.error!(errorMessage,nil)
             }
@@ -194,6 +204,14 @@ extension FlutterwavePayViewController {
             self.accountFormContainer.isHidden = true
             self.selectBankAccountView.isHidden = true
         }
+        
+    }
+    
+    func fetchBanks(){
+        BankViewModel.sharedViewModel.bankList.subscribe(onNext: {response in
+            self.banks = response
+        }).disposed(by: disposeBag)
+        BankViewModel.sharedViewModel.getBanks()
         
     }
     

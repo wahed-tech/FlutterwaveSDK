@@ -12,7 +12,8 @@ enum VersionTwoServicesApi{
     case fetchCard
     case otpSavedCard
     case removeCard
-   
+    case getBank
+    case chargeSavedCard
 }
 
 
@@ -35,6 +36,10 @@ extension VersionTwoServicesApi:EndpointType{
             return "v2/gpx/users/remove"
         case .otpSavedCard:
             return "v2/gpx/users/send_otp"
+        case .getBank:
+            return "flwv3-pug/getpaidx/api/flwpbf-banks.js?json=1"
+        case .chargeSavedCard:
+            return "flwv3-pug/getpaidx/api/charge"
         }
  
        

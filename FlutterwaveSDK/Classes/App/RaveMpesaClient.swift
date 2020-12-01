@@ -26,33 +26,33 @@ class FlutterwaveMpesaClient {
     public var accountNumber:String?
     
     //MARK: Transaction Fee
-    public func getFee(){
-        if let pubkey = FlutterwaveConfig.sharedConfig().publicKey{
-            
-            let param = [
-                "PBFPubKey": pubkey,
-                "amount": amount!,
-                "currency": FlutterwaveConfig.sharedConfig().currencyCode,
-                "ptype": "3"]
-            FlutterwavePayService.getFee(param, resultCallback: { (result) in
-                let data = result?["data"] as? [String:AnyObject]
-                if let _fee =  data?["fee"] as? Double{
-                    let fee = "\(_fee)"
-                    let chargeAmount = data?["charge_amount"] as? String
-                    self.feeSuccess?(fee,chargeAmount)
-                }else{
-                    if let err = result?["message"] as? String{
-                        self.error?(err,nil)
-                    }
-                }
-            }, errorCallback: { (err) in
-                
-                self.error?(err,nil)
-            })
-        }else{
-            self.error?("Public Key is not specified",nil)
-        }
-    }
+//    public func getFee(){
+//        if let pubkey = FlutterwaveConfig.sharedConfig().publicKey{
+//            
+//            let param = [
+//                "PBFPubKey": pubkey,
+//                "amount": amount!,
+//                "currency": FlutterwaveConfig.sharedConfig().currencyCode,
+//                "ptype": "3"]
+//            FlutterwavePayService.getFee(param, resultCallback: { (result) in
+//                let data = result?["data"] as? [String:AnyObject]
+//                if let _fee =  data?["fee"] as? Double{
+//                    let fee = "\(_fee)"
+//                    let chargeAmount = data?["charge_amount"] as? String
+//                    self.feeSuccess?(fee,chargeAmount)
+//                }else{
+//                    if let err = result?["message"] as? String{
+//                        self.error?(err,nil)
+//                    }
+//                }
+//            }, errorCallback: { (err) in
+//                
+//                self.error?(err,nil)
+//            })
+//        }else{
+//            self.error?("Public Key is not specified",nil)
+//        }
+//    }
     
     //MARK: Charge
     public func chargeMpesa(){

@@ -40,71 +40,71 @@ class FlutterwaveAccountClient {
     var txRef:String?
     var chargeAmount:String?
     var accountform = AccountForm()
-    //MARK: Fee
-    public func getFee(){
-        if let pubkey = FlutterwaveConfig.sharedConfig().publicKey{
-            let param = [
-                "PBFPubKey": pubkey,
-                "amount": amount!,
-                "currency": FlutterwaveConfig.sharedConfig().currencyCode,
-                "ptype": "2"]
-            FlutterwavePayService.getFee(param, resultCallback: { (result) in
-                let data = result?["data"] as? [String:AnyObject]
-                if let _fee =  data?["fee"] as? Double{
-                    let fee = "\(_fee)"
-                    let chargeAmount = data?["charge_amount"] as? String
-                    self.feeSuccess?(fee,chargeAmount)
-                }else{
-                    if let err = result?["message"] as? String{
-                        self.error?(err,nil)
-                    }
-                }
-            }, errorCallback: { (err) in
-                
-                self.error?(err,nil)
-            })
-        }else{
-            self.error?("Public Key is not specified",nil)
-        }
-    }
+//    //MARK: Fee
+//    public func getFee(){
+//        if let pubkey = FlutterwaveConfig.sharedConfig().publicKey{
+//            let param = [
+//                "PBFPubKey": pubkey,
+//                "amount": amount!,
+//                "currency": FlutterwaveConfig.sharedConfig().currencyCode,
+//                "ptype": "2"]
+//            FlutterwavePayService.getFee(param, resultCallback: { (result) in
+//                let data = result?["data"] as? [String:AnyObject]
+//                if let _fee =  data?["fee"] as? Double{
+//                    let fee = "\(_fee)"
+//                    let chargeAmount = data?["charge_amount"] as? String
+//                    self.feeSuccess?(fee,chargeAmount)
+//                }else{
+//                    if let err = result?["message"] as? String{
+//                        self.error?(err,nil)
+//                    }
+//                }
+//            }, errorCallback: { (err) in
+//                
+//                self.error?(err,nil)
+//            })
+//        }else{
+//            self.error?("Public Key is not specified",nil)
+//        }
+//    }
     
     //MARK: Bank List
-    public func getBanks(){
-        var banks:[Bank]? = []
-        FlutterwavePayService.getBanks(resultCallback: { (_banks) in
-            DispatchQueue.main.async {
-                var _thebanks:[Bank]? = _banks
-                if let count = self.blacklistedBankCodes?.count{
-                    if count > 0 {
-                        self.blacklistedBankCodes?.forEach({ (code) in
-                            _thebanks = _thebanks?.filter({ (bank) -> Bool in
-                                return  bank.bankCode! != code
-                            })
-                        })
-                        banks = _thebanks
-                        banks = banks?.sorted(by: { (first, second) -> Bool in
-                            return first.name!.localizedCaseInsensitiveCompare(second.name!) == .orderedAscending
-                        })
-                        self.banks?(banks)
-                    }else{
-                        banks = _banks?.sorted(by: { (first, second) -> Bool in
-                            return first.name!.localizedCaseInsensitiveCompare(second.name!) == .orderedAscending
-                        })
-                        self.banks?(banks)
-                    }
-                }else{
-                    banks = _banks?.sorted(by: { (first, second) -> Bool in
-                        return first.name!.localizedCaseInsensitiveCompare(second.name!) == .orderedAscending
-                    })
-                    self.banks?(banks)
-                }
-            }
-            
-        }) { (err) in
-            //            print(err)
-        }
-        
-    }
+//    public func getBanks(){
+//        var banks:[Bank]? = []
+//        FlutterwavePayService.getBanks(resultCallback: { (_banks) in
+//            DispatchQueue.main.async {
+//                var _thebanks:[Bank]? = _banks
+//                if let count = self.blacklistedBankCodes?.count{
+//                    if count > 0 {
+//                        self.blacklistedBankCodes?.forEach({ (code) in
+//                            _thebanks = _thebanks?.filter({ (bank) -> Bool in
+//                                return  bank.bankCode! != code
+//                            })
+//                        })
+//                        banks = _thebanks
+//                        banks = banks?.sorted(by: { (first, second) -> Bool in
+//                            return first.name!.localizedCaseInsensitiveCompare(second.name!) == .orderedAscending
+//                        })
+//                        self.banks?(banks)
+//                    }else{
+//                        banks = _banks?.sorted(by: { (first, second) -> Bool in
+//                            return first.name!.localizedCaseInsensitiveCompare(second.name!) == .orderedAscending
+//                        })
+//                        self.banks?(banks)
+//                    }
+//                }else{
+//                    banks = _banks?.sorted(by: { (first, second) -> Bool in
+//                        return first.name!.localizedCaseInsensitiveCompare(second.name!) == .orderedAscending
+//                    })
+//                    self.banks?(banks)
+//                }
+//            }
+//            
+//        }) { (err) in
+//            //            print(err)
+//        }
+//        
+//    }
     //MARK: Charge
     public func chargeAccount(){
         if let pubkey = FlutterwaveConfig.sharedConfig().publicKey{

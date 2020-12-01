@@ -39,36 +39,36 @@ class FlutterwaveMobileMoneyClient {
     public var mobileMoneyType:MobileMoneyType = .ghana
     
     //MARK: Get transaction Fee
-    public func getFee(){
-        if FlutterwaveConfig.sharedConfig().currencyCode == "GHS" || FlutterwaveConfig.sharedConfig().currencyCode == "UGX"
-        || FlutterwaveConfig.sharedConfig().currencyCode == "RWF" || FlutterwaveConfig.sharedConfig().currencyCode == "XAF"
-            || FlutterwaveConfig.sharedConfig().currencyCode == "XOF" || FlutterwaveConfig.sharedConfig().currencyCode == "ZMW"{
-        if let pubkey = FlutterwaveConfig.sharedConfig().publicKey{
-            let param = [
-                "PBFPubKey": pubkey,
-                "amount": amount!,
-                "currency": FlutterwaveConfig.sharedConfig().currencyCode,
-                "ptype": "2"]
-            FlutterwavePayService.getFee(param, resultCallback: { (result) in
-                let data = result?["data"] as? [String:AnyObject]
-                if let _fee =  data?["fee"] as? Double{
-                    let fee = "\(_fee)"
-                    let chargeAmount = data?["charge_amount"] as? String
-                    self.feeSuccess?(fee,chargeAmount)
-                }else{
-                    if let err = result?["message"] as? String{
-                        self.error?(err,nil)
-                    }
-                }
-            }, errorCallback: { (err) in
-                
-                self.error?(err,nil)
-            })
-        }else{
-            self.error?("Public Key is not specified",nil)
-        }
-        }
-    }
+//    public func getFee(){
+//        if FlutterwaveConfig.sharedConfig().currencyCode == "GHS" || FlutterwaveConfig.sharedConfig().currencyCode == "UGX"
+//        || FlutterwaveConfig.sharedConfig().currencyCode == "RWF" || FlutterwaveConfig.sharedConfig().currencyCode == "XAF"
+//            || FlutterwaveConfig.sharedConfig().currencyCode == "XOF" || FlutterwaveConfig.sharedConfig().currencyCode == "ZMW"{
+//        if let pubkey = FlutterwaveConfig.sharedConfig().publicKey{
+//            let param = [
+//                "PBFPubKey": pubkey,
+//                "amount": amount!,
+//                "currency": FlutterwaveConfig.sharedConfig().currencyCode,
+//                "ptype": "2"]
+//            FlutterwavePayService.getFee(param, resultCallback: { (result) in
+//                let data = result?["data"] as? [String:AnyObject]
+//                if let _fee =  data?["fee"] as? Double{
+//                    let fee = "\(_fee)"
+//                    let chargeAmount = data?["charge_amount"] as? String
+//                    self.feeSuccess?(fee,chargeAmount)
+//                }else{
+//                    if let err = result?["message"] as? String{
+//                        self.error?(err,nil)
+//                    }
+//                }
+//            }, errorCallback: { (err) in
+//                
+//                self.error?(err,nil)
+//            })
+//        }else{
+//            self.error?("Public Key is not specified",nil)
+//        }
+//        }
+//    }
     
     //MARK: Charge
 //    public func chargeMobileMoney(_ type:MobileMoneyType = .ghana){

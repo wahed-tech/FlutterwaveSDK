@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import IQKeyboardManagerSwift
 
 class Expandables{
     var isExpanded:Bool
@@ -27,6 +28,7 @@ enum OTPType {
 public protocol  FlutterwavePayProtocol : class{
     func tranasctionSuccessful(flwRef:String?, responseData:FlutterwaveDataResponse?)
     func tranasctionFailed(flwRef:String?,responseData:FlutterwaveDataResponse?)
+    func onDismiss()
 }
 
 
@@ -330,7 +332,7 @@ public class FlutterwavePayViewController: BaseViewController {
     override public func loadView() {
         super.loadView()
         
-        FLKeyboardManager.shared.enable = true
+       
         
         howCell.backgroundColor = .clear
         cardCell.backgroundColor = .clear
@@ -601,8 +603,8 @@ public class FlutterwavePayViewController: BaseViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        IQKeyboardManager.shared.enable = true
         
-        FLKeyboardManager.shared.enable = true
         cardCallbacks()
         accountCallbacks()
         saveCardCallbacks()
@@ -648,6 +650,7 @@ public class FlutterwavePayViewController: BaseViewController {
         debitCardView.frame = debitCardContentContainer.frame
     }
     
+    
     func configureView(){
         
         let debitCardHeader = getHeader()
@@ -664,7 +667,6 @@ public class FlutterwavePayViewController: BaseViewController {
         let payWithNigerianAccountHeader = getHeader()
         let payWithBankTransferHeader = getHeader()
         headers = [nil,debitCardHeader,bankAccountHeader, mpesaHeader,ghanaMobileMoneyHeader,ugandaMobileMoneyHeader,rwandaMobileMoneyHeader,francoMobileMoneyHeader,zambiaMobileMoneyHeader,ukMobileMoneyHeader,ussdHeader,payWithBarterHeader,payWithNigerianAccountHeader, payWithBankTransferHeader]
-        flutterwaveAccountClient.getBanks()
     }
     
     
@@ -684,7 +686,7 @@ public class FlutterwavePayViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         debitCardView.cardNumberTextField.rx.text.orEmpty
-            .map { String($0.prefix(22)) }
+            .map { String($0.prefix(24)) }
             .bind(to: debitCardView.cardNumberTextField.rx.text)
             .disposed(by: disposeBag)
         
@@ -1507,9 +1509,10 @@ public class FlutterwavePayViewController: BaseViewController {
     
     
     @objc func closeView(){
-        self.view.endEditing(true)
-        self.dismiss(animated: true)
-    }
+            self.view.endEditing(true)
+            self.delegate?.onDismiss()
+            self.dismiss(animated: true)
+        }
     
     @objc func cardPayButtonTapped(){
         
@@ -1526,33 +1529,43 @@ public class FlutterwavePayViewController: BaseViewController {
     func saveCardCallbacks(){
         if let _ = FlutterwaveConfig.sharedConfig().publicKey{
             if let deviceNumber = FlutterwaveConfig.sharedConfig().phoneNumber, deviceNumber != ""{
-                LoadingHUD.shared().show()
-                flutterwaveCardClient.fetchSavedCards()
-            }
-        }
-        flutterwaveCardClient.sendOTPSuccess = { [weak self](message) in
-            guard let strongSelf = self else {
-                return
-            }
-            DispatchQueue.main.async {
-                LoadingHUD.shared().hide()
-                strongSelf.showOTP(message: message ?? "Enter the OTP sent to your mobile phone and email address to continue", flwRef: "", otpType: .savedCard)
-            }
-        }
-        flutterwaveCardClient.sendOTPError = {(message) in
-            
-            DispatchQueue.main.async {
-                LoadingHUD.shared().hide()
-                showSnackBarWithMessage(msg: message ?? "An error occured while sending OTP")
+              //  LoadingHUD.shared().show()
+                CardViewModel.sharedViewModel.fetchCard()
             }
         }
         
-        flutterwaveCardClient.saveCardSuccess = {[weak self](saveCards) in
+        CardViewModel.sharedViewModel.sendCardOtpResponse.subscribe(onNext: { [weak self] response in
             guard let strongSelf = self else {
                 return
             }
             DispatchQueue.main.async {
-                LoadingHUD.shared().hide()
+                strongSelf.showOTP(message: response.message ?? "Enter the OTP sent to your mobile phone and email address to continue", flwRef: "", otpType: .savedCard)
+            }
+        } ).disposed(by: disposeBag)
+        
+//        flutterwaveCardClient.sendOTPSuccess = { [weak self](message) in
+//            guard let strongSelf = self else {
+//                return
+//            }
+//            DispatchQueue.main.async {
+//                LoadingHUD.shared().hide()
+//                strongSelf.showOTP(message: message ?? "Enter the OTP sent to your mobile phone and email address to continue", flwRef: "", otpType: .savedCard)
+//            }
+//        }
+//        flutterwaveCardClient.sendOTPError = {(message) in
+//
+//            DispatchQueue.main.async {
+//                LoadingHUD.shared().hide()
+//                showSnackBarWithMessage(msg: message ?? "An error occured while sending OTP")
+//            }
+//        }
+        
+        CardViewModel.sharedViewModel.fetchCardResponse.subscribe(onNext: { [weak self] response in
+           let saveCards =   response.data
+            guard let strongSelf = self else {
+                return
+            }
+            DispatchQueue.main.async {
                 if let count = saveCards?.count, count > 0 {
                     strongSelf.saveCardContainer.isHidden = false
                     strongSelf.debitCardView.isHidden = true
@@ -1561,9 +1574,10 @@ public class FlutterwavePayViewController: BaseViewController {
                     strongSelf.saveCardTableController.saveCardTable.reloadData()
                 }
             }
-            
-        }
-        flutterwaveCardClient.saveCardError = {[weak self](saveCards) in
+          
+        } ).disposed(by: disposeBag)
+        
+        CardViewModel.sharedViewModel.fetchCardFailed.subscribe(onNext: { [weak self] error in
             guard let strongSelf = self else {
                 return
             }
@@ -1572,7 +1586,34 @@ public class FlutterwavePayViewController: BaseViewController {
                 strongSelf.debitCardView.isHidden = false
                 strongSelf.saveCardContainer.isHidden  = true
             }
-        }
+        }).disposed(by: disposeBag)
+        
+//        flutterwaveCardClient.saveCardSuccess = {[weak self](saveCards) in
+//            guard let strongSelf = self else {
+//                return
+//            }
+//            DispatchQueue.main.async {
+//                LoadingHUD.shared().hide()
+//                if let count = saveCards?.count, count > 0 {
+//                    strongSelf.saveCardContainer.isHidden = false
+//                    strongSelf.debitCardView.isHidden = true
+//                    strongSelf.savedCards = saveCards
+//                    strongSelf.saveCardTableController.savedCards = saveCards
+//                    strongSelf.saveCardTableController.saveCardTable.reloadData()
+//                }
+//            }
+//
+//        }
+//        flutterwaveCardClient.saveCardError = {[weak self](saveCards) in
+//            guard let strongSelf = self else {
+//                return
+//            }
+//            DispatchQueue.main.async {
+//                LoadingHUD.shared().hide()
+//                strongSelf.debitCardView.isHidden = false
+//                strongSelf.saveCardContainer.isHidden  = true
+//            }
+//        }
     }
     
     func gbpAccountCallbacks(){

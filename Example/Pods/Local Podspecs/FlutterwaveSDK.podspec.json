@@ -1,10 +1,10 @@
 {
   "name": "FlutterwaveSDK",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "summary": "FlutterwaveSDK",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/Flutterwave/FlutterwaveSDK",
-  "screenshots": "https://github.com/Flutterwave/FlutterwaveSDK/blob/master/FlutterwaveSDK/Assets/FlutterwaveSDK.bundle/FlutterwaveScreenshot.png",
+  "screenshots": "https://github.com/Flutterwave/FlutterwaveSDK/blob/master/FlutterwaveSDK/Assets/Assets.xcassets/FlutterwaveScreenshot.imageset/FlutterwaveScreenshot.png",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -14,7 +14,7 @@
   },
   "source": {
     "git": "https://github.com/Flutterwave/FlutterwaveSDK.git",
-    "tag": "1.2.6"
+    "tag": "1.2.7"
   },
   "social_media_url": "https://twitter.com/FlutterwaveEng",
   "platforms": {
@@ -27,16 +27,13 @@
   "frameworks": "UIKit",
   "dependencies": {
     "lottie-ios": [
-      "~>3.0.2"
-    ],
-    "Alamofire": [
-      "5.2.1"
+
     ],
     "RxSwift": [
-      "~> 5"
+
     ],
     "RxCocoa": [
-      "~> 5"
+
     ],
     "SwinjectAutoregistration": [
 
@@ -48,6 +45,9 @@
 
     ],
     "MaterialComponents/TextControls+OutlinedTextFields": [
+
+    ],
+    "IQKeyboardManagerSwift": [
 
     ]
   },

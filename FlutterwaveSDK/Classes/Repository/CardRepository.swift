@@ -18,6 +18,8 @@ protocol CardRepository {
     func removeCard(request:RemoveCardRequest) -> Observable<NetworkResult<RemoveCardResponse>>
 
     func sendCardOtp(request:SendCardOTPRequest) -> Observable<NetworkResult<SendCardOTPResponse>>
+    
+    func chargeSavedCard(request:ChargeSavedCardRequest) -> Observable<NetworkResult<ChargeSavedCardResponse>>
 
 }
 
@@ -49,6 +51,15 @@ class CardRepositoryImpl: BaseRepository, CardRepository {
     
     func sendCardOtp(request: SendCardOTPRequest) -> Observable<NetworkResult<SendCardOTPResponse>> {
         return makeNetworkPostRequestRx(endPoint: VersionTwoServicesApi.otpSavedCard, request: request, response: SendCardOTPResponse.self, successCondition: { response in
+                  response.status == "success"
+              }, errorMessage: {response in
+                  response.message ?? "Something went wrong"
+              })
+          }
+    
+    
+    func chargeSavedCard(request: ChargeSavedCardRequest) -> Observable<NetworkResult<ChargeSavedCardResponse>> {
+        return makeNetworkPostRequestRx(endPoint: VersionTwoServicesApi.chargeSavedCard, request: request, response: ChargeSavedCardResponse.self, successCondition: { response in
                   response.status == "success"
               }, errorMessage: {response in
                   response.message ?? "Something went wrong"

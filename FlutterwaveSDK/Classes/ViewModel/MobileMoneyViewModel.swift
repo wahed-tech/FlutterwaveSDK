@@ -30,28 +30,28 @@ class MobileMoneyViewModel: BaseViewModel{
         let request = GhanaMobileMoneyRequest(txRef: FlutterwaveConfig.sharedConfig().transcationRef, amount: amount, currency: FlutterwaveConfig.sharedConfig().currencyCode, voucher: voucher, network: network, email: FlutterwaveConfig.sharedConfig().email, phoneNumber: phoneNumber, fullname: "\(FlutterwaveConfig.sharedConfig().firstName.orEmpty()) \(FlutterwaveConfig.sharedConfig().lastName.orEmpty())")
         makeAPICallRx(request: request, apiRequest: mobileMoneyRepository.ghanaMoney(request:), successHandler: ghanaMoneyResponse,onSuccessOperation: {response in
             self.checkAuth(response: response, flwRef: "",source: .ghanaMoney)
-        })
+        }, apiName: .ghanaMoney, apiErrorName: .ghanaMoneyError)
     }
     
     func rwandaMoney(amount: String, network:String, phoneNumber: String) {
         let request = RwandaMobileMoneyRequest(txRef: FlutterwaveConfig.sharedConfig().transcationRef, amount: amount, currency: FlutterwaveConfig.sharedConfig().currencyCode, network: network, email: FlutterwaveConfig.sharedConfig().email, phoneNumber: phoneNumber, fullname: "\(FlutterwaveConfig.sharedConfig().firstName.orEmpty()) \(FlutterwaveConfig.sharedConfig().lastName.orEmpty())")
         makeAPICallRx(request: request, apiRequest: mobileMoneyRepository.rwandaMoney(request:), successHandler: rwandaMoneyResponse, onSuccessOperation: {response in
             self.checkAuth(response: response, flwRef: "",source: .rwandaMoney)
-        })
+        }, apiName: .rwandaMoney, apiErrorName: .rwandaMoneyError)
     }
     
     func ugandaMoney(amount: String, phoneNumber: String) {
         let request = UgandaMobileMoneyRequest(txRef: FlutterwaveConfig.sharedConfig().transcationRef, amount: amount, email: FlutterwaveConfig.sharedConfig().email, phoneNumber: phoneNumber, currency: FlutterwaveConfig.sharedConfig().currencyCode, network: "MTN")
         makeAPICallRx(request: request, apiRequest: mobileMoneyRepository.ugandaMoney(request:), successHandler: ugandaMoneyResponse, onSuccessOperation: {response in
             self.checkAuth(response: response, flwRef: "",source: .ugandaMoney)
-        })
+        }, apiName: .zambiaMoney, apiErrorName: .zambiaMoneyError)
     }
     
     func zambiaMoney(amount: String, phoneNumber: String, network: String) {
         let request = ZambiaMobileMoneyRequest(txRef: FlutterwaveConfig.sharedConfig().transcationRef, amount: amount, currency: FlutterwaveConfig.sharedConfig().currencyCode, network: network, email: FlutterwaveConfig.sharedConfig().email, phoneNumber: phoneNumber, fullname: "\(FlutterwaveConfig.sharedConfig().firstName.orEmpty()) \(FlutterwaveConfig.sharedConfig().lastName.orEmpty())")
         makeAPICallRx(request: request, apiRequest: mobileMoneyRepository.zambiaMoney(request:), successHandler: zambiaMoneyResponse, onSuccessOperation: {response in
             self.checkAuth(response: response, flwRef: "", source: .zambiaMoney)
-        })
+        }, apiName: .zambiaMoney, apiErrorName: .zambiaMoneyError)
     }
     
     func mpesaMoney(amount: String, phoneNumber: String) {
@@ -60,7 +60,7 @@ class MobileMoneyViewModel: BaseViewModel{
             self.flwRef = response.data?.flwRef ?? ""
             PaymentServicesViewModel.sharedViewModel.mpesaVerify(flwRef: MobileMoneyViewModel.sharedViewModel.flwRef)
             
-        })
+        }, apiName: .mpesaMoney, apiErrorName: .mpesaMoneyError)
     }
     
     
@@ -69,7 +69,7 @@ class MobileMoneyViewModel: BaseViewModel{
         let request = FrancophoneMobileMoneyRequest(txRef: FlutterwaveConfig.sharedConfig().transcationRef, amount: amount, currency: FlutterwaveConfig.sharedConfig().currencyCode, email: FlutterwaveConfig.sharedConfig().email, phoneNumber: phoneNumber, country: country, fullname: "\(FlutterwaveConfig.sharedConfig().firstName.orEmpty()) \(FlutterwaveConfig.sharedConfig().lastName.orEmpty())")
         makeAPICallRx(request: request, apiRequest: mobileMoneyRepository.francophoneMoney(request:), successHandler: francoPhoneResponse, onSuccessOperation: {response in
             self.checkAuth(response: response, flwRef: response.data?.flwRef ?? "", source: .francophoneMoney)
-        })
+        }, apiName: .francoPhoneMoney, apiErrorName: .francoPhoneMoneyError)
     }
     
     func voucherCharge(txRef: String, amount: String, currency: String, pin:String, email: String, phoneNumber: String, fullName: String) {

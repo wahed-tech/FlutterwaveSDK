@@ -27,7 +27,29 @@ enum VersionThreeServicesApi{
     case voucherCharge
 }
 
+enum MonitorAPIService {
+    case monitor
+}
 
+
+extension MonitorAPIService:EndpointType{
+    var baseURL: URL {
+        return URL(string: "https://kgelfdz7mf.execute-api.us-east-1.amazonaws.com/staging/")!
+    }
+    
+    var stagingURL: URL {
+        return URL(string: "https://kgelfdz7mf.execute-api.us-east-1.amazonaws.com/staging/")!
+    }
+    
+    var path: String {
+        switch self {
+        case .monitor:
+         return   "sendevent"
+        }
+    }
+    
+    
+}
 
 
 extension VersionThreeServicesApi:EndpointType{
@@ -80,5 +102,7 @@ extension VersionThreeServicesApi:EndpointType{
     }
  
 }
+
+
 
 

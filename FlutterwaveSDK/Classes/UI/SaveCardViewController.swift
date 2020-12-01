@@ -7,13 +7,19 @@
 //
 
 import UIKit
+import RxSwift                  
+import RxCocoa
 protocol CardSelect:class {
     func cardSelected(card:SavedCard?)
 }
 
+
 class SaveCardViewController: UIViewController {
     var savedCards:[SavedCard]?
-  //  @IBOutlet weak var saveCardTable: UITableView!
+    let disposeBag = DisposeBag()
+    
+    
+    //  @IBOutlet weak var saveCardTable: UITableView!
     lazy var saveCardTable:UITableView = {
         let table = UITableView()
         table.backgroundColor = .clear
@@ -39,29 +45,41 @@ class SaveCardViewController: UIViewController {
         
         raveCardClient.removesavedCardSuccess = { [weak self] in
             DispatchQueue.main.async {
-               
+                
                 self?.saveCardTable.reloadData()
             }
         }
         
-        raveCardClient.removesavedCardError = { message in
+        
+        
+        
+        CardViewModel.sharedViewModel.removeCardResponse.subscribe(onNext: {[weak self] response in
+            self?.saveCardTable.reloadData()
+        }).disposed(by: disposeBag)
+        
+        CardViewModel.sharedViewModel.removeCardFailed.subscribe(onNext: { response in
+            if(response.isEmpty){
+                showSnackBarWithMessage(msg: "An error occured deleting saved card")
+            }else{
+                showSnackBarWithMessage(msg: response )
+            }
             
-            showSnackBarWithMessage(msg: message ?? "An error occured deleting saved card")
-        }
+        }).disposed(by: disposeBag)
+        
         setupConstraint()
     }
     
     func setupConstraint(){
         NSLayoutConstraint.activate([
             saveCardTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-             saveCardTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-              saveCardTable.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-               saveCardTable.topAnchor.constraint(equalTo: view.topAnchor),
+            saveCardTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            saveCardTable.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            saveCardTable.topAnchor.constraint(equalTo: view.topAnchor),
         ])
     }
     
-
-
+    
+    
 }
 
 extension SaveCardViewController:UITableViewDataSource,UITableViewDelegate{
@@ -75,23 +93,23 @@ extension SaveCardViewController:UITableViewDataSource,UITableViewDelegate{
         cell.maskCardLabel.text = card?.card?.maskedPan
         cell.brandImage.image = card?.card?.cardBrand?.lowercased() == .some("visa") ? UIImage(named: "rave_visa",in: Bundle.getResourcesBundle(), compatibleWith: nil) : UIImage(named: "rave_mastercard",in: Bundle.getResourcesBundle(), compatibleWith: nil)
         cell.contentContainer.layer.cornerRadius = 8
-    
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       let card =  self.savedCards?[indexPath.row]
-       delegate?.cardSelected(card: card)
+        let card =  self.savedCards?[indexPath.row]
+        delegate?.cardSelected(card: card)
     }
     
     @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let card =  self.savedCards?[indexPath.row]
         let deleteRequest = UIContextualAction(style: .normal, title: "Delete") { (action, view, complete) in
-           self.raveCardClient.savedCardHash = card?.cardHash
-           self.raveCardClient.savedCardMobileNumber = card?.mobileNumber
-           self.raveCardClient.removeSavedCard()
+            self.raveCardClient.savedCardHash = card?.cardHash
+            self.raveCardClient.savedCardMobileNumber = card?.mobileNumber
             
+            CardViewModel.sharedViewModel.removeCard(cardHash: card?.cardHash ?? "")
             self.savedCards = self.savedCards?.filter({ (c) -> Bool in
                 return c.cardHash! != card?.cardHash!
             })

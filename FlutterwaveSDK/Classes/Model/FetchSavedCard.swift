@@ -20,7 +20,7 @@ struct FetchSavedCardRequest: Codable {
 // MARK: - FetchSavedCardResponse
 struct FetchSavedCardResponse: Codable {
     let status, message: String?
-    let data: [CardDatas]?
+    let data: [SavedCard]?
 }
 
 // MARK: - CardDatas

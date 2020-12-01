@@ -77,8 +77,8 @@ class AccountForm: UIView {
         text.setNormalLabelColor(.lightGray, for: .normal)
         text.setOutlineColor(UIColor.lightGray.withAlphaComponent(0.87), for: .normal)
         text.setOutlineColor(UIColor(hex: "#F5A623").withAlphaComponent(0.87), for: .editing)
-        text.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 1))
-        text.leftViewMode = .always
+//        text.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 1))
+//        text.leftViewMode = .always
         text.translatesAutoresizingMaskIntoConstraints = false
         text.keyboardType = .numberPad
         return text
@@ -153,13 +153,13 @@ class AccountForm: UIView {
     func setupConstraints(){
         NSLayoutConstraint.activate([
             
-            accountImageView.topAnchor.constraint(equalTo: topAnchor, constant:25),
+            accountImageView.topAnchor.constraint(equalTo: topAnchor, constant:20),
             accountImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             accountImageView.heightAnchor.constraint(equalToConstant: 44),
             accountImageView.widthAnchor.constraint(equalToConstant: 129),
             
             
-            stackView.topAnchor.constraint(equalTo: accountImageView.bottomAnchor, constant: 25),
+            stackView.topAnchor.constraint(equalTo: accountImageView.bottomAnchor, constant: 18),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant:20),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant:-20),
             

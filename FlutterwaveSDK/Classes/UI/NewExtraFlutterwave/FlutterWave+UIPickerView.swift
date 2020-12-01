@@ -17,8 +17,9 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
     func cardSelected(card: SavedCard?) {
         flutterwaveCardClient.selectedCard = card
         if let card =  flutterwaveCardClient.selectedCard{
-            LoadingHUD.shared().show()
-            flutterwaveCardClient.sendOTP(card: card)
+            //LoadingHUD.shared().show()
+            CardViewModel.sharedViewModel.sendCardOtp(cardHash: card.cardHash ?? "")
+           // flutterwaveCardClient.sendOTP(card: card)
         }
     }
     
@@ -222,7 +223,7 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
     }
     func showWebView(url: String?,ref:String?){
         //Collapse opened Tabs
-        self.handelCloseOrExpandSection(section: 0)
+       // self.handelCloseOrExpandSection(section: 0)
         //Show web view
         //let storyBoard = UIStoryboard(name: "Rave", bundle: nil)
         let controller = RavePayWebViewController()
@@ -319,7 +320,7 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
         guard let otp = otpContentContainer.otpTextField.text, otp != ""  else {
             return
         }
-        LoadingHUD.shared().show()
+       // LoadingHUD.shared().show()
         flutterwaveCardClient.otp = otp
         flutterwaveCardClient.isSaveCardCharge = "1"
         flutterwaveCardClient.saveCardPayment = "saved-card"
@@ -415,14 +416,17 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
         if pickerView.tag == 12 {
             self.selectedBankCode = self.banks?[row].bankCode
             self.selectBankAccountView.otherBanksTextField.text = self.banks?[row].name
+            self.selectBankAccountView.otherBanksTextField.sendActions(for: .editingChanged)
         } else if pickerView.tag == 13 {
             self.selectedUSSDBank = ussdBanks[row]
             self.selectedBankCode = ussdBanks[row].bankCode
             self.selectUssdBankView.otherBanksTextField.text = ussdBanks[row].bankName
+            self.selectUssdBankView.otherBanksTextField.sendActions(for: .editingChanged)
         }else if pickerView.tag == 15 {
             self.selectedFrancophoneCountry = francophoneCountries[row]
             self.selectedFrancophoneCountryCode = francophoneCountries[row].countryCode
             self.mobileMoneyFRContentContainer.mobileMoneyFRCountry.text = francophoneCountries[row].countryName
+            self.mobileMoneyFRContentContainer.mobileMoneyFRCountry.sendActions(for: .editingChanged)
             
         }
         else if pickerView.tag == 17 {

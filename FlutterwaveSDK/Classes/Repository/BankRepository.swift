@@ -19,10 +19,14 @@ protocol BankRepository {
     
     func ussd(request:USSDRequest) -> Observable<NetworkResult<USSDResponse>>
     
+    func getbank() -> Observable<NetworkResult<[Bank]>>
+    
     func nigeriaBankTransfer(request:NigeriaBankTransferRequest) -> Observable<NetworkResult<NigeriaBankTransferResponse>>
 }
 
 class BankRepositoryImpl: BaseRepository, BankRepository {
+   
+    
    
     func accountPayment(request: AccountPaymentRequest) -> Observable<NetworkResult<AccountPaymentResponse>> {
           return makeNetworkPostRequestRx(endPoint: VersionThreeServicesApi.nigeriaBankAccount, request: request, response: AccountPaymentResponse.self, successCondition: { response in
@@ -58,10 +62,24 @@ class BankRepositoryImpl: BaseRepository, BankRepository {
     }
     
     func nigeriaBankTransfer(request: NigeriaBankTransferRequest) -> Observable<NetworkResult<NigeriaBankTransferResponse>> {
-        return makeNetworkPostRequestRx(endPoint: VersionThreeServicesApi.nigeriaBankAccount, request: request, response: NigeriaBankTransferResponse.self, successCondition: { response in
-              response.status == "success"
-          }, errorMessage: {response in
-              response.message ?? "Something went wrong"
-          })
-      }
+            return makeNetworkPostRequestRx(endPoint: VersionThreeServicesApi.nigeriaBankAccount, request: request, response: NigeriaBankTransferResponse.self, successCondition: { response in
+                  response.status == "success"
+              }, errorMessage: { response in
+                  response.message ?? "Something went wrong"
+                
+            }, successAction: { response in
+                
+            }, failureAction:{ response in
+            })
+          }
+    
+
+    
+    func getbank() -> Observable<NetworkResult<[Bank]>> {
+        return makeOrderedNetworkGetRequest(endPoint: VersionTwoServicesApi.getBank, parameters: [:], response: [Bank].self, successCondition: { response in
+            true
+        }, errorMessage: {response in
+             "Something went wrong(Bank List)"
+        })
+    }
 }

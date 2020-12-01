@@ -29,9 +29,9 @@ struct NetworkingRX {
             if(stage == Stage.DEV){
                 urlString =  endpoint.stagingURL.appendingPathComponent(endpoint.path).absoluteString.removingPercentEncoding
             }else{
-                  urlString =  endpoint.baseURL.appendingPathComponent(endpoint.path).absoluteString.removingPercentEncoding
+                urlString =  endpoint.baseURL.appendingPathComponent(endpoint.path).absoluteString.removingPercentEncoding
             }
-           
+            
             guard let urlRequest = URL(string: urlString ?? "") else {
                 return Disposables.create {
                     observer.onError(MyError(msg: "Invalid URL"))
@@ -112,15 +112,15 @@ struct NetworkingRX {
     {
         
         return Observable.create{ observer in
-             var urlString:String? = ""
-             if(stage == Stage.DEV){
-                          urlString =  endpoint.stagingURL.appendingPathComponent(endpoint.path).absoluteString.removingPercentEncoding
-                      }else{
-                            urlString =  endpoint.baseURL.appendingPathComponent(endpoint.path).absoluteString.removingPercentEncoding
-                      }
+            var urlString:String? = ""
+            if(stage == Stage.DEV){
+                urlString =  endpoint.stagingURL.appendingPathComponent(endpoint.path).absoluteString.removingPercentEncoding
+            }else{
+                urlString =  endpoint.baseURL.appendingPathComponent(endpoint.path).absoluteString.removingPercentEncoding
+            }
             guard let urlRequest = URL(string: urlString ?? "") else { return Disposables.create {
                 observer.onError(MyError(msg: "Invalid URL"))
-                } }
+            } }
             var endpointRequest = URLRequest(url: urlRequest)
             endpointRequest.httpMethod = "POST"
             endpointRequest.addValue(FlutterwaveConfig.sharedConfig().publicKey!, forHTTPHeaderField: "Authorization")
@@ -144,6 +144,81 @@ struct NetworkingRX {
                     observer.onNext(.error(error))
                 }
             }
+            
+            let urlSession = URLSession.shared.dataTask(with: endpointRequest) { (data, urlResponse, error) in
+                if let _ = error {
+                    #if DEBUG
+                    print("❌  Error :\(urlString ?? "") \n\(error?.localizedDescription ?? "Bad request")")
+                    #else
+                    #endif
+                    
+                    observer.onNext(.error(error))
+                    return
+                }
+                guard let data = data else {
+                    #if DEBUG
+                    print("❌  Error :\(urlString ?? "") ")
+                    #else
+                    #endif
+                    
+                    observer.onNext(.error(nil))
+                    return
+                }
+                let response = JsonResponse(data: data)
+                guard let decoded = response.decode(returnType) else {
+                    #if DEBUG
+                    print("❌  Error Decoding Response : \(urlString ?? "")")
+                    #else
+                    #endif
+                    
+                    observer.onNext(.error(nil))
+                    return
+                }
+                
+                #if DEBUG
+                print("✅  Response: \(urlString ?? "") \n \(decoded)\n")
+                #else
+                #endif
+                observer.onNext(.success(decoded))
+            }
+            urlSession.resume()
+            return Disposables.create {
+                urlSession.cancel()
+            }
+        }
+    }
+    
+    
+    func performOrderedGetRequest<T: Codable>(endpoint: EndpointType, parameters: [Int: Any],stage:Stage = Stage.DEV,returnType: T.Type) -> Observable<NetworkResult<T>> {
+        
+        return Observable.create{ observer in
+            var urlString:String? = ""
+            if(stage == Stage.DEV){
+                urlString =  endpoint.stagingURL.appendingPathComponent(endpoint.path).absoluteString.removingPercentEncoding
+            }else{
+                urlString =  endpoint.baseURL.appendingPathComponent(endpoint.path).absoluteString.removingPercentEncoding
+            }
+           
+            
+            let sortedParameters =  parameters.sorted(by: {value1 ,value2 in value1.key < value2.key})
+            let _parameters = sortedParameters.reduce("", { urlBuilder,parameter in
+                "\(urlBuilder)/\(parameter.value)"
+            })
+            
+            urlString = "\(urlString!)\(_parameters)"
+            print("✅ GET URL: \(urlString!) ")
+            guard let urlRequest = URL(string: urlString ?? "") else { return Disposables.create {
+                observer.onError(MyError(msg: "Invalid URL"))
+            } }
+            
+            var endpointRequest = URLRequest(url: urlRequest)
+            endpointRequest.httpMethod = "GET"
+            endpointRequest.addValue(FlutterwaveConfig.sharedConfig().publicKey!, forHTTPHeaderField: "Authorization")
+            endpointRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            #if DEBUG
+            print("Public Key is \(FlutterwaveConfig.sharedConfig().publicKey!)")
+            #else
+            #endif
             
             let urlSession = URLSession.shared.dataTask(with: endpointRequest) { (data, urlResponse, error) in
                 if let _ = error {

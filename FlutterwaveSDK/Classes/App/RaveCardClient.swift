@@ -140,87 +140,15 @@ class FlutterwaveCardClient{
             let base64String = data?.base64EncodedString()
             
             
-            let reqbody = [
-                "PBFPubKey": pubkey,
-                "client": base64String!, // Encrypted $data payload here.
-                "alg": "3DES-24"
-            ]
-            print("first-of-all")
-            print(reqbody)
+//            let reqbody = [
+//                "PBFPubKey": pubkey,
+//                "client": base64String!, // Encrypted $data payload here.
+//                "alg": "3DES-24"
+//            ]
+//            print("first-of-all")
+//            print(reqbody)
             CardViewModel.sharedViewModel.chargeSavedCard(client: base64String!)
-//            FlutterwavePayService.charge(reqbody, resultCallback: { [weak self] (res) in
-//                guard let strongSelf = self else {return}
-//                if let status = res?["status"] as? String{
-//                    if status == "success"{
-//                        let result = res?["data"] as? Dictionary<String,AnyObject>
-//                        let flwRef = result?["flwRef"] as? String?
-//                        let authURL = result?["authurl"] as? String
-//
-//                        let flutterWaveData = FlutterwaveDataResponse(txRef: nil, flwRef:flwRef?.orEmpty(), deviceFingerprint: nil, amount: nil, chargedAmount: nil, appFee: nil, merchantFee: nil, processorResponse: nil, authModel: nil, currency: nil, ip: nil, narration: nil, status: nil, authURL: authURL, paymentType: nil, fraudStatus: nil, chargeType: nil, createdAt: nil, plan: nil, id: nil, accountID: nil, customer: nil, card: nil)
-//                        if let suggestedAuth = result?["suggested_auth"] as? String{
-//                            var authModel:SuggestedAuthModel = .NONE
-//                            switch suggestedAuth {
-//                            case "PIN":
-//                                authModel = .PIN
-//                            case "AVS_VBVSECURECODE":
-//                                authModel = .AVS_VBVSECURECODE
-//                            case "VBVSECURECODE":
-//                                authModel = .VBVSECURECODE
-//                            case "NOAUTH_INTERNATIONAL":
-//                                authModel = .NOAUTH_INTERNATIONAL
-//                            case "GTB_OTP":
-//                                authModel = .GTB_OTP
-//                            default:
-//                                authModel = .NONE
-//                            }
-//
-//                            strongSelf.chargeSuggestedAuth?(authModel,result!,authURL)
-//
-//                        }else{
-//                            if let chargeResponse = result?["chargeResponseCode"] as? String{
-//                                switch chargeResponse{
-//                                case "00":
-//                                    let flwTransactionRef = result?["flwRef"] as? String
-//                                    strongSelf.chargeSuccess?(flwTransactionRef,flutterWaveData)
-//                                case "02":
-//                                    let flwTransactionRef = result?["flwRef"] as? String
-//                                    var _instruction:String? =  result?["chargeResponseMessage"] as? String
-//                                    if let instruction = result?["validateInstruction"] as? String{
-//                                        _instruction = instruction
-//                                    }else{
-//                                        if let instruction = result?["validateInstructions"] as? [String:AnyObject]{
-//                                            if let  _inst =  instruction["instruction"] as? String{
-//                                                if _inst != ""{
-//                                                    _instruction = _inst
-//                                                }
-//                                            }
-//                                        }
-//                                    }
-//                                    if let authURL = result?["authurl"] as? String, authURL != "NO-URL", authURL != "N/A" {
-//                                        // Show Web View
-//                                        strongSelf.chargeWebAuth?(flwTransactionRef!,authURL)
-//                                    }else{
-//                                        if let flwRef = flwTransactionRef{
-//                                            // Show OTP Screen
-//                                            strongSelf.chargeOTPAuth?(flwRef, _instruction ?? "Pending OTP Validation")
-//                                        }
-//                                    }
-//                                default:
-//                                    break
-//                                }
-//                            }
-//
-//                        }
-//                    }else{
-//                        if let message = res?["message"] as? String{
-//                            strongSelf.error?(message,nil)
-//                        }
-//                    }
-//                }
-//            }) {[weak self] (err) in
-//                guard let strongSelf = self else {return}
-//                strongSelf.error?(err,nil)
-//            }
+
         }
     }
     //MARK: Charge Card

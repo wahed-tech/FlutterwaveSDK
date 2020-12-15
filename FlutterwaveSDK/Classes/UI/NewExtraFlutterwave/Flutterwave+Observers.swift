@@ -55,8 +55,13 @@ extension FlutterwavePayViewController {
         setUpMoveToWebView(baseViewModel: BankViewModel.sharedViewModel, action: {url,ref in
             self.showWebView(url: url,ref:ref)
         })
+      
         CardViewModel.sharedViewModel.chargeSavedCardResponse.subscribe(onNext: {response in
-            self.showWebView(url: response.data?.authurl,ref:response.data?.flwRef)
+            if response.data?.authurl == "N/A" {
+                PaymentServicesViewModel.sharedViewModel.mpesaVerify(flwRef: response.data?.flwRef ?? "")
+            }else {
+                self.showWebView(url: response.data?.authurl,ref:response.data?.flwRef)
+            }
         } ).disposed(by: disposeBag)
     }
     func setUpLoading(){

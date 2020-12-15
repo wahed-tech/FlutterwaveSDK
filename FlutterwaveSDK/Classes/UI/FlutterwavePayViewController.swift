@@ -308,6 +308,7 @@ public class FlutterwavePayViewController: BaseViewController {
     let flutterwaveMpesaClient = FlutterwaveMpesaClient()
     let flutterwaveMobileMoney = FlutterwaveMobileMoneyClient()
     let flutterwaveMobileMoneyUganda = FlutterwaveMobileMoneyClient()
+    let flutterwaveMobileMoneyGhana = FlutterwaveMobileMoneyClient()
     let flutterMobileMoneyRW = FlutterwaveMobileMoneyClient()
     let flutterwaveMobileMoneyFR = FlutterwaveMobileMoneyClient()
     let flutterwaveMoneyZM = FlutterwaveMobileMoneyClient()
@@ -877,7 +878,7 @@ public class FlutterwavePayViewController: BaseViewController {
         
         mobileMoneyContentView.mobileMoneyPay.layer.cornerRadius = 5
         mobileMoneyContentView.mobileMoneyPay.setTitle("Pay \(self.amount?.toCountryCurrency(code: FlutterwaveConfig.sharedConfig().currencyCode) ?? "")", for: .normal)
-        mobileMoneyContentView.mobileMoneyPay.addTarget(self, action: #selector(mobileMoneyPayAction), for: .touchUpInside)
+        mobileMoneyContentView.mobileMoneyPay.addTarget(self, action: #selector(mobileMoneyGhanaPayAction), for: .touchUpInside)
         
         flutterwaveMobileMoney.amount = self.amount
         flutterwaveMobileMoney.email = FlutterwaveConfig.sharedConfig().email
@@ -988,7 +989,7 @@ public class FlutterwavePayViewController: BaseViewController {
         }
     }
     
-    @objc func mobileMoneyPayAction(){
+    @objc func mobileMoneyGhanaPayAction(){
         self.view.endEditing(true)
         flutterwaveMobileMoney.network = mobileMoneyContentView.mobileMoneyChooseNetwork.text
         flutterwaveMobileMoney.voucher = mobileMoneyContentView.mobileMoneyVoucher.text
@@ -1014,7 +1015,8 @@ public class FlutterwavePayViewController: BaseViewController {
                 return
             }
         }
-        MobileMoneyViewModel.sharedViewModel.rwandaMoney(amount: self.amount ?? "", network: "", phoneNumber: flutterMobileMoneyRW.phoneNumber ?? "")
+        
+        MobileMoneyViewModel.sharedViewModel.ghanaMoney(amount: self.amount.orEmpty(), voucher: flutterwaveMobileMoney.voucher.orEmpty(), network: flutterwaveMobileMoney.network.orEmpty(), phoneNumber: flutterwaveMobileMoney.phoneNumber.orEmpty())
         
     }
     
@@ -1025,9 +1027,10 @@ public class FlutterwavePayViewController: BaseViewController {
         
         let phoneValid = self.mobileMoneyUgandaContentContainer.mobileMoneyUgandaPhone.validateAndShowError(validationType: ValidatorType.requiredField(field: "phone number"))
         
+        MobileMoneyViewModel.sharedViewModel.ugandaMoney(amount: self.amount.orEmpty(), phoneNumber: flutterwaveMobileMoneyUganda.phoneNumber.orEmpty())
         
         if (phoneValid){
-            MobileMoneyViewModel.sharedViewModel.rwandaMoney(amount: self.amount ?? "", network: "", phoneNumber: flutterwaveMobileMoneyUganda.phoneNumber ?? "")
+            MobileMoneyViewModel.sharedViewModel.ugandaMoney(amount: self.amount.orEmpty(), phoneNumber: flutterwaveMobileMoneyUganda.phoneNumber.orEmpty())
         }
     }
     
@@ -1040,7 +1043,7 @@ public class FlutterwavePayViewController: BaseViewController {
         
         
         if(phoneValid ){
-            MobileMoneyViewModel.sharedViewModel.rwandaMoney(amount: self.amount ?? "", network: "", phoneNumber: flutterMobileMoneyRW.phoneNumber ?? "")
+            MobileMoneyViewModel.sharedViewModel.rwandaMoney(amount: self.amount.orEmpty(), network: flutterMobileMoneyRW.network.orEmpty(), phoneNumber: flutterMobileMoneyRW.phoneNumber.orEmpty())
         }
         
         
@@ -1060,7 +1063,7 @@ public class FlutterwavePayViewController: BaseViewController {
         
         
         if(phoneValid && countryValid ){
-            MobileMoneyViewModel.sharedViewModel.francoPhoneMoney(amount: self.amount ?? "", phoneNumber: flutterwaveMobileMoneyFR.phoneNumber ?? "", country: selectedFrancophoneCountryCode.orEmpty())
+            MobileMoneyViewModel.sharedViewModel.francoPhoneMoney(amount: self.amount.orEmpty(), phoneNumber: flutterwaveMobileMoneyFR.phoneNumber.orEmpty(), country: selectedFrancophoneCountryCode.orEmpty())
         }
         
         
@@ -1077,17 +1080,11 @@ public class FlutterwavePayViewController: BaseViewController {
         flutterwaveMoneyZM.phoneNumber = mobileMoneyZMContentContainer.mobileMoneyPhoneNumber.text.orEmpty().components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
         
         if phoneValid && networkValid {
-            MobileMoneyViewModel.sharedViewModel.zambiaMoney(amount: self.amount ?? "", phoneNumber: flutterwaveMoneyZM.phoneNumber ?? "", network: flutterwaveMoneyZM.network ?? "")
+            MobileMoneyViewModel.sharedViewModel.zambiaMoney(amount: self.amount.orEmpty(), phoneNumber: flutterwaveMoneyZM.phoneNumber.orEmpty(), network: flutterwaveMoneyZM.network.orEmpty())
         }
     }
     
-    //    @objc func dobPickerValueChanged(_ sender: UIDatePicker){
-    //        let dateFormatter: DateFormatter = DateFormatter()
-    //        dateFormatter.dateFormat = "ddMMyyyy"
-    //        let selectedDate: String = dateFormatter.string(from: sender.date)
-    ////        self.accountFormContainer.dobTextField.text = selectedDate
-    //    }
-    
+  
     @objc func accountPayButtonTapped(){
         
         let phoneValid = self.accountFormContainer.phoneNumberTextField.validateAndShowError(validationType: ValidatorType.requiredField(field: "phone number"))

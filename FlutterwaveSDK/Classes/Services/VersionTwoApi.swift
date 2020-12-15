@@ -41,7 +41,7 @@ extension VersionTwoServicesApi:EndpointType{
         case .chargeSavedCard:
             return "flwv3-pug/getpaidx/api/charge"
         }
- 
+       
        
     }
 }

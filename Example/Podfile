@@ -5,7 +5,6 @@ target 'FlutterwaveSDK_Example' do
   
   target 'FlutterwaveSDK_Tests' do
     inherit! :search_paths
-    
-    
+
   end
 end

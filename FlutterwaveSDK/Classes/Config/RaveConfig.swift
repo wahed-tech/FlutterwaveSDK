@@ -27,6 +27,7 @@ public class FlutterwaveConfig {
     public var country:String = "NG"
     public var currencyCode:String = "NGN"
     public var narration:String?
+    public var paymentPlan:Int?
     public var isPreAuth:Bool = false
     public var isPermanent:Bool = true
     public var meta:[[String:String]]?

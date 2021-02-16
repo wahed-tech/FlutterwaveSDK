@@ -13,7 +13,7 @@ public struct FlutterwaveDataResponse {
     public let processorResponse, authModel, currency, ip: String?
     public let narration, status, authURL, paymentType: String?
     public let fraudStatus, chargeType, createdAt: String?
-    public let plan: String?
+    public let paymentPlan: Int?
     public let id,accountID: Int?
     public let customer: Customer?
     public let card: CardData?

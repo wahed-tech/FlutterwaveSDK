@@ -52,7 +52,7 @@ struct PwbtVerifyData: Codable {
 
 extension PwbtVerifyData {
     func toFlutterResponse() -> FlutterwaveDataResponse{
-        return FlutterwaveDataResponse(txRef: txRef, flwRef: flwRef, deviceFingerprint: nil, amount: amount, chargedAmount: chargedAmount, appFee: appFee, merchantFee: merchantFee, processorResponse: processorResponse, authModel: authModel, currency: currency, ip: ip, narration: narration, status: status, authURL: nil, paymentType: paymentType, fraudStatus: nil, chargeType: nil, createdAt: nil, plan: nil, id: nil, accountID: nil, customer: customer, card: nil)
+        return FlutterwaveDataResponse(txRef: txRef, flwRef: flwRef, deviceFingerprint: nil, amount: amount, chargedAmount: chargedAmount, appFee: appFee, merchantFee: merchantFee, processorResponse: processorResponse, authModel: authModel, currency: currency, ip: ip, narration: narration, status: status, authURL: nil, paymentType: paymentType, fraudStatus: nil, chargeType: nil, createdAt: nil, paymentPlan: nil, id: nil, accountID: nil, customer: customer, card: nil)
     }
 }
 

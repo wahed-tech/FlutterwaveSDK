@@ -27,7 +27,7 @@ struct ChargeData:Codable {
     let amount, chargedAmount, appFee, merchantFee: Double?
     let processorResponse, authModel, currency, ip: String?
     let narration, status, authURL, paymentType: String?
-    let plan: String?
+    let paymentPlan: Int?
     let fraudStatus, chargeType, createdAt: String?
     let accountID: Int?
     let customer: Customer?
@@ -47,7 +47,7 @@ struct ChargeData:Codable {
          case currency, ip, narration, status
          case authURL = "auth_url"
          case paymentType = "payment_type"
-         case plan
+         case paymentPlan = "payment_plan"
          case fraudStatus = "fraud_status"
          case chargeType = "charge_type"
          case createdAt = "created_at"
@@ -112,6 +112,6 @@ protocol FlutterChargeResponse {
 
 extension ChargeData {
     func toFlutterResponse() -> FlutterwaveDataResponse{
-        return FlutterwaveDataResponse(txRef: txRef, flwRef: flwRef, deviceFingerprint: deviceFingerprint, amount: amount, chargedAmount: chargedAmount, appFee: appFee, merchantFee: merchantFee, processorResponse: processorResponse, authModel: authModel, currency: currency, ip: ip, narration: narration, status: status, authURL: authURL, paymentType: paymentType, fraudStatus: fraudStatus, chargeType: chargeType, createdAt: createdAt, plan: plan, id: id, accountID: accountID, customer: customer, card: card)
+        return FlutterwaveDataResponse(txRef: txRef, flwRef: flwRef, deviceFingerprint: deviceFingerprint, amount: amount, chargedAmount: chargedAmount, appFee: appFee, merchantFee: merchantFee, processorResponse: processorResponse, authModel: authModel, currency: currency, ip: ip, narration: narration, status: status, authURL: authURL, paymentType: paymentType, fraudStatus: fraudStatus, chargeType: chargeType, createdAt: createdAt, paymentPlan: paymentPlan, id: id, accountID: accountID, customer: customer, card: card)
     }
 }

@@ -18,6 +18,7 @@ class PaymentServicesViewModel: BaseViewModel{
     let paymentServicesRepository: PaymentServicesRepository
     let moveToPin = PublishSubject<String>()
     let moveToOTP = PublishSubject<ChargeCardResponse>()
+    
     let moveToWebView = PublishSubject<ChargeCardResponse>()
     let moveToAddressVerification = PublishSubject<ChargeCardResponse>()
     let chargeCardResponse = PublishSubject<ChargeCardResponse>()
@@ -48,7 +49,10 @@ class PaymentServicesViewModel: BaseViewModel{
             case "avs_noauth":
                 self.moveToAddressVerification.onNext(response)
             default:
+                let flwRef = response.data?.flwRef
+                PaymentServicesViewModel.sharedViewModel.mpesaVerify(flwRef: flwRef ?? "")
                 break
+                
             }
             
         },apiName: .initCardCharge,apiErrorName: .initCardChargeError)
@@ -93,12 +97,12 @@ class PaymentServicesViewModel: BaseViewModel{
             if(currentRetryCount != maxRetryCount){
                 PaymentServicesViewModel.sharedViewModel.mpesaVerify(flwRef: flwRef)
                 PaymentServicesViewModel.sharedViewModel.retryCount += 1
-                self.pendingTransactionAlert.onNext("Your transaction is still pending try again")
+//                self.pendingTransactionAlert.onNext("Your transaction is still pending try again")
             }else{
                 self.isLoading.onNext(false)
                
                 PaymentServicesViewModel.sharedViewModel.retryCount = 0
-                self.pendingTransactionAlert.onNext("Your transaction is still pending try again")
+//                self.pendingTransactionAlert.onNext("Your transaction is still pending try again")
                 
             }
         }

@@ -16,6 +16,13 @@ extension FlutterwavePayViewController {
         setUpErrorObservers()
         setUpSuccessObservers()
         fetchBanks()
+        modalSwipeDisabled()
+    }
+    
+    func modalSwipeDisabled(){
+        if #available(iOS 13.0, *) {
+            self.isModalInPresentation = true
+        }
     }
     
     func setUpNextActionObservers(){

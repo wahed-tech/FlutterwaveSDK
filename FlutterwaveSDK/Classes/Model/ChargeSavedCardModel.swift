@@ -44,7 +44,8 @@ struct DataClass: Codable {
     let vbvrespcode: String?
     let acctvalrespmsg, acctvalrespcode: JSONNull?
     let paymentType: String?
-    let paymentPlan, paymentPage: JSONNull?
+    let paymentPlan:Int?
+    let paymentPage: JSONNull?
     let paymentID, fraudStatus, chargeType: String?
     let isLive: Int?
     let retryAttempt, getpaidBatchID: JSONNull?
@@ -61,8 +62,9 @@ struct DataClass: Codable {
         case chargedAmount = "charged_amount"
         case appfee, merchantfee, merchantbearsfee, chargeResponseCode, raveRef, chargeResponseMessage, authModelUsed, currency
         case ip = "IP"
-        case narration, status, modalauditid, vbvrespmessage, authurl, vbvrespcode, acctvalrespmsg, acctvalrespcode, paymentType, paymentPlan, paymentPage
+        case narration, status, modalauditid, vbvrespmessage, authurl, vbvrespcode, acctvalrespmsg, acctvalrespcode, paymentType, paymentPage
         case paymentID = "paymentId"
+        case paymentPlan = "payment_plan"
         case fraudStatus = "fraud_status"
         case chargeType = "charge_type"
         case isLive = "is_live"

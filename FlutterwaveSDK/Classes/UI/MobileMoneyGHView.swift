@@ -48,6 +48,7 @@ class MobileMoneyGHView: UIView {
         text.rightView = arrowButton
         text.rightViewMode = .always
         text.translatesAutoresizingMaskIntoConstraints = false
+//        text.isUserInteractionEnabled = false
         
         return text
     }()

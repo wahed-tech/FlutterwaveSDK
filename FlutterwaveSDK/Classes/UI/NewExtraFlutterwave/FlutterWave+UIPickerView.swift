@@ -19,34 +19,43 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
         if let card =  flutterwaveCardClient.selectedCard{
             //LoadingHUD.shared().show()
             CardViewModel.sharedViewModel.sendCardOtp(cardHash: card.cardHash ?? "")
-           // flutterwaveCardClient.sendOTP(card: card)
+            // flutterwaveCardClient.sendOTP(card: card)
         }
     }
     
+    
+    
     @objc func textFieldDidChange(textField: UITextField) {
-         if (textField == pinViewContainer.hiddenPinTextField){
-             pinViewContainer.pins.forEach { (item) in
-                 item.backgroundColor = .white
-             }
-             
-             for (index,_) in (textField.text?.enumerated())!{
-                 pinViewContainer.pins[index].backgroundColor = .gray
-             }
-             if ((textField.text?.count)! == 4){
-                 textField.resignFirstResponder()
-             }
-             
-         }
-         if (textField == debitCardView.cardNumberTextField){
-             if let count = textField.text?.count {
-                 if count == 6{
+        if (textField == pinViewContainer.hiddenPinTextField){
+            pinViewContainer.pins.forEach { (item) in
+                item.backgroundColor = .white
+            }
+            
+            for (index,_) in (textField.text?.enumerated())!{
+                pinViewContainer.pins[index].backgroundColor = .gray
+            }
+            if ((textField.text?.count)! == 4){
+                textField.resignFirstResponder()
+            }
+            
+        }
+        if (textField == debitCardView.cardNumberTextField){
+            if let count = textField.text?.count {
+                if count == 6{
                     flutterwaveCardClient.amount = self.amount
-                     flutterwaveCardClient.cardfirst6 = textField.text
+                    flutterwaveCardClient.cardfirst6 = textField.text
                     
-                 }
-             }
-         }
-     }
+                }
+            }
+        }
+    }
+    
+    //Disable textfield interactions
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool  {
+        self.resignFirstResponder()
+        return false
+    }
+    
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.layer.borderWidth = 0
@@ -55,8 +64,29 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
                 bankPicker.selectRow(0, inComponent: 0, animated: true)
                 self.pickerView(bankPicker, didSelectRow: 0, inComponent: 0)
             }
+        } else if textField == mobileMoneyContentView.mobileMoneyChooseNetwork{
+            
+            ghsMobileMoneyPicker.selectRow(0, inComponent: 0, animated: true)
+            self.pickerView(ghsMobileMoneyPicker, didSelectRow: 0, inComponent: 0)
+            
+        }else if textField == selectUssdBankView.otherBanksTextField{
+            
+            ussdBankPicker.selectRow(0, inComponent: 0, animated: true)
+            self.pickerView(ussdBankPicker, didSelectRow: 0, inComponent: 0)
+            
+        }else if textField == mobileMoneyFRContentContainer.mobileMoneyFRCountry{
+            francoCountryPicker.selectRow(0, inComponent: 0, animated: true)
+            self.pickerView(francoCountryPicker, didSelectRow: 0, inComponent: 0)
+            
+        }else if textField == mobileMoneyZMContentContainer.mobileMoneyChooseNetwork{
+            zambiaMobileMoneyPicker.selectRow(0, inComponent: 0, animated: true)
+            self.pickerView(zambiaMobileMoneyPicker, didSelectRow: 0, inComponent: 0)
+            
         }
+        
     }
+  
+    
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
         guard let bankCode = selectedBankCode else {
@@ -223,7 +253,7 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
     }
     func showWebView(url: String?,ref:String?){
         //Collapse opened Tabs
-       // self.handelCloseOrExpandSection(section: 0)
+        // self.handelCloseOrExpandSection(section: 0)
         //Show web view
         //let storyBoard = UIStoryboard(name: "Rave", bundle: nil)
         let controller = RavePayWebViewController()
@@ -276,19 +306,19 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
             }
         case .bank:
             print("")
-            //            accountOtpContentContainer.alpha = 0
-            //            accountOtpContentContainer.otpMessage.text = message
-            //            accountOtpContentContainer.otpTextField.text = ""
-            //            accountOtpContentContainer.otpButton.addTarget(self, action: #selector(accountOTPButtonTapped), for: .touchUpInside)
-            //            raveAccountClient.transactionReference = flwRef
-            //            UIView.animate(withDuration: 0.6, animations: {
-            //                self.accountOtpContentContainer.alpha = 1
-            //                self.accountFormContainer.alpha = 0
-            //                self.selectBankAccountView.alpha = 0
-            //            }) { (success) in
-            //                self.accountFormContainer.isHidden = true
-            //                self.selectBankAccountView.isHidden = true
-            //            }
+        //            accountOtpContentContainer.alpha = 0
+        //            accountOtpContentContainer.otpMessage.text = message
+        //            accountOtpContentContainer.otpTextField.text = ""
+        //            accountOtpContentContainer.otpButton.addTarget(self, action: #selector(accountOTPButtonTapped), for: .touchUpInside)
+        //            raveAccountClient.transactionReference = flwRef
+        //            UIView.animate(withDuration: 0.6, animations: {
+        //                self.accountOtpContentContainer.alpha = 1
+        //                self.accountFormContainer.alpha = 0
+        //                self.selectBankAccountView.alpha = 0
+        //            }) { (success) in
+        //                self.accountFormContainer.isHidden = true
+        //                self.selectBankAccountView.isHidden = true
+        //            }
         }
     }
     @objc func accountOTPButtonTapped(){
@@ -320,7 +350,7 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
         guard let otp = otpContentContainer.otpTextField.text, otp != ""  else {
             return
         }
-       // LoadingHUD.shared().show()
+        // LoadingHUD.shared().show()
         flutterwaveCardClient.otp = otp
         flutterwaveCardClient.isSaveCardCharge = "1"
         flutterwaveCardClient.saveCardPayment = "saved-card"
@@ -331,15 +361,15 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
         self.pinAction()
     }
     
- 
+    
     func pinAction(){
-           self.view.endEditing(true)
-           guard let pin = self.pinViewContainer.hiddenPinTextField.text else {return}
-            flutterwaveCardClient.bodyParam?.merge(["authorization":
-               ["mode":"pin","pin":pin]
-           ])
-           flutterwaveCardClient.chargeCard()
-       }
+        self.view.endEditing(true)
+        guard let pin = self.pinViewContainer.hiddenPinTextField.text else {return}
+        flutterwaveCardClient.bodyParam?.merge(["authorization":
+                                                    ["mode":"pin","pin":pin]
+        ])
+        flutterwaveCardClient.chargeCard()
+    }
     
     @objc func billAddressButtonTapped(){
         
@@ -359,21 +389,23 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
     func billAddressAction(){
         self.view.endEditing(true)
         guard let zip = self.billingAddressContainer.zipCodeTextField.text, let city = self.billingAddressContainer.cityTextField.text,
-            let address = self.billingAddressContainer.billingAddressTextField.text, let country = self.billingAddressContainer.countryTextField.text , let state = self.billingAddressContainer.stateTextField.text else {return}
+              let address = self.billingAddressContainer.billingAddressTextField.text, let country = self.billingAddressContainer.countryTextField.text , let state = self.billingAddressContainer.stateTextField.text else {return}
         
         flutterwaveCardClient.bodyParam?.merge(["authorization":
-            ["mode":"avs_noauth","city": city,"address":address, "state":state, "country":country, "zipcode": zip]
+                                                    ["mode":"avs_noauth","city": city,"address":address, "state":state, "country":country, "zipcode": zip]
         ])
         
         flutterwaveCardClient.chargeCard()
     }
     
+    
+    //TODO
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         let ussdBanks = getUssdBanks()
         let francophoneCountries = getFrancophoneCountries(countryCode: FlutterwaveConfig.sharedConfig().currencyCode)
-//        print("Current PickerView Tag \(pickerView.tag)")
+        //        print("Current PickerView Tag \(pickerView.tag)")
         if pickerView.tag == 12 {
-//            print("Country Code logic")
+            //            print("Country Code logic")
             if let count = self.banks?.count{
                 return count
             }else{

@@ -194,6 +194,7 @@ class FlutterwaveCardClient{
                 "email": FlutterwaveConfig.sharedConfig().email!,
                 "currency": FlutterwaveConfig.sharedConfig().currencyCode,
                 "country":country,
+                "payment_plan":FlutterwaveConfig.sharedConfig().paymentPlan ?? 0,
                 //                                      "IP": getIFAddresses().first!,
                 "tx_ref": FlutterwaveConfig.sharedConfig().transcationRef!,
                 "device_fingerprint": (UIDevice.current.identifierForVendor?.uuidString)!]

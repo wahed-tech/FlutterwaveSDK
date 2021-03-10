@@ -51,10 +51,10 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
     }
     
     //Disable textfield interactions
-    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool  {
-        self.resignFirstResponder()
-        return false
-    }
+//    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool  {
+//        self.resignFirstResponder()
+//        return false
+//    }
     
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -65,25 +65,25 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
                 self.pickerView(bankPicker, didSelectRow: 0, inComponent: 0)
             }
         } else if textField == mobileMoneyContentView.mobileMoneyChooseNetwork{
-            
+
             ghsMobileMoneyPicker.selectRow(0, inComponent: 0, animated: true)
             self.pickerView(ghsMobileMoneyPicker, didSelectRow: 0, inComponent: 0)
-            
+
         }else if textField == selectUssdBankView.otherBanksTextField{
-            
+
             ussdBankPicker.selectRow(0, inComponent: 0, animated: true)
             self.pickerView(ussdBankPicker, didSelectRow: 0, inComponent: 0)
-            
+
         }else if textField == mobileMoneyFRContentContainer.mobileMoneyFRCountry{
             francoCountryPicker.selectRow(0, inComponent: 0, animated: true)
             self.pickerView(francoCountryPicker, didSelectRow: 0, inComponent: 0)
-            
+
         }else if textField == mobileMoneyZMContentContainer.mobileMoneyChooseNetwork{
             zambiaMobileMoneyPicker.selectRow(0, inComponent: 0, animated: true)
             self.pickerView(zambiaMobileMoneyPicker, didSelectRow: 0, inComponent: 0)
-            
+
         }
-        
+
     }
   
     

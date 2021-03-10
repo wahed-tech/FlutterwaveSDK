@@ -1,5 +1,5 @@
 PODS:
-  - FlutterwaveSDK (1.2.8):
+  - FlutterwaveSDK (1.2.9):
     - IQKeyboardManagerSwift
     - lottie-ios
     - "MaterialComponents/TextControls+OutlinedTextAreas"
@@ -78,7 +78,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FlutterwaveSDK: 696a8fcd165b59e232d1b98e5e42eb86da351047
+  FlutterwaveSDK: a60abe4b7670725de5a8ae6d2be8ee27532529ca
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   lottie-ios: c38c3178ae8c4a8f200661aa5f80b9f1ca7f56b3
   MaterialComponents: e4a7c8b5eabe7856ef58f632fb5800a229bda5be

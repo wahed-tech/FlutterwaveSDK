@@ -1,6 +1,6 @@
 {
   "name": "FlutterwaveSDK",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "summary": "FlutterwaveSDK",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/Flutterwave/FlutterwaveSDK",
@@ -14,7 +14,7 @@
   },
   "source": {
     "git": "https://github.com/Flutterwave/FlutterwaveSDK.git",
-    "tag": "1.2.8"
+    "tag": "1.2.9"
   },
   "social_media_url": "https://twitter.com/FlutterwaveEng",
   "platforms": {

@@ -51,8 +51,10 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
                controller.amount = "[AMOUNT]" // This is the amount to be charged.
                controller.delegate = self
                self.present(nav, animated: true)
-               
+
            }
+    
+  
 
     
     

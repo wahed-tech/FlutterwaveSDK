@@ -595,6 +595,11 @@
 		D7B1E020F5219B42670BB7B9A77068D0 /* MaterialMathDummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9BC6EC08F4FAB983B2E92C8F055DF6 /* MaterialMathDummy.m */; };
 		D7DC968C2FCD339977239CC1D9DDD9E4 /* EmptyString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCB364D9EE486858484ABC6F8BDEF41 /* EmptyString+Extension.swift */; };
 		D823EA0BA6C34258F04285D3A9DEE106 /* CheckResolved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E32BABAC3D6E6EE3CB6A2E3A48CFDBC /* CheckResolved.swift */; };
+		D844B5172605055E00F9553C /* PaypalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D844B5162605055E00F9553C /* PaypalViewModel.swift */; };
+		D844B525260505CE00F9553C /* PaypalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D844B524260505CE00F9553C /* PaypalRepository.swift */; };
+		D844B533260506B000F9553C /* PaypalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D844B532260506B000F9553C /* PaypalModel.swift */; };
+		D844B54126051A5E00F9553C /* PaypalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D844B54026051A5E00F9553C /* PaypalView.swift */; };
+		D85AAB7426063B6700350EC6 /* FlutterwaveSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AAB7326063B6700350EC6 /* FlutterwaveSafariViewController.swift */; };
 		D864CBB3FF0B14C8DA0912C40ABB83D3 /* RetryWhen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D1AC38B4FB3B352C71FA8EE86952DF /* RetryWhen.swift */; };
 		D86DB4E7083A725E85B2F63B45BA8A6C /* MDCTextControlVerticalPositioningReferenceOutlined.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1DA12DCE4C8DA3354C668C1D097B2E /* MDCTextControlVerticalPositioningReferenceOutlined.m */; };
 		D8F94FB444F3F39192ABB8B4666C005B /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795E854C212D054CF7A182F3E0EAEEB3 /* Sample.swift */; };
@@ -960,7 +965,7 @@
 		0F63DF509B14EE922FBF446B76F07944 /* GroupedObservable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GroupedObservable.swift; path = RxSwift/GroupedObservable.swift; sourceTree = "<group>"; };
 		101A2A33ED7561DFA7E8FA7F5DF61B97 /* ObservableType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObservableType.swift; path = RxSwift/ObservableType.swift; sourceTree = "<group>"; };
 		10C01B289158C258571CC2F555F3F452 /* SynchronizedResolver.Arguments.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SynchronizedResolver.Arguments.swift; path = Sources/SynchronizedResolver.Arguments.swift; sourceTree = "<group>"; };
-		10D60B5B7F75624C6905C93B0920D0DF /* FlutterwaveSDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = FlutterwaveSDK.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		10D60B5B7F75624C6905C93B0920D0DF /* FlutterwaveSDK.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = FlutterwaveSDK.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		11460E75E5205022097688FE4B388786 /* Bank.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Bank.swift; sourceTree = "<group>"; };
 		1149889B3B86916C9ED1C3AF010CF0C4 /* MaterialComponents-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MaterialComponents-umbrella.h"; sourceTree = "<group>"; };
 		126E0098E77AA7C979B0D74D882EFE89 /* USSDConfirmView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = USSDConfirmView.swift; sourceTree = "<group>"; };
@@ -1136,7 +1141,7 @@
 		50B1806CB94E45BCA4E5E208900EDACF /* UIControl+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIControl+Rx.swift"; path = "RxCocoa/iOS/UIControl+Rx.swift"; sourceTree = "<group>"; };
 		51239824FFAC7CB9B3AD146AC75A4CAD /* Delay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Delay.swift; path = RxSwift/Observables/Delay.swift; sourceTree = "<group>"; };
 		51A9227CD82C66523BD61A2838DF352E /* Disposables.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Disposables.swift; path = RxSwift/Disposables/Disposables.swift; sourceTree = "<group>"; };
-		51BA97E8B5085EFFB47BC9C0B785CEA7 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Lottie.framework; path = "lottie-ios.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		51BA97E8B5085EFFB47BC9C0B785CEA7 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52102E19633B7DA8892B413F87E0D817 /* CombineLatest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombineLatest.swift; path = RxSwift/Observables/CombineLatest.swift; sourceTree = "<group>"; };
 		52F13185AB77291ADB8338E3756885EB /* FlutterwavePayViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FlutterwavePayViewController.swift; sourceTree = "<group>"; };
 		5337C017970E3529EB4781B01EBF926C /* Driver+Subscription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Driver+Subscription.swift"; path = "RxCocoa/Traits/Driver/Driver+Subscription.swift"; sourceTree = "<group>"; };
@@ -1197,11 +1202,11 @@
 		649C65893979AEB2226EDB34FC851357 /* DisposeBag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DisposeBag.swift; path = RxSwift/Disposables/DisposeBag.swift; sourceTree = "<group>"; };
 		64CF3D0A7F8D3EBE50F588AD1EF65775 /* Merge.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Merge.swift; path = RxSwift/Observables/Merge.swift; sourceTree = "<group>"; };
 		64D2E369A602DA8D0488E8A369E1750A /* RaveURLHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RaveURLHelper.swift; sourceTree = "<group>"; };
-		65139CE1B13DFEFF9F678F6A2EB5744D /* SwinjectAutoregistration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwinjectAutoregistration.framework; path = SwinjectAutoregistration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65139CE1B13DFEFF9F678F6A2EB5744D /* SwinjectAutoregistration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwinjectAutoregistration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		652DE17ECB72ACA88388A057DFCE4E3D /* RxPickerViewDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxPickerViewDelegateProxy.swift; path = RxCocoa/iOS/Proxies/RxPickerViewDelegateProxy.swift; sourceTree = "<group>"; };
 		657B8B540F4FACC26C532076963793FE /* GroupNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GroupNode.swift; path = "lottie-swift/src/Private/NodeRenderSystem/Nodes/RenderContainers/GroupNode.swift"; sourceTree = "<group>"; };
 		65A88AFE481C5FF2A601E55D597EFD87 /* MDFInternationalization-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MDFInternationalization-umbrella.h"; sourceTree = "<group>"; };
-		66DCA659C66B0394E681B8EC249CCC7F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		66DCA659C66B0394E681B8EC249CCC7F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		66EA189D630EAD72E9F726098858637E /* Producer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Producer.swift; path = RxSwift/Observables/Producer.swift; sourceTree = "<group>"; };
 		67564C5F89417A8A27A7E085B6D7E4F2 /* UIActivityIndicatorView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIActivityIndicatorView+Rx.swift"; path = "RxCocoa/iOS/UIActivityIndicatorView+Rx.swift"; sourceTree = "<group>"; };
 		682C5149986B135FA59943F6C81EDDB6 /* PathElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PathElement.swift; path = "lottie-swift/src/Private/Utility/Primitives/PathElement.swift"; sourceTree = "<group>"; };
@@ -1278,7 +1283,7 @@
 		8020578E5ECF7DEE518825C051CE81C4 /* MobileMoneyUrlResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MobileMoneyUrlResponse.swift; sourceTree = "<group>"; };
 		8027C98C9FBBEA00AD68F02F2A7FE457 /* FilepathImageProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FilepathImageProvider.swift; path = "lottie-swift/src/Public/iOS/FilepathImageProvider.swift"; sourceTree = "<group>"; };
 		8050C7260036BC6EE87F1B85BFE34865 /* Trim.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Trim.swift; path = "lottie-swift/src/Private/Model/ShapeItems/Trim.swift"; sourceTree = "<group>"; };
-		809C5FAB588354C9BA37DC3EAB8CB45C /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RxSwift.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		809C5FAB588354C9BA37DC3EAB8CB45C /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81593E2E4EAAB15EF97DB9B5C9F5F9CC /* MaterialComponents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MaterialComponents.release.xcconfig; sourceTree = "<group>"; };
 		819E967BDE6831D6AFF9C409E1DF3424 /* SavedCardsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SavedCardsView.swift; sourceTree = "<group>"; };
 		8228450E7E29196FB9CD9B26998680A9 /* AnonymousDisposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnonymousDisposable.swift; path = RxSwift/Disposables/AnonymousDisposable.swift; sourceTree = "<group>"; };
@@ -1303,14 +1308,14 @@
 		86B71DE555E7255E471D9F0848A847F4 /* RxRelay-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RxRelay-Info.plist"; sourceTree = "<group>"; };
 		879B97A023F2EFDD4BE609F6660C50EE /* SolidCompositionLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SolidCompositionLayer.swift; path = "lottie-swift/src/Private/LayerContainers/CompLayers/SolidCompositionLayer.swift"; sourceTree = "<group>"; };
 		87A4C171AC1AAFC240C583583E42A376 /* UIImage+MaterialRTL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MaterialRTL.m"; path = "Sources/UIImage+MaterialRTL.m"; sourceTree = "<group>"; };
-		87C4BA27CCDFFB75309015D9EB28FA7D /* FlutterwaveSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FlutterwaveSDK.framework; path = FlutterwaveSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		87C4BA27CCDFFB75309015D9EB28FA7D /* FlutterwaveSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FlutterwaveSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		89658F17130890590F5E4F110F0BBA52 /* AutoRegistration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AutoRegistration.swift; path = Sources/AutoRegistration.swift; sourceTree = "<group>"; };
 		8976F4C13EFD88413D0A5BDFD7542A32 /* ScheduledItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScheduledItem.swift; path = RxSwift/Schedulers/Internal/ScheduledItem.swift; sourceTree = "<group>"; };
 		89FB0A8119CF64F732CCEDCDA3EEDFEE /* lottie-ios-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "lottie-ios-prefix.pch"; sourceTree = "<group>"; };
 		8A36213314267034595A7EB0895B2143 /* StrokeNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StrokeNode.swift; path = "lottie-swift/src/Private/NodeRenderSystem/Nodes/RenderNodes/StrokeNode.swift"; sourceTree = "<group>"; };
 		8A97F389E0098B8D4E444FF3F4D3D108 /* IQBarButtonItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQBarButtonItem.swift; path = IQKeyboardManagerSwift/IQToolbar/IQBarButtonItem.swift; sourceTree = "<group>"; };
 		8AA405DFCBC6D752291AC6F9B68AD198 /* lottie-ios.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "lottie-ios.modulemap"; sourceTree = "<group>"; };
-		8ACA110EF3B35B3FCC08297B3799D9AD /* Swinject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Swinject.framework; path = Swinject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8ACA110EF3B35B3FCC08297B3799D9AD /* Swinject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Swinject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B4DE24C6FB1F88ED60A529C31901A75 /* MobileMoneyFR.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MobileMoneyFR.swift; sourceTree = "<group>"; };
 		8B7AE01A2C88E765D60C3A467F85C2BC /* Pods-FlutterwaveSDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FlutterwaveSDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		8BEFFBBCBC5D39F9BFDAFBFC2334DC49 /* MaterialComponents-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MaterialComponents-dummy.m"; sourceTree = "<group>"; };
@@ -1333,7 +1338,7 @@
 		90713AB872851984A73F054699D3E46F /* UIView+MaterialRTL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+MaterialRTL.h"; path = "Sources/UIView+MaterialRTL.h"; sourceTree = "<group>"; };
 		9081C2B1A2AE6DBC82B51D39DE854AD4 /* MDCTextControlGradientManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCTextControlGradientManager.m; path = components/private/TextControlsPrivate/src/Shared/MDCTextControlGradientManager.m; sourceTree = "<group>"; };
 		91120559420030EFB8C4780F3B35E953 /* LayerDebugging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayerDebugging.swift; path = "lottie-swift/src/Private/Utility/Debugging/LayerDebugging.swift"; sourceTree = "<group>"; };
-		9187E14778F6E2D6659BE63D120285E7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		9187E14778F6E2D6659BE63D120285E7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		918E1CDFC6449C9FDE7D954560EB03D9 /* MDCBaseTextArea.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCBaseTextArea.h; path = components/TextControls/src/BaseTextAreas/MDCBaseTextArea.h; sourceTree = "<group>"; };
 		91A263666DE6CBDAAC323A6CEAAD2297 /* Swinject-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Swinject-prefix.pch"; sourceTree = "<group>"; };
 		91BFA32C40B20CDC1540F3C11002DF93 /* RxCocoa.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RxCocoa.modulemap; sourceTree = "<group>"; };
@@ -1350,7 +1355,7 @@
 		95D07B12509E37C638D2C1F26719B271 /* OperationQueueScheduler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OperationQueueScheduler.swift; path = RxSwift/Schedulers/OperationQueueScheduler.swift; sourceTree = "<group>"; };
 		95D25F94D8D609C1377C7F742E2C99DF /* MpesaView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MpesaView.swift; sourceTree = "<group>"; };
 		960BE421F16743085E166BCDAFF30218 /* Errors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = RxSwift/Errors.swift; sourceTree = "<group>"; };
-		965E023E48B8A10ECA163D76891CC0E7 /* Pods_FlutterwaveSDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FlutterwaveSDK_Tests.framework; path = "Pods-FlutterwaveSDK_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		965E023E48B8A10ECA163D76891CC0E7 /* Pods_FlutterwaveSDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlutterwaveSDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96894B415703B79AFA03C260BB77887A /* Logging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Logging.swift; path = RxCocoa/Foundation/Logging.swift; sourceTree = "<group>"; };
 		96AA944C7066BC36D8E623BE4381D70A /* String+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		96B202EDF2773F986AC569A6DCCBB834 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -1365,12 +1370,12 @@
 		99DFB8B8B4377193980592E4E745E78D /* Debug.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Debug.swift; path = RxSwift/Observables/Debug.swift; sourceTree = "<group>"; };
 		99E9EDDB631F475928D0AF1F87F7BC32 /* Event.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Event.swift; path = RxSwift/Event.swift; sourceTree = "<group>"; };
 		9A05632146FC542147F00998817D2F33 /* Resolver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Resolver.swift; path = Sources/Resolver.swift; sourceTree = "<group>"; };
-		9A2AC0B8BAC6EF061EBC28825653DF99 /* MDFInternationalization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MDFInternationalization.framework; path = MDFInternationalization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A2AC0B8BAC6EF061EBC28825653DF99 /* MDFInternationalization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MDFInternationalization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A7ABCD80682078BB9BE819038E39F10 /* Dematerialize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Dematerialize.swift; path = RxSwift/Observables/Dematerialize.swift; sourceTree = "<group>"; };
 		9B68B1A41081D15189BB3ADBF487F237 /* _RXObjCRuntime.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _RXObjCRuntime.h; path = RxCocoa/Runtime/include/_RXObjCRuntime.h; sourceTree = "<group>"; };
 		9C10DCFF517054E5CB8774D0142BF61D /* ShapeLayerModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShapeLayerModel.swift; path = "lottie-swift/src/Private/Model/Layers/ShapeLayerModel.swift"; sourceTree = "<group>"; };
 		9C7F3C3536645A60547B69063DE2B369 /* UKAccountView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UKAccountView.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DAE0239A12CE1893DBB482F4323FB08 /* _RXDelegateProxy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _RXDelegateProxy.h; path = RxCocoa/Runtime/include/_RXDelegateProxy.h; sourceTree = "<group>"; };
 		9E0C1B31F45086D273BD03AD0AE31A4B /* InvocableType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InvocableType.swift; path = RxSwift/Schedulers/Internal/InvocableType.swift; sourceTree = "<group>"; };
 		9E8F605F22A9A9643C7097BEDE1AEAB8 /* ServiceKey.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServiceKey.swift; path = Sources/ServiceKey.swift; sourceTree = "<group>"; };
@@ -1388,7 +1393,7 @@
 		A2156E18A7B06AE2A2F54634CC783F56 /* BillingAddress.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BillingAddress.swift; sourceTree = "<group>"; };
 		A25C684C228D498263AB8E69FD3A35C6 /* ValueContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ValueContainer.swift; path = "lottie-swift/src/Private/NodeRenderSystem/NodeProperties/ValueContainer.swift"; sourceTree = "<group>"; };
 		A2AEA876C65AE86C0548B3049A48083B /* ControlProperty+Driver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ControlProperty+Driver.swift"; path = "RxCocoa/Traits/Driver/ControlProperty+Driver.swift"; sourceTree = "<group>"; };
-		A34157B3708EDB7D17422B3D92F591D2 /* MaterialComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MaterialComponents.framework; path = MaterialComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A34157B3708EDB7D17422B3D92F591D2 /* MaterialComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MaterialComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3566C68EC4B08072B3844FC942BBFF5 /* BaseViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		A366C751D4451BFCFDF1A4CD15613D09 /* MobileMoneyRW.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MobileMoneyRW.swift; sourceTree = "<group>"; };
 		A3DE4FA70976A2CA853BA52DE8AB110B /* RxSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RxSwift.release.xcconfig; sourceTree = "<group>"; };
@@ -1405,7 +1410,7 @@
 		A7E9FCF57CE14F20E2A4278D1241C4E7 /* Container.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Container.swift; path = Sources/Container.swift; sourceTree = "<group>"; };
 		A7EC28FE7D86A35E932011F9E9DE8D49 /* Rectangle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Rectangle.swift; path = "lottie-swift/src/Private/Model/ShapeItems/Rectangle.swift"; sourceTree = "<group>"; };
 		A82688102E485F619B8228C4D2983508 /* MDCBaseTextFieldLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCBaseTextFieldLayout.m; path = components/private/TextControlsPrivate/src/TextFields/MDCBaseTextFieldLayout.m; sourceTree = "<group>"; };
-		A8E950A16D00F649C54FFB30F81D7842 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = IQKeyboardManagerSwift.framework; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8E950A16D00F649C54FFB30F81D7842 /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A93EF86EA1744C7232B32AB880A29ED0 /* Bag.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bag.swift; path = Platform/DataStructures/Bag.swift; sourceTree = "<group>"; };
 		A9ACBBDAD643660AF3F47F1B7AAFEE4C /* UIBezierPath+MDCTextControlStyle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIBezierPath+MDCTextControlStyle.m"; path = "components/private/TextControlsPrivate/src/Shared/UIBezierPath+MDCTextControlStyle.m"; sourceTree = "<group>"; };
 		AAC6309CD164C6BAD5EA2F815D0DF192 /* SwinjectAutoregistration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwinjectAutoregistration.release.xcconfig; sourceTree = "<group>"; };
@@ -1474,7 +1479,7 @@
 		BBC7B89AC6583D81C54D474B95B9F9A3 /* RxRelay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxRelay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBCCD827573779E9A2B6DAC5FD6FA704 /* Concat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Concat.swift; path = RxSwift/Observables/Concat.swift; sourceTree = "<group>"; };
 		BC3A71BA9875CAABE83E28F8FF59C060 /* UIImage+MaterialRTL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MaterialRTL.h"; path = "Sources/UIImage+MaterialRTL.h"; sourceTree = "<group>"; };
-		BC432FD48A5932251F1CAFBC4BF74894 /* RxCocoa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RxCocoa.framework; path = RxCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC432FD48A5932251F1CAFBC4BF74894 /* RxCocoa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD1D6207718A83D2016F25C5E6FDEFCC /* ShapeRenderLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShapeRenderLayer.swift; path = "lottie-swift/src/Private/NodeRenderSystem/RenderLayers/ShapeRenderLayer.swift"; sourceTree = "<group>"; };
 		BD465B0791901FB16FA6FBD2BF5F4916 /* RxCollectionViewDataSourceProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxCollectionViewDataSourceProxy.swift; path = RxCocoa/iOS/Proxies/RxCollectionViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		BDB4C4A39FAC704981C87B20A6605191 /* RefCountDisposable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RefCountDisposable.swift; path = RxSwift/Disposables/RefCountDisposable.swift; sourceTree = "<group>"; };
@@ -1495,7 +1500,7 @@
 		C41B3818D586F42EE038853AAB2466DC /* RxCollectionViewDelegateProxy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RxCollectionViewDelegateProxy.swift; path = RxCocoa/iOS/Proxies/RxCollectionViewDelegateProxy.swift; sourceTree = "<group>"; };
 		C43031628FE938003D942460B7621EBE /* RxCocoaObjCRuntimeError+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "RxCocoaObjCRuntimeError+Extensions.swift"; path = "RxCocoa/Common/RxCocoaObjCRuntimeError+Extensions.swift"; sourceTree = "<group>"; };
 		C43765B0C5AD74B1C7F20D92E4CDF1EB /* BehaviorSubject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BehaviorSubject.swift; path = RxSwift/Subjects/BehaviorSubject.swift; sourceTree = "<group>"; };
-		C4777DBD83EDD5B42AB8D4494E3697AD /* Loader_YW.json */ = {isa = PBXFileReference; includeInIndex = 1; path = Loader_YW.json; sourceTree = "<group>"; };
+		C4777DBD83EDD5B42AB8D4494E3697AD /* Loader_YW.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; path = Loader_YW.json; sourceTree = "<group>"; };
 		C4E621A527D8554354E8234A2CB65907 /* _RX.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _RX.h; path = RxCocoa/Runtime/include/_RX.h; sourceTree = "<group>"; };
 		C5181E51D318DB56A4A4107588940147 /* IQKeyboardManagerSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IQKeyboardManagerSwift-umbrella.h"; sourceTree = "<group>"; };
 		C5A2365205DFC29055C0BFC606640E2D /* MaterialTextControlsPrivate+BaseStyle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MaterialTextControlsPrivate+BaseStyle.h"; path = "components/private/TextControlsPrivate/src/BaseStyle/MaterialTextControlsPrivate+BaseStyle.h"; sourceTree = "<group>"; };
@@ -1554,6 +1559,11 @@
 		D74932BD9FAEA9C781219ED37E195C85 /* GroupBy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GroupBy.swift; path = RxSwift/Observables/GroupBy.swift; sourceTree = "<group>"; };
 		D78D77D60876F1F6925D5FE5067F9DF9 /* DefaultTextInputFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DefaultTextInputFormatter.swift; sourceTree = "<group>"; };
 		D7FFC429868EE1167B19B961891C0BCA /* Maybe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Maybe.swift; path = RxSwift/Traits/Maybe.swift; sourceTree = "<group>"; };
+		D844B5162605055E00F9553C /* PaypalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaypalViewModel.swift; sourceTree = "<group>"; };
+		D844B524260505CE00F9553C /* PaypalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaypalRepository.swift; sourceTree = "<group>"; };
+		D844B532260506B000F9553C /* PaypalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaypalModel.swift; sourceTree = "<group>"; };
+		D844B54026051A5E00F9553C /* PaypalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaypalView.swift; sourceTree = "<group>"; };
+		D85AAB7326063B6700350EC6 /* FlutterwaveSafariViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterwaveSafariViewController.swift; sourceTree = "<group>"; };
 		D8D6999FDD1378BBF4AF43DD68AFEDF8 /* MDFRTL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDFRTL.h; path = Sources/MDFRTL.h; sourceTree = "<group>"; };
 		D928AE4F276478CBB95AFC6FCF3CCF16 /* RxSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RxSwift.modulemap; sourceTree = "<group>"; };
 		D92AEDA5BB8AB6AD2455A0C1E0729A29 /* Just.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Just.swift; path = RxSwift/Observables/Just.swift; sourceTree = "<group>"; };
@@ -1621,7 +1631,7 @@
 		EDFA63EBE3B40FF98E7E42DC650B840C /* Swinject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Swinject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE2DA473F4592804C3E865E1A7C22286 /* Sequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sequence.swift; path = RxSwift/Observables/Sequence.swift; sourceTree = "<group>"; };
 		EED4156104145C3B6B3D3E71B5768BC6 /* ImageCompositionLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageCompositionLayer.swift; path = "lottie-swift/src/Private/LayerContainers/CompLayers/ImageCompositionLayer.swift"; sourceTree = "<group>"; };
-		EFCBDC5C3FAFBDA00E034295D0A41561 /* Pods_FlutterwaveSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FlutterwaveSDK_Example.framework; path = "Pods-FlutterwaveSDK_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFCBDC5C3FAFBDA00E034295D0A41561 /* Pods_FlutterwaveSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlutterwaveSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0004BA3D487FEB9C56589997122A338 /* SwinjectAutoregistration-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwinjectAutoregistration-prefix.pch"; sourceTree = "<group>"; };
 		F076101F17958A13466E9CF2045CBF89 /* ResolutionError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResolutionError.swift; path = Sources/ResolutionError.swift; sourceTree = "<group>"; };
 		F09B2F2CBD0E30018526BAD06C6C325C /* MDCTextControlStyleBase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MDCTextControlStyleBase.m; path = components/private/TextControlsPrivate/src/BaseStyle/MDCTextControlStyleBase.m; sourceTree = "<group>"; };
@@ -1644,14 +1654,14 @@
 		F7C914BA5ABA578270AD8A04680ABEC7 /* ShapeNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShapeNode.swift; path = "lottie-swift/src/Private/NodeRenderSystem/Nodes/PathNodes/ShapeNode.swift"; sourceTree = "<group>"; };
 		F8318CD45215937818E00E41B9C2D4B9 /* StartWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StartWith.swift; path = RxSwift/Observables/StartWith.swift; sourceTree = "<group>"; };
 		F86B34D8B5BC0DA781E1A8C79A34B70F /* MDFInternationalization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDFInternationalization.h; path = Sources/MDFInternationalization.h; sourceTree = "<group>"; };
-		F8F2D4520AC1D3FFFD566BC8EC2C1BF5 /* Loader_WY.json */ = {isa = PBXFileReference; includeInIndex = 1; path = Loader_WY.json; sourceTree = "<group>"; };
+		F8F2D4520AC1D3FFFD566BC8EC2C1BF5 /* Loader_WY.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; path = Loader_WY.json; sourceTree = "<group>"; };
 		F90DDBD3E6A1160DB503CE898B386BE6 /* AsyncSubject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncSubject.swift; path = RxSwift/Subjects/AsyncSubject.swift; sourceTree = "<group>"; };
 		FA8251812C5DD4C6156795028D54ECD0 /* ShapeItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShapeItem.swift; path = "lottie-swift/src/Private/Model/ShapeItems/ShapeItem.swift"; sourceTree = "<group>"; };
 		FB5B44BD2EE2BC28DF6F7BAF224ADFD5 /* CompatibleAnimationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CompatibleAnimationView.swift; path = "lottie-swift/src/Public/iOS/Compatibility/CompatibleAnimationView.swift"; sourceTree = "<group>"; };
 		FB9880985FA050C74F03AEC5673AAE78 /* KVORepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KVORepresentable.swift; path = RxCocoa/Foundation/KVORepresentable.swift; sourceTree = "<group>"; };
 		FBA902FF9B4249563CCCEF6485CF697B /* UIScrollView+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIScrollView+Rx.swift"; path = "RxCocoa/iOS/UIScrollView+Rx.swift"; sourceTree = "<group>"; };
 		FBC7F6AC03E3A1491B9EFBC0974BAE2E /* MDCTextControlAssistiveLabelDrawPriority.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MDCTextControlAssistiveLabelDrawPriority.h; path = components/private/TextControlsPrivate/src/Shared/MDCTextControlAssistiveLabelDrawPriority.h; sourceTree = "<group>"; };
-		FBE3FF55F435031363223199853C5A43 /* Loader_YB.json */ = {isa = PBXFileReference; includeInIndex = 1; path = Loader_YB.json; sourceTree = "<group>"; };
+		FBE3FF55F435031363223199853C5A43 /* Loader_YB.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; path = Loader_YB.json; sourceTree = "<group>"; };
 		FC0527293A12418320654094D65B4A16 /* AtomicInt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AtomicInt.swift; path = Platform/AtomicInt.swift; sourceTree = "<group>"; };
 		FC66AD175D09D4F4F2B1288435E604C1 /* FloatValueProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FloatValueProvider.swift; path = "lottie-swift/src/Public/DynamicProperties/ValueProviders/FloatValueProvider.swift"; sourceTree = "<group>"; };
 		FCA5AC4D8CCFD42C6254F005696BD359 /* Do.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Do.swift; path = RxSwift/Observables/Do.swift; sourceTree = "<group>"; };
@@ -1664,7 +1674,7 @@
 		FEDD21D2026B620DCB4C21854D0B29DA /* ObservableConvertibleType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObservableConvertibleType.swift; path = RxSwift/ObservableConvertibleType.swift; sourceTree = "<group>"; };
 		FEE991BFF4BA66DD1F4EDFD4DAA1BFC8 /* Keyframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Keyframe.swift; path = "lottie-swift/src/Private/Model/Keyframes/Keyframe.swift"; sourceTree = "<group>"; };
 		FF5F4D3EADCA5215C4F8DB8200510DDB /* LoadingHUD.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoadingHUD.swift; sourceTree = "<group>"; };
-		FF8B264DFE802855D5D67E7CDDABFC3C /* RxRelay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RxRelay.framework; path = RxRelay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF8B264DFE802855D5D67E7CDDABFC3C /* RxRelay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxRelay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFFDE28FFF3F1B132E352BD8D517BEDB /* SingleAsync.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SingleAsync.swift; path = RxSwift/Observables/SingleAsync.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1927,7 +1937,6 @@
 				F6C0FCBAA5D539D6B8B8A89244F30FCE /* WKWebView+Rx.swift */,
 				512ED1AF61076091E25FD67F4A6D4C78 /* Support Files */,
 			);
-			name = RxCocoa;
 			path = RxCocoa;
 			sourceTree = "<group>";
 		};
@@ -1971,7 +1980,6 @@
 				7A081E2344F5B18A691369850E8FB339 /* FlutterWave+UIPickerView.swift */,
 				3E9F74C1FAD7B52767B9E28192C91E2A /* FlutterwavePay+Configure.swift */,
 			);
-			name = NewExtraFlutterwave;
 			path = NewExtraFlutterwave;
 			sourceTree = "<group>";
 		};
@@ -2137,7 +2145,6 @@
 				E1CF4F59AC96B7C8B7DC30B11C3AA911 /* VectorsExtensions.swift */,
 				3439921D49E9CBD9C9355FCD0524B80B /* Support Files */,
 			);
-			name = "lottie-ios";
 			path = "lottie-ios";
 			sourceTree = "<group>";
 		};
@@ -2169,7 +2176,6 @@
 				ABA1BD0103B4B5BBBF95352B066450FA /* TextControls+OutlinedTextAreas */,
 				E3C2206D3D4A714EC3595DD31346C88A /* TextControls+OutlinedTextFields */,
 			);
-			name = MaterialComponents;
 			path = MaterialComponents;
 			sourceTree = "<group>";
 		};
@@ -2203,6 +2209,7 @@
 				2DB3F5F1ED1FBFE03C4C0A13B218898E /* ValidateChargeModel.swift */,
 				06B2348B9366D21D2E8DBB8AFC3A3523 /* VoucherChargeModel.swift */,
 				2EB0072763CDBCD14FF38C05BF21C8F1 /* ZambiaMoneyModel.swift */,
+				D844B532260506B000F9553C /* PaypalModel.swift */,
 			);
 			name = Model;
 			path = FlutterwaveSDK/Classes/Model;
@@ -2340,7 +2347,6 @@
 				DE30F52DE0F1486BE7E5AE2409474366 /* IQUIViewController+Additions.swift */,
 				0BB8CA3D1A85E6F41FF4D247926CBD22 /* Support Files */,
 			);
-			name = IQKeyboardManagerSwift;
 			path = IQKeyboardManagerSwift;
 			sourceTree = "<group>";
 		};
@@ -2405,7 +2411,6 @@
 				A66875D56FB5499CF52179453AA3ABA7 /* Utils.swift */,
 				45327736DBB524382A9EB2A4447BAE4E /* Support Files */,
 			);
-			name = RxRelay;
 			path = RxRelay;
 			sourceTree = "<group>";
 		};
@@ -2574,7 +2579,6 @@
 				BA1CB8F4128F5B6B760D41AA1199CB8F /* Zip+Collection.swift */,
 				4403A47095FCB56BDB5FFF10901D8834 /* Support Files */,
 			);
-			name = RxSwift;
 			path = RxSwift;
 			sourceTree = "<group>";
 		};
@@ -2594,7 +2598,6 @@
 				2E15C9CFD4A00923C2F384CB1B20E7F9 /* UIView+MaterialRTL.m */,
 				259690041DC74EE2FEFC7FCB22C89F5B /* Support Files */,
 			);
-			name = MDFInternationalization;
 			path = MDFInternationalization;
 			sourceTree = "<group>";
 		};
@@ -2616,6 +2619,7 @@
 				E52A9ECE6202F506D3B98663D084D31F /* MobileMoneyViewModel.swift */,
 				62BD1C21357001F89D5AD5C60DF0E3FF /* PaymentOptionModel.swift */,
 				AE3179F209EA8626D68C5501394C580D /* PaymentServicesViewModel.swift */,
+				D844B5162605055E00F9553C /* PaypalViewModel.swift */,
 			);
 			name = ViewModel;
 			path = FlutterwaveSDK/Classes/ViewModel;
@@ -2685,7 +2689,6 @@
 				0078A6B40F5F2651786A1F7FD29F94FD /* TextFormatter.swift */,
 				5B64284909F5B4160EC11622B72CF4F0 /* TextInputFormatter.swift */,
 			);
-			name = Formatter;
 			path = Formatter;
 			sourceTree = "<group>";
 		};
@@ -2708,7 +2711,6 @@
 				FBE3FF55F435031363223199853C5A43 /* Loader_YB.json */,
 				C4777DBD83EDD5B42AB8D4494E3697AD /* Loader_YW.json */,
 			);
-			name = UI;
 			path = UI;
 			sourceTree = "<group>";
 		};
@@ -2757,6 +2759,7 @@
 				94A68F9C98CD739F1C234A039CA7041D /* FlutterwavePayNavTitle.swift */,
 				52F13185AB77291ADB8338E3756885EB /* FlutterwavePayViewController.swift */,
 				206D2CC74A8537B77616FCA3EADAF413 /* FlutterwavePayWebViewController.swift */,
+				D85AAB7326063B6700350EC6 /* FlutterwaveSafariViewController.swift */,
 				B6C66E6DEF12C914763A2F297806FD41 /* HowView.swift */,
 				8B4DE24C6FB1F88ED60A529C31901A75 /* MobileMoneyFR.swift */,
 				2E9933FDEA50218FB7F9E27E3ABB4881 /* MobileMoneyGHPendingView.swift */,
@@ -2780,6 +2783,7 @@
 				B6C734DEADF82DC90A68E7896A65EC87 /* USSDSelectBankView.swift */,
 				8DEA71E7A0594D994D84330306AAB736 /* VSTextField.swift */,
 				10BEBA882784B8A2F18BF32FF7209409 /* NewExtraFlutterwave */,
+				D844B54026051A5E00F9553C /* PaypalView.swift */,
 			);
 			name = UI;
 			path = FlutterwaveSDK/Classes/UI;
@@ -2965,6 +2969,7 @@
 				EAC19A916A4097074A7354FF2836CE08 /* CardRepository.swift */,
 				E611981F1B952DE43E81669C63020479 /* MobileMoneyRepository.swift */,
 				1E46A942905B4AB21506A9C2C54B9357 /* PaymentServicesRepository.swift */,
+				D844B524260505CE00F9553C /* PaypalRepository.swift */,
 			);
 			name = Repository;
 			path = FlutterwaveSDK/Classes/Repository;
@@ -3002,7 +3007,6 @@
 				383FAFDA3A3DF19BB496172D4D8CCF60 /* TypeParser.swift */,
 				D04A556AF0A3F126DF5A5EAFAD662C01 /* Support Files */,
 			);
-			name = SwinjectAutoregistration;
 			path = SwinjectAutoregistration;
 			sourceTree = "<group>";
 		};
@@ -3046,7 +3050,6 @@
 				B311F3023FDC3ECC6F891B06A026DEF2 /* UnavailableItems.swift */,
 				8A4E7F8DE3133C64F65C58CE6BAB6031 /* Support Files */,
 			);
-			name = Swinject;
 			path = Swinject;
 			sourceTree = "<group>";
 		};
@@ -4019,6 +4022,7 @@
 				C221880A49588D5741D5DCF276B85442 /* AccountForm.swift in Sources */,
 				FA1C2F99A82F8D806C2FCA4A76301B1B /* AccountPaymentModel.swift in Sources */,
 				050AE2D78779CE1BD87E145053195EDE /* Bank.swift in Sources */,
+				D844B5172605055E00F9553C /* PaypalViewModel.swift in Sources */,
 				9799406CDB03F33CAC479EEE12B75C08 /* BankRepository.swift in Sources */,
 				BD898ACB6A07E8AF5B19590829EAD28A /* BankTransferModel.swift in Sources */,
 				4D02D0BDCC0D9F6C5023F3BF7F0A9907 /* BankTransferViewOne.swift in Sources */,
@@ -4034,12 +4038,14 @@
 				5F18CB0EB31A3956A9A2B71914DB33AC /* CardViewModel.swift in Sources */,
 				4F33738573BA03D9433D7BF3E58850B2 /* CaretPositionCorrector.swift in Sources */,
 				043AAC73BC1D64C55D117BF83707A941 /* ChargeCardModel.swift in Sources */,
+				D844B525260505CE00F9553C /* PaypalRepository.swift in Sources */,
 				4E4FD130B6FFA918D0201187A589A732 /* ChargeSavedCardModel.swift in Sources */,
 				AF817CECD40F30A31994F13E93FF485E /* Container.swift in Sources */,
 				61BABDD40FFDB22B1560A08AEFFF44C6 /* DebitCardView.swift in Sources */,
 				DA962A26A24533441D6137A9E684BD1B /* DebitCardViewNew.swift in Sources */,
 				DD2C676B0300B5856F06D9EC66D3337F /* DefaultTextFormatter.swift in Sources */,
 				D08A662E2801B61F9746F3E893444B38 /* DefaultTextInputFormatter.swift in Sources */,
+				D844B54126051A5E00F9553C /* PaypalView.swift in Sources */,
 				D7DC968C2FCD339977239CC1D9DDD9E4 /* EmptyString+Extension.swift in Sources */,
 				FF6D708F8EAB2D276E761D55CAC8FE90 /* Encoder + Extentions.swift in Sources */,
 				A8F31D1EF9E7194BCD89B811A261CF35 /* EndpointType.swift in Sources */,
@@ -4059,6 +4065,7 @@
 				6BF7CA859BB82E494A953DF037A1620C /* FlutterwavePayViewController.swift in Sources */,
 				36B5694C60AD36F36D30664DFCEC41A1 /* FlutterwavePayWebViewController.swift in Sources */,
 				4570AC6DA158457E7A4149644AFDDA1D /* FlutterwaveSDK-dummy.m in Sources */,
+				D85AAB7426063B6700350EC6 /* FlutterwaveSafariViewController.swift in Sources */,
 				F1517656E80120A37564A44753021CC5 /* FrancophoneModel.swift in Sources */,
 				FC7508C9E60ADFAB1BBEC904528844D9 /* GhanaMobileMoneyRequest.swift in Sources */,
 				6A23A3FA817DFFC1BA65F1CAD1C292FD /* HowView.swift in Sources */,
@@ -4068,6 +4075,7 @@
 				F412E52B95C4C6F2186ECD29C4901E9F /* MobileMoneyGHPendingView.swift in Sources */,
 				3346F70F31C1DABE1E450089F218B9F0 /* MobileMoneyGHView.swift in Sources */,
 				BF587383E9F3D4E011F9C8A367DBF7D5 /* MobileMoneyRepository.swift in Sources */,
+				D844B533260506B000F9553C /* PaypalModel.swift in Sources */,
 				B7B8CBC7C7716B9FA4C2448154655F2F /* MobileMoneyRW.swift in Sources */,
 				26CCD122E6B9AE3079CE3FFD256EC080 /* MobileMoneyUganda.swift in Sources */,
 				DC8D96F1A03C80B60C21265DD9C2B94F /* MobileMoneyUrlResponse.swift in Sources */,
@@ -4812,8 +4820,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

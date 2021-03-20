@@ -16,6 +16,7 @@ class BaseViewModel {
     public let isLoading:PublishSubject<Bool> = PublishSubject()
     let moveToPinNext = PublishSubject<String>()
     let moveToOTPNext = PublishSubject<(String,String,TransactionSource)>()
+    let movetoPaypal =  PublishSubject<(String,FlutterChargeResponse)>()
     let moveToWebViewNext = PublishSubject<(String,FlutterChargeResponse)>()
     let moveToAddressVerificationNext = PublishSubject<(String,FlutterChargeResponse)>()
     
@@ -184,5 +185,5 @@ enum TransactionSource {
     case rwandaMoney
     case zambiaMoney
     case francophoneMoney
-    
+    case paypal
 }

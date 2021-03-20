@@ -20,6 +20,7 @@ class PaymentServicesViewModel: BaseViewModel{
     let moveToOTP = PublishSubject<ChargeCardResponse>()
     
     let moveToWebView = PublishSubject<ChargeCardResponse>()
+//    let moveToPaypal = PublishSubject<PaypalResponse>()
     let moveToAddressVerification = PublishSubject<ChargeCardResponse>()
     let chargeCardResponse = PublishSubject<ChargeCardResponse>()
     let validateCharge = PublishSubject<ValidateChargeResponse>()

@@ -28,7 +28,7 @@ public class BaseViewController:UITableViewController{
             action(response.1.meta?.authorization?.redirect ?? "",ref)
         }).disposed(by: disposableBag)
     }
-    
+   
     
     func setUpMoveToOTP(baseViewModel:BaseViewModel, action:@escaping (String,String,TransactionSource) -> Void){
          

@@ -27,6 +27,7 @@ extension FlutterwavePayViewController {
     
     func setUpNextActionObservers(){
         moveToWebObserver()
+//        moveToPaypalObserver()
         PaymentServicesViewModel.sharedViewModel.moveToPin.subscribe(onNext: { value in
             self.showPin()
         } ).disposed(by: disposableBag)
@@ -48,6 +49,22 @@ extension FlutterwavePayViewController {
         } ).disposed(by: disposableBag)
         
         
+        PaymentServicesViewModel.sharedViewModel.mpesaVerifyResponse.observeOn(MainScheduler.instance).subscribe(onNext: {response in
+            if(response.getStatus() != PaymentState.PENDING){
+                self.delegate?.tranasctionSuccessful(flwRef: response.data?.flwRef ?? "", responseData: response.data?.toFlutterResponse())
+               
+                self.navigationController?.popViewController(animated: true)
+            }
+            
+        } ).disposed(by: disposableBag)
+        
+        PaymentServicesViewModel.sharedViewModel.error.observeOn(MainScheduler.instance).subscribe(onNext: { error in
+           
+            showSnackBarWithMessage(msg: error )
+            
+        } ).disposed(by: disposableBag)
+        
+        
     }
     
     func moveToWebObserver(){
@@ -62,6 +79,10 @@ extension FlutterwavePayViewController {
         setUpMoveToWebView(baseViewModel: BankViewModel.sharedViewModel, action: {url,ref in
             self.showWebView(url: url,ref:ref)
         })
+        
+        setUpMoveToWebView(baseViewModel: PaypalViewModel.sharedViewModel, action: {url,ref in
+            self.showWebView(url: url,ref:ref)
+        })
       
         CardViewModel.sharedViewModel.chargeSavedCardResponse.subscribe(onNext: {response in
             if response.data?.authurl == "N/A" {
@@ -71,11 +92,13 @@ extension FlutterwavePayViewController {
             }
         } ).disposed(by: disposeBag)
     }
+    
     func setUpLoading(){
         setUpLoadingObservers(baseViewModel: PaymentServicesViewModel.sharedViewModel)
         setUpLoadingObservers(baseViewModel: MobileMoneyViewModel.sharedViewModel)
         setUpLoadingObservers(baseViewModel: BankViewModel.sharedViewModel)
         setUpLoadingObservers(baseViewModel: CardViewModel.sharedViewModel)
+        setUpLoadingObservers(baseViewModel: PaypalViewModel.sharedViewModel)
     }
     
     
@@ -182,6 +205,8 @@ extension FlutterwavePayViewController {
         case .zambiaMoney:
             print("")
         case .francophoneMoney:
+            print("")
+        case .paypal:
             print("")
         }
     }

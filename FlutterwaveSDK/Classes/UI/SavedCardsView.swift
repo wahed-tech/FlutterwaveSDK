@@ -27,11 +27,28 @@ class SavedCardsView: UIView {
         return label
     }()
     
+//    lazy var useAnotherCardButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.setTitleColor(.black, for: .normal)
+//        button.setTitle("USE ANOTHER CARD", for: .normal)
+//        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        return button
+//    }()
+    
+    
     lazy var useAnotherCardButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitleColor(.black, for: .normal)
         button.setTitle("USE ANOTHER CARD", for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
+//        button.backgroundColor = UIColor(hex: "#F5A623")
+//        button.layer.cornerRadius = 4
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        button.heightAnchor.constraint(equalToConstant: 57).isActive = true
+        button.setImage(UIImage(named: "anotherCard", in: Bundle.getResourcesBundle(), compatibleWith: nil), for: .normal)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0,left: -80,bottom: 0,right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0,left:0,bottom: 4,right: 15)
+        button.imageView?.contentMode = .scaleAspectFit
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

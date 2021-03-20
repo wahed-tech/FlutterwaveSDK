@@ -49,7 +49,6 @@ class BankViewModel: BaseViewModel{
         makeAPICallRx(request: request, apiRequest: bankRepository.nigeriaBankTransfer(request:),
                       successHandler: nigeriaBankAccountResponse,onSuccessOperation: { response in
                         self.checkAuth(response: response.data, flwRef: response.data?.flwRef ?? "", source: .nigerianBankTransfer)
-                        
                       }, apiName: .directDebit, apiErrorName: .directDebitError)
     }
     

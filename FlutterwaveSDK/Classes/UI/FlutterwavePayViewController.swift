@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import IQKeyboardManagerSwift
+import SafariServices
 
 class Expandables{
     var isExpanded:Bool
@@ -47,8 +48,9 @@ public class FlutterwavePayViewController: BaseViewController {
     var ussdCell: UITableViewCell = UITableViewCell()
     var barterCell: UITableViewCell = UITableViewCell()
     var bankTransferCell: UITableViewCell = UITableViewCell()
+    var payPalCell: UITableViewCell = UITableViewCell()
     
-    
+    var flwRef:String?
     
     let toolbar = UIToolbar()
     let disposeBag = DisposeBag()
@@ -59,7 +61,7 @@ public class FlutterwavePayViewController: BaseViewController {
     
     
     
-    var expandables = [Expandables(isExpanded: true, section: 0),Expandables(isExpanded: false, section: 1),Expandables(isExpanded: false, section: 2),Expandables(isExpanded: false, section: 3),Expandables(isExpanded: false, section: 4),Expandables(isExpanded: false, section: 5),Expandables(isExpanded: false, section: 6),Expandables(isExpanded: false, section: 7),Expandables(isExpanded: false, section: 8),Expandables(isExpanded: false, section: 9),Expandables(isExpanded: false, section: 10),Expandables(isExpanded: false, section: 11),Expandables(isExpanded: false, section: 12), Expandables(isExpanded: false, section: 13)]
+    var expandables = [Expandables(isExpanded: true, section: 0),Expandables(isExpanded: false, section: 1),Expandables(isExpanded: false, section: 2),Expandables(isExpanded: false, section: 3),Expandables(isExpanded: false, section: 4),Expandables(isExpanded: false, section: 5),Expandables(isExpanded: false, section: 6),Expandables(isExpanded: false, section: 7),Expandables(isExpanded: false, section: 8),Expandables(isExpanded: false, section: 9),Expandables(isExpanded: false, section: 10),Expandables(isExpanded: false, section: 11),Expandables(isExpanded: false, section: 12), Expandables(isExpanded: false, section: 13), Expandables(isExpanded: false, section: 14)]
     
     var headers = [FlutterwaveHeaderView?]()
     public weak var delegate: FlutterwavePayProtocol?
@@ -116,11 +118,7 @@ public class FlutterwavePayViewController: BaseViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    //    lazy var debitCardView: DebitCardView = {
-    //        let view = DebitCardView()
-    //        view.translatesAutoresizingMaskIntoConstraints = false
-    //        return view
-    //    }()
+    
     lazy var debitCardView: DebitCardViewNew = {
         let view = DebitCardViewNew()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -288,6 +286,19 @@ public class FlutterwavePayViewController: BaseViewController {
         return view
     }()
     
+    lazy var payPalContentContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    
+    lazy var payPalView:PaypalView = {
+        let view = PaypalView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var confirmUssdView: USSDConfirmView = {
         let view = USSDConfirmView()
         view.isHidden = true
@@ -333,7 +344,7 @@ public class FlutterwavePayViewController: BaseViewController {
     override public func loadView() {
         super.loadView()
         
-       
+        
         
         howCell.backgroundColor = .clear
         cardCell.backgroundColor = .clear
@@ -362,6 +373,9 @@ public class FlutterwavePayViewController: BaseViewController {
         
         //Add BARTER CONTENT CONTAINER TOO BARTER Cell
         barterCell.contentView.addSubview(barterContentContainer)
+        
+        //Add PAYPAL CONTENT CONTAINER TOO PAYPAL Cell
+        payPalCell.contentView.addSubview(payPalContentContainer)
         
         //Add BANK TRANSFER CONTENT CONTAINER TO BANK TRANSFER CELL
         //        bankTransferCell
@@ -406,6 +420,8 @@ public class FlutterwavePayViewController: BaseViewController {
         
         ussdContentContainer.addSubview(selectUssdBankView)
         ussdContentContainer.addSubview(confirmUssdView)
+        
+        payPalContentContainer.addSubview(payPalView)
         
         
         
@@ -597,6 +613,18 @@ public class FlutterwavePayViewController: BaseViewController {
             bankTransferViewTwo.trailingAnchor.constraint(equalTo: bankTransferContentContainer.trailingAnchor),
             bankTransferViewTwo.topAnchor.constraint(equalTo: bankTransferContentContainer.topAnchor),
             bankTransferViewTwo.bottomAnchor.constraint(equalTo: bankTransferContentContainer.bottomAnchor),
+            
+            //SET CONSTRAINTS FOR PAYPAL CONTAINER
+            payPalContentContainer.leadingAnchor.constraint(equalTo: payPalCell.leadingAnchor),
+            payPalContentContainer.trailingAnchor.constraint(equalTo: payPalCell.trailingAnchor),
+            payPalContentContainer.topAnchor.constraint(equalTo: payPalCell.topAnchor),
+            payPalContentContainer.bottomAnchor.constraint(equalTo: payPalCell.bottomAnchor),
+            //
+            
+            payPalView.leadingAnchor.constraint(equalTo: payPalContentContainer.leadingAnchor),
+            payPalView.trailingAnchor.constraint(equalTo: payPalContentContainer.trailingAnchor),
+            payPalView.topAnchor.constraint(equalTo: payPalContentContainer.topAnchor),
+            payPalView.bottomAnchor.constraint(equalTo: payPalContentContainer.bottomAnchor),
         ])
     }
     
@@ -629,7 +657,8 @@ public class FlutterwavePayViewController: BaseViewController {
         closeButton.addTarget(self, action: #selector(closeView), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: closeButton)
         
-        self.tableView.backgroundColor = UIColor(hex: "#F2F2F2")
+//        self.tableView.backgroundColor = UIColor(hex: "#F2F2F2")
+        self.tableView.backgroundColor = UIColor.white
         self.tableView.tableFooterView = UIView(frame: .zero)
         configureView()
         configureDebitCardView()
@@ -645,6 +674,7 @@ public class FlutterwavePayViewController: BaseViewController {
         configureUssdBankView()
         configureBarter()
         configureBankTransfer()
+        configurePaypal()
     }
     
     override public func viewDidLayoutSubviews() {
@@ -668,7 +698,8 @@ public class FlutterwavePayViewController: BaseViewController {
         let payWithBarterHeader = getHeader()
         let payWithNigerianAccountHeader = getHeader()
         let payWithBankTransferHeader = getHeader()
-        headers = [nil,debitCardHeader,bankAccountHeader, mpesaHeader,ghanaMobileMoneyHeader,ugandaMobileMoneyHeader,rwandaMobileMoneyHeader,francoMobileMoneyHeader,zambiaMobileMoneyHeader,ukMobileMoneyHeader,ussdHeader,payWithBarterHeader,payWithNigerianAccountHeader, payWithBankTransferHeader]
+        let payPalHeader = getHeader()
+        headers = [nil,debitCardHeader,bankAccountHeader, mpesaHeader,ghanaMobileMoneyHeader,ugandaMobileMoneyHeader,rwandaMobileMoneyHeader,francoMobileMoneyHeader,zambiaMobileMoneyHeader,ukMobileMoneyHeader,ussdHeader,payWithBarterHeader,payWithNigerianAccountHeader, payWithBankTransferHeader, payPalHeader]
     }
     
     
@@ -1085,7 +1116,7 @@ public class FlutterwavePayViewController: BaseViewController {
         }
     }
     
-  
+    
     @objc func accountPayButtonTapped(){
         
         let phoneValid = self.accountFormContainer.phoneNumberTextField.validateAndShowError(validationType: ValidatorType.requiredField(field: "phone number"))
@@ -1234,8 +1265,8 @@ public class FlutterwavePayViewController: BaseViewController {
             ussdCell.selectionStyle = .none
             return ussdCell
         case 11:
-            barterCell.selectionStyle = .none
-            return barterCell
+            payPalCell.selectionStyle = .none
+            return payPalCell
         case 12:
             accountCell.selectionStyle = .none
             return accountCell
@@ -1280,7 +1311,7 @@ public class FlutterwavePayViewController: BaseViewController {
         case 10:
             return FlutterwaveConfig.sharedConfig().currencyCode == "NGN" && !checkIfPaymentOptionIsExcluded(paymentOption: .ussd)  ? 65 : 0
         case 11:
-            return FlutterwaveConfig.sharedConfig().currencyCode == "NGN" && !checkIfPaymentOptionIsExcluded(paymentOption: .barter) ? 65 : 0
+            return FlutterwaveConfig.sharedConfig().currencyCode == "" || FlutterwaveConfig.sharedConfig().country == "GHS" || checkIfPaymentOptionIsExcluded(paymentOption: .payPal)  ? 0 :  65
         //            return false
         case 12:
             return FlutterwaveConfig.sharedConfig().currencyCode == "NGN"  && !checkIfPaymentOptionIsExcluded(paymentOption: .bankAccount) ? 65  : 0
@@ -1378,9 +1409,9 @@ public class FlutterwavePayViewController: BaseViewController {
             headers[10]?.button.tag = 10
             return headers[10]
         case 11:
-            let headerTitle = "Pay with Barter"
+            let headerTitle = "Pay with Paypal"
             let attributedString = NSMutableAttributedString(string: headerTitle, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15),NSAttributedString.Key.foregroundColor: UIColor(hex: "#4A4A4A")])
-            attributedString.addAttributes([NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)], range:NSRange(headerTitle.range(of: "Barter")!, in: headerTitle))
+            attributedString.addAttributes([NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)], range:NSRange(headerTitle.range(of: "Paypal")!, in: headerTitle))
             headers[11]?.titleLabel.attributedText = attributedString
             headers[11]?.arrowButton.tag = 11
             headers[11]?.button.tag = 11
@@ -1421,7 +1452,7 @@ public class FlutterwavePayViewController: BaseViewController {
                 
             }
             
-            return expandables[indexPath.section].isExpanded   ? self.view.frame.height - (200 + navBarHeight) : 0
+            return expandables[indexPath.section].isExpanded   ? self.view.frame.height - (300 + navBarHeight) : 0
         case 1:
             return expandables[indexPath.section].isExpanded ? 400 : 0
         case 2:
@@ -1443,19 +1474,19 @@ public class FlutterwavePayViewController: BaseViewController {
         case 10:
             return expandables[indexPath.section].isExpanded ? 400 : 0
         case 11:
-            return expandables[indexPath.section].isExpanded ? 400 : 0
+            return expandables[indexPath.section].isExpanded ? 300 : 0
         case 12:
             return expandables[indexPath.section].isExpanded ? 400 : 0
         case 13:
             return expandables[indexPath.section].isExpanded ? 400 : 0
         default:
-            return expandables[indexPath.section].isExpanded ? self.view.frame.height - (200 + navBarHeight) : 0
+            return expandables[indexPath.section].isExpanded ? self.view.frame.height - (300 + navBarHeight) : 0
         }
         
     }
     
     func getHeader()-> FlutterwaveHeaderView{
-        let header = FlutterwaveHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100))
+        let header = FlutterwaveHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 65))
         header.backgroundColor = UIColor(hex: "#FBEED8")
         header.button.addTarget(self, action: #selector(handleButtonTap(_:)), for: .touchUpInside)
         return header
@@ -1507,10 +1538,10 @@ public class FlutterwavePayViewController: BaseViewController {
     
     
     @objc func closeView(){
-            self.view.endEditing(true)
-            self.delegate?.onDismiss()
-            self.dismiss(animated: true)
-        }
+        self.view.endEditing(true)
+        self.delegate?.onDismiss()
+        self.dismiss(animated: true)
+    }
     
     @objc func cardPayButtonTapped(){
         
@@ -1527,7 +1558,7 @@ public class FlutterwavePayViewController: BaseViewController {
     func saveCardCallbacks(){
         if let _ = FlutterwaveConfig.sharedConfig().publicKey{
             if let deviceNumber = FlutterwaveConfig.sharedConfig().phoneNumber, deviceNumber != ""{
-              //  LoadingHUD.shared().show()
+                //  LoadingHUD.shared().show()
                 CardViewModel.sharedViewModel.fetchCard()
             }
         }
@@ -1541,25 +1572,10 @@ public class FlutterwavePayViewController: BaseViewController {
             }
         } ).disposed(by: disposeBag)
         
-//        flutterwaveCardClient.sendOTPSuccess = { [weak self](message) in
-//            guard let strongSelf = self else {
-//                return
-//            }
-//            DispatchQueue.main.async {
-//                LoadingHUD.shared().hide()
-//                strongSelf.showOTP(message: message ?? "Enter the OTP sent to your mobile phone and email address to continue", flwRef: "", otpType: .savedCard)
-//            }
-//        }
-//        flutterwaveCardClient.sendOTPError = {(message) in
-//
-//            DispatchQueue.main.async {
-//                LoadingHUD.shared().hide()
-//                showSnackBarWithMessage(msg: message ?? "An error occured while sending OTP")
-//            }
-//        }
+        
         
         CardViewModel.sharedViewModel.fetchCardResponse.subscribe(onNext: { [weak self] response in
-           let saveCards =   response.data
+            let saveCards =   response.data
             guard let strongSelf = self else {
                 return
             }
@@ -1572,7 +1588,7 @@ public class FlutterwavePayViewController: BaseViewController {
                     strongSelf.saveCardTableController.saveCardTable.reloadData()
                 }
             }
-          
+            
         } ).disposed(by: disposeBag)
         
         CardViewModel.sharedViewModel.fetchCardFailed.subscribe(onNext: { [weak self] error in
@@ -1586,32 +1602,7 @@ public class FlutterwavePayViewController: BaseViewController {
             }
         }).disposed(by: disposeBag)
         
-//        flutterwaveCardClient.saveCardSuccess = {[weak self](saveCards) in
-//            guard let strongSelf = self else {
-//                return
-//            }
-//            DispatchQueue.main.async {
-//                LoadingHUD.shared().hide()
-//                if let count = saveCards?.count, count > 0 {
-//                    strongSelf.saveCardContainer.isHidden = false
-//                    strongSelf.debitCardView.isHidden = true
-//                    strongSelf.savedCards = saveCards
-//                    strongSelf.saveCardTableController.savedCards = saveCards
-//                    strongSelf.saveCardTableController.saveCardTable.reloadData()
-//                }
-//            }
-//
-//        }
-//        flutterwaveCardClient.saveCardError = {[weak self](saveCards) in
-//            guard let strongSelf = self else {
-//                return
-//            }
-//            DispatchQueue.main.async {
-//                LoadingHUD.shared().hide()
-//                strongSelf.debitCardView.isHidden = false
-//                strongSelf.saveCardContainer.isHidden  = true
-//            }
-//        }
+        
     }
     
     func gbpAccountCallbacks(){

@@ -86,13 +86,16 @@ class RavePayWebViewController: UIViewController, WKNavigationDelegate,WKUIDeleg
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+            
             print("doneLoading")
             self.navigationItem.title = webView.title
-            print(webView.url!.absoluteString)
+            print("Na me be dis \(webView.url!.absoluteString)")
             if (webView.url!.absoluteString.contains("/complete") ||
                 webView.url!.absoluteString.contains("submitting_mock_form")){
                 print("success page")
+                print("Before the call\(flwRef)")
                 PaymentServicesViewModel.sharedViewModel.mpesaVerify(flwRef: flwRef!)
+                
                 
             }else if(webView.url!.absoluteString.contains("/finish")){
                 let newURL = webView.url!.absoluteString

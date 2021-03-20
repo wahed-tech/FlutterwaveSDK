@@ -25,7 +25,7 @@ class RaveConstants: NSObject {
         
     }
     
-    static let flutterWaveVersion = "1.2.9"
+    static let flutterWaveVersion = "1.3.0"
     static let flutterColor = UIColor(hex: "#F5A623")
     
     static let bankStyle = [(code:"044",color:"#143f89",image:"rave_access2"),

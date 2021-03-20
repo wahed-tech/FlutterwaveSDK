@@ -13,14 +13,14 @@ class FlutterwavePayNavTitle: UIView {
         let label = UILabel()
         label.text = "SECURED BY FLUTTERWAVE"
         label.textColor = UIColor(hex: "#4A4A4A")
-        label.font = UIFont.boldSystemFont(ofSize: 10)
+        label.font = UIFont.boldSystemFont(ofSize: 11)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     let arrowButton:UIButton = {
         let button = UIButton(type: .custom)
-        button.setImage(UIImage(named: "rave_padlock",in: Bundle.getResourcesBundle(), compatibleWith: nil), for: .normal)
+        button.setImage(UIImage(named: "newPadLock",in: Bundle.getResourcesBundle(), compatibleWith: nil), for: .normal)
         button.tintColor = UIColor(hex: "#647482")
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -37,11 +37,11 @@ class FlutterwavePayNavTitle: UIView {
        
         arrowButton.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         arrowButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        arrowButton.widthAnchor.constraint(equalToConstant: 9).isActive = true
-        arrowButton.heightAnchor.constraint(equalToConstant: 10).isActive = true
+        arrowButton.widthAnchor.constraint(equalToConstant: 15).isActive = true
+        arrowButton.heightAnchor.constraint(equalToConstant: 18).isActive = true
         
-        titleLabel.leftAnchor.constraint(equalTo: arrowButton.rightAnchor, constant: 10).isActive = true
-        titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: arrowButton.rightAnchor, constant: 7).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 2).isActive = true
         
       
     }

@@ -24,6 +24,8 @@ extension Container {
         container.autoregister(BankRepository.self, initializer: BankRepositoryImpl.init)
         
         container.autoregister(CardRepository.self, initializer: CardRepositoryImpl.init)
+        
+        container.autoregister(PaypalRepository.self, initializer: PaypalRepositoryImpl.init)
 
 
        //VIEWMODELS
@@ -34,6 +36,7 @@ extension Container {
         
          container.autoregister(MobileMoneyViewModel.self, initializer: MobileMoneyViewModel.init)
          container.autoregister(CardViewModel.self, initializer: CardViewModel.init)
+        container.autoregister(PaypalViewModel.self, initializer: PaypalViewModel.init)
         
         return container
     }()

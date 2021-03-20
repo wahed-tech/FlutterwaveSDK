@@ -5,9 +5,11 @@
 //  Created by Rotimi Joshua on 02/09/2020.
 //
 import UIKit
+import SafariServices
 
 @available(iOS 11.0, *)
-extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPickerViewDelegate,UIPickerViewDataSource,FlutterwavePayWebProtocol{
+extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPickerViewDelegate,UIPickerViewDataSource,FlutterwavePayWebProtocol, SFSafariViewControllerDelegate {
+    
     func tranasctionSuccessful(flwRef: String, responseData:FlutterwaveDataResponse?) {
         self.dismiss(animated: true) {
             self.delegate?.tranasctionSuccessful(flwRef: flwRef, responseData: responseData)
@@ -252,16 +254,71 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
         }
     }
     func showWebView(url: String?,ref:String?){
-        //Collapse opened Tabs
-        // self.handelCloseOrExpandSection(section: 0)
-        //Show web view
-        //let storyBoard = UIStoryboard(name: "Rave", bundle: nil)
+      
         let controller = RavePayWebViewController()
         controller.flwRef = ref
         controller.url = url
         controller.delegate = self
         self.navigationController?.pushViewController(controller, animated: true)
     }
+    
+    
+    
+    func showSafari(url: String?,ref:String?) {
+        
+        if let url = URL(string: url.orEmpty()) {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = true
+           
+            let vc = SFSafariViewController(url: url, configuration: config)
+            vc.delegate = self
+            flwRef = ref
+            
+            present(vc, animated: true)
+        }
+    }
+    
+    public func safariViewController(_ controller: SFSafariViewController, initialLoadDidRedirectTo URL: URL) {
+        print("success page two\(URL.absoluteString)")
+        let finalURL = URL.absoluteString
+        print(finalURL)
+        if (finalURL.contains("/complete") ||
+                finalURL.contains("submitting_mock_form")){
+            print("success page")
+            PaymentServicesViewModel.sharedViewModel.mpesaVerify(flwRef: flwRef.orEmpty())
+            
+        }else if(finalURL.contains("webhook.site")){
+             print("Hellooooo")
+            let newURL = finalURL
+            if let range = newURL.range(of: "https://webhook.site/finish") {
+                let dataPayload = newURL[range.upperBound...]
+                print("Extra Data \(dataPayload)")
+            }
+            let data = URL.queryParameters
+            let response = data?["resp"] as? String
+            
+            do{
+                let products = try JSONDecoder().decode(MobileMoneyUrlResponse.self, from: response?.data(using: .utf8) ?? Data())
+                
+                PaymentServicesViewModel.sharedViewModel.mpesaVerify(flwRef: products.data.flwRef ?? "")
+                
+            } catch(let error) {
+                print("\(error.localizedDescription)")
+            }
+            
+        }else {
+            print("Liverpool is loosing")
+//            controller.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    public func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        
+        dismiss(animated: true)
+    }
+    
+   
+    
     
     func showOTP(message:String, flwRef:String, otpType:OTPType){
         self.otpContentContainer.isHidden = false

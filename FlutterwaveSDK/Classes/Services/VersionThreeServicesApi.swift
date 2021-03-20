@@ -25,6 +25,7 @@ enum VersionThreeServicesApi{
     case francophoneMoney
     case nigeriaBankTransfer
     case voucherCharge
+    case payPal
 }
 
 enum MonitorAPIService {
@@ -96,6 +97,8 @@ extension VersionThreeServicesApi:EndpointType{
             return "charges?type=bank_transfer"
         case .voucherCharge:
             return "charges?type=voucher_payment"
+        case .payPal:
+                return "charges?type=paypal"
         }
  
        

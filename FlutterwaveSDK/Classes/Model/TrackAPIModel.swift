@@ -66,6 +66,7 @@ enum FeaturesTrackerName:String {
     case sendSavedCardOTPError = "Send-Saved-Card-OTP-Error"
     case chargeSavedCard = "Charge-Saved-Card"
     case chargeSavedCardError = "Charge-Saved-Card-Error"
-   
+    case payPal = "Paypal"
+    case payPalError = "Paypal-Error"
     
 }

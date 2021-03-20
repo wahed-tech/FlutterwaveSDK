@@ -9,7 +9,6 @@ import UIKit
 
 extension FlutterwavePayViewController {
     
-    
     func configureUssdBankView(){
         ussdBankPicker = UIPickerView()
         ussdBankPicker.autoresizingMask  = [.flexibleWidth , .flexibleHeight]
@@ -62,7 +61,7 @@ extension FlutterwavePayViewController {
         //
         
         barterContentContainer.payButton.rx.tap.subscribe(onNext: {
-//            self.showToast(message: "Your Toast Message")
+            //            self.showToast(message: "Your Toast Message")
             //            let pubKey = RaveConfig.sharedConfig().publicKey
             //            self.showWebView(url: "https://bartercheckout.herokuapp.com/?\(pubKey ?? "")&flwref=PWB_3228939269",ref:"")
             showSnackBarWithMessage(msg: "Coming soon")
@@ -90,6 +89,20 @@ extension FlutterwavePayViewController {
             
         }).disposed(by: disposableBag)
     }
+    
+    
+    func configurePaypal(){
+        payPalView.amountLabel.text = self.amount
+        payPalView.currencyLabel.text = (FlutterwaveConfig.sharedConfig().currencyCode)
+        payPalView.emailLabel.text = FlutterwaveConfig.sharedConfig().email
+        payPalView.payButton.rx.tap.subscribe(onNext: {
+            print("I am tapped")
+            PaypalViewModel.sharedViewModel.paypal(amount: self.amount.orEmpty())
+        }).disposed(by: disposableBag)
+        
+    }
+    
+    
     
 }
 

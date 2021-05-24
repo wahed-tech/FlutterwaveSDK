@@ -1028,8 +1028,6 @@ public class FlutterwavePayViewController: BaseViewController {
         
         let phoneValid = self.mobileMoneyUgandaContentContainer.mobileMoneyUgandaPhone.validateAndShowError(validationType: ValidatorType.requiredField(field: "phone number"))
         
-        MobileMoneyViewModel.sharedViewModel.ugandaMoney(amount: self.amount.orEmpty(), phoneNumber: flutterwaveMobileMoneyUganda.phoneNumber.orEmpty())
-        
         if (phoneValid){
             MobileMoneyViewModel.sharedViewModel.ugandaMoney(amount: self.amount.orEmpty(), phoneNumber: flutterwaveMobileMoneyUganda.phoneNumber.orEmpty())
         }

@@ -44,7 +44,7 @@ class MobileMoneyViewModel: BaseViewModel{
         let request = UgandaMobileMoneyRequest(txRef: FlutterwaveConfig.sharedConfig().transcationRef, amount: amount, email: FlutterwaveConfig.sharedConfig().email, phoneNumber: phoneNumber, currency: FlutterwaveConfig.sharedConfig().currencyCode, network: "MTN")
         makeAPICallRx(request: request, apiRequest: mobileMoneyRepository.ugandaMoney(request:), successHandler: ugandaMoneyResponse, onSuccessOperation: {response in
             self.checkAuth(response: response, flwRef: "",source: .ugandaMoney)
-        }, apiName: .zambiaMoney, apiErrorName: .zambiaMoneyError)
+        }, apiName: .ugandaMoney, apiErrorName: .ugandaMoneyError)
     }
     
     func zambiaMoney(amount: String, phoneNumber: String, network: String) {

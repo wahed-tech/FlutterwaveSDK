@@ -50,11 +50,6 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
         }
     }
     
-    //Disable textfield interactions
-    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool  {
-        self.resignFirstResponder()
-        return false
-    }
     
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {

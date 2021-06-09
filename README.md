@@ -43,6 +43,8 @@ After this is done, you can make test payments, please ensure `config.isStaging 
 *Please note that the test cards will not work with Live API keys, they will only work on the staging environment.*
  
 Please go to https://developer.flutterwave.com/docs/test-cards for a list of test card numbers.
+
+**Please note that merchant must be PCI-DSS compliant to be able to charge cards on Flutterwave SDK**
  
  
 ## Requirements

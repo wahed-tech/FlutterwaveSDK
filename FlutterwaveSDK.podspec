@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
     s.name             = 'FlutterwaveSDK'
     s.version          = '1.2.7'
     s.summary          = 'FlutterwaveSDK'
-    
+    ss.pod_target_xcconfig = { "DEFINES_MODULE" => "YES" }
     # This description is used to generate tags and improve search results.
     #   * Think: What does it do? Why did you write it? What is the focus?
     #   * Try to keep it short, snappy and to the point.
@@ -42,7 +42,8 @@ Pod::Spec.new do |s|
     s.dependency 'RxCocoa'
     s.dependency 'SwinjectAutoregistration'
     s.dependency 'Swinject'
-    s.dependency 'MaterialComponents'
+    s.dependency 'MaterialComponents/TextControls+OutlinedTextAreas'
+    s.dependency 'MaterialComponents/TextControls+OutlinedTextFields'
     s.dependency 'IQKeyboardManagerSwift'
 end
 

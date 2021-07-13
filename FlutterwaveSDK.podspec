@@ -42,8 +42,7 @@ Pod::Spec.new do |s|
     s.dependency 'RxCocoa'
     s.dependency 'SwinjectAutoregistration'
     s.dependency 'Swinject'
-    s.dependency 'MaterialComponents/TextControls+OutlinedTextAreas'
-    s.dependency 'MaterialComponents/TextControls+OutlinedTextFields'
+    s.dependency 'MaterialComponents'
     s.dependency 'IQKeyboardManagerSwift'
 end
 

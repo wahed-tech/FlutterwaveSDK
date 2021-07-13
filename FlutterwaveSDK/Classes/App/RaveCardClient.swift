@@ -27,16 +27,16 @@ public class FlutterwaveCardClient{
     public var transactionReference:String?
     public var bodyParam:[String:Any]? = [:]
     
-    typealias FeeSuccessHandler = ((String?,String?) -> Void)
-    typealias SuccessHandler = ((String?,FlutterwaveDataResponse?) -> Void)
-    typealias ErrorHandler = ((String?,FlutterwaveDataResponse?) -> Void)
-    typealias SuggestedAuthHandler = ((SuggestedAuthModel,[String:Any]?, String?) -> Void)
-    typealias OTPAuthHandler = ((String,String) -> Void)
-    typealias WebAuthHandler = ((String,String) -> Void)
-    typealias SaveCardSuccessHandler = (([SavedCard]?) -> Void)
-    typealias SaveCardErrorHandler = ((String?) -> Void)
-    typealias RemoveSavedCardSuccessHandler = (() -> Void)
-    typealias RemoveSavedCardErrorHandler = ((String?) -> Void)
+    public typealias FeeSuccessHandler = ((String?,String?) -> Void)
+    public typealias SuccessHandler = ((String?,FlutterwaveDataResponse?) -> Void)
+    public typealias ErrorHandler = ((String?,FlutterwaveDataResponse?) -> Void)
+    public typealias SuggestedAuthHandler = ((SuggestedAuthModel,[String:Any]?, String?) -> Void)
+    public typealias OTPAuthHandler = ((String,String) -> Void)
+    public typealias WebAuthHandler = ((String,String) -> Void)
+    public typealias SaveCardSuccessHandler = (([SavedCard]?) -> Void)
+    public typealias SaveCardErrorHandler = ((String?) -> Void)
+    public typealias RemoveSavedCardSuccessHandler = (() -> Void)
+    public typealias RemoveSavedCardErrorHandler = ((String?) -> Void)
     
     public var error:ErrorHandler?
     public var saveCardError:SaveCardErrorHandler?

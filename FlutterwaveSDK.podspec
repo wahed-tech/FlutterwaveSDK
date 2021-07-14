@@ -34,16 +34,13 @@ Pod::Spec.new do |s|
     s.source_files = 'FlutterwaveSDK/**/*.{h,m,swift}'
     s.resources =  'FlutterwaveSDK/**/*.{xcassets,json,png}'
    
-    s.public_header_files = 'Classes/*.h'
+    # s.public_header_files = 'Classes/*.h'
     
-    s.frameworks = 'UIKit'
     s.dependency 'lottie-ios'
     s.dependency 'RxSwift'
     s.dependency 'RxCocoa'
     s.dependency 'SwinjectAutoregistration'
     s.dependency 'Swinject'
-    s.dependency 'MaterialComponents/TextControls+OutlinedTextAreas'
-    s.dependency 'MaterialComponents/TextControls+OutlinedTextFields'
     s.dependency 'IQKeyboardManagerSwift'
 end
 

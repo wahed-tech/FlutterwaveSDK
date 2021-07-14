@@ -39,7 +39,6 @@ class FlutterwaveAccountClient {
     public var transactionReference:String?
     var txRef:String?
     var chargeAmount:String?
-    var accountform = AccountForm()
 //    //MARK: Fee
 //    public func getFee(){
 //        if let pubkey = FlutterwaveConfig.sharedConfig().publicKey{
